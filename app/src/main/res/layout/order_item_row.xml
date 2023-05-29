@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/order_sifaris"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/primary"
+                android:text="Sifariş edilib"
+                app:cornerRadius="5dp" />
+
+            <Button
+                android:id="@+id/order_anbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/primary"
+                android:text="Xarici Anbardadır"
+                app:cornerRadius="5dp" />
+            <Button
+                android:id="@+id/order_smartbeyangozleyir"
+                android:text="SMART-a bəyan gözləyir"
+                android:backgroundTint="@color/primary"
+                android:layout_weight="1"
+                app:cornerRadius="5dp"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/order_smartbeyanedilib"
+                android:text="SMART-a bəyan edilib"
+                android:backgroundTint="@color/primary"
+                android:layout_weight="1"
+                app:cornerRadius="5dp"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/order_yol"
+                android:text="Yola düşüb"
+                android:backgroundTint="@color/primary"
+                android:layout_weight="1"
+                app:cornerRadius="5dp"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/order_gomruk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/primary"
+                android:text="Gömrük yoxlaması"
+                app:cornerRadius="5dp" />
+            <Button
+                android:id="@+id/order_cesidleme"
+                android:text="Çeşidləmə"
+                android:backgroundTint="@color/primary"
+                android:layout_weight="1"
+                app:cornerRadius="5dp"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/order_catib"
+                android:text="Çatıb"
+                android:backgroundTint="@color/primary"
+                android:layout_weight="1"
+                app:cornerRadius="5dp"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/order_tehvil"
+                android:text="Təhvil verilib"
+                android:backgroundTint="@color/primary"
+                android:layout_weight="1"
+                app:cornerRadius="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@drawable/shape_items"
+        android:backgroundTint="@color/openblue"
+        >
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:textAlignment="textStart"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="@color/primary"
+                android:text="Testtesttest"/>
+            <ImageView
+                android:id="@+id/order_item_image"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_image_24"/>
+            <ImageView
+                android:id="@+id/order_item_linkDetails"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_link"/>
+            <ImageView
+                android:id="@+id/order_item_timeHistory"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_access_time_24"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategoriya:Test"
+                    android:textSize="16dp"
+                    android:textColor="@color/primary"/>
+                <TextView
+                    android:textColor="@color/primary"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_marginRight="8dp"
+                    android:textSize="16dp"
+                    android:text="Tarix:2023-12-14"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:textColor="@color/primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Qiymet:150.00"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Catdirilma:0.99"
+                    android:textSize="16dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/primary"
+                    android:textAlignment="textEnd"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Magaza Adi:Magaza"
+                    android:textColor="@color/primary"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/primary"
+                    android:text="Ceki:0.09"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:text="Magaza Kodu"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Catdirilma Ofisi:"
+                    android:textColor="@color/primary"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sığortalanmayıb"
+                    android:textSize="19dp"
+                    android:textStyle="bold"
+                    android:textColor="#FA0303"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
