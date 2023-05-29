@@ -22,7 +22,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:text="Cart"
+                android:text="Sifarişlər"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
 

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:title="@string/home"
+<item android:title="Ana səhifə"
     android:id="@+id/homeFragment"
     android:icon="@drawable/icon_home"/>
-    <item android:title="@string/order"
+    <item android:title="Bağlamalar"
         android:id="@+id/orderFragment"
         android:icon="@drawable/icon_order"/>
-    <item android:title="@string/add"
+    <item android:title="Əlavə et"
         android:id="@+id/linkFragment"
         android:icon="@drawable/icon_add"/>
-    <item android:title="@string/shoppingcart"
+    <item android:title="Səbətim"
         android:id="@+id/cartFragment"
         android:icon="@drawable/icon_shopping_cart"/>
-    <item android:title="@string/balance"
+    <item android:title="Balans"
         android:id="@+id/balanceFragment"
         android:icon="@drawable/icon_wallet"/>
 </menu>

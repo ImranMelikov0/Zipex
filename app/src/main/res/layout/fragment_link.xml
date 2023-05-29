@@ -22,7 +22,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:text="Link"
+                android:text="Sifariş Əlavə et"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
 
