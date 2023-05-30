@@ -55,7 +55,8 @@
                     android:layout_height="wrap_content"
                     android:text="Ödəniş olunmayan sifarişlər gün ərzində silinir.Siz sifarişləri seçərək ödəyə bilərsiniz"
                     android:textAlignment="center"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
                     android:textColor="@color/primary"
                     android:layout_margin="15dp"/>
             </LinearLayout>
@@ -82,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="1"
-                    android:layout_margin="15dp">
+                    android:layout_margin="5dp">
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -94,13 +95,15 @@
                             android:layout_height="wrap_content"
                             android:text="Link"
                             android:textStyle="bold"/>
+
                         <EditText
                             android:id="@+id/editLink"
-                            android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/openblue"
-                            android:padding="10dp"/>
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_items"
+                            android:padding="10dp"
+                            android:singleLine="true" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_marginTop="15dp"
@@ -114,13 +117,15 @@
                             android:layout_height="wrap_content"
                             android:text="Kateqoriya"
                             android:textStyle="bold"/>
+
                         <EditText
                             android:id="@+id/editCategory"
-                            android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/openblue"
-                            android:padding="10dp"/>
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_items"
+                            android:padding="10dp"
+                            android:singleLine="true" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_marginTop="15dp"
@@ -141,13 +146,15 @@
                                 android:layout_height="wrap_content"
                                 android:text="Say"
                                 android:textStyle="bold"/>
+
                             <EditText
                                 android:id="@+id/editquantity"
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/openblue"
-                                android:padding="10dp"/>
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_items"
+                                android:padding="10dp"
+                                android:singleLine="true" />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_margin="5dp"
@@ -161,13 +168,15 @@
                                 android:layout_height="wrap_content"
                                 android:text="Rəng"
                                 android:textStyle="bold"/>
+
                             <EditText
                                 android:id="@+id/editcolor"
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/openblue"
-                                android:padding="10dp"/>
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_items"
+                                android:padding="10dp"
+                                android:singleLine="true" />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_margin="5dp"
@@ -181,13 +190,15 @@
                                 android:layout_height="wrap_content"
                                 android:text="Ölçü"
                                 android:textStyle="bold"/>
+
                             <EditText
                                 android:id="@+id/editsize"
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/openblue"
-                                android:padding="10dp"/>
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_items"
+                                android:padding="10dp"
+                                android:singleLine="true" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -212,16 +223,18 @@
                                 android:layout_height="wrap_content"
                                 android:text="Valyuta"
                                 android:textStyle="bold"/>
+
                             <EditText
-                                android:enabled="false"
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/openblue"
-                                android:text="TRY"
-                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_items"
+                                android:enabled="false"
+                                android:padding="10dp"
+                                android:singleLine="true"
 
-                                android:padding="10dp"/>
+                                android:text="TRY"
+                                android:textColor="@color/black" />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_margin="5dp"
@@ -235,13 +248,15 @@
                                 android:layout_height="wrap_content"
                                 android:text="Qiymət"
                                 android:textStyle="bold"/>
+
                             <EditText
                                 android:id="@+id/editprice"
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/openblue"
-                                android:padding="10dp"/>
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_items"
+                                android:padding="10dp"
+                                android:singleLine="true" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -303,14 +318,18 @@
                             android:layout_height="wrap_content"
                             android:text="Qeyd"
                             android:textStyle="bold"/>
+
                         <EditText
                             android:id="@+id/editcomment"
-                            android:layout_weight="1"
-                            android:textAlignment="textStart"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/openblue"
-                            android:padding="50dp"/>
+                            android:layout_height="130dp"
+                            android:gravity="top|start"
+                            android:textSize="14dp"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:background="@drawable/shape_items"
+                            android:ems="10"
+                            android:inputType="textMultiLine" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"

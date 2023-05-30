@@ -438,7 +438,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="19dp"
                 android:layout_marginLeft="19dp"
-                android:background="@color/openblue"
+                android:background="@drawable/shape_items"
                 android:backgroundTint="@color/openblue"
                 >
                 <LinearLayout
@@ -529,10 +529,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="90dp"
-        android:backgroundTint="#21980D"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#04B52B"
         android:drawableLeft="@drawable/baseline_local_phone_24"
-        android:text="WhatsApp">
+        android:text="WhatsApp"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp"
+        android:textSize="16dp"
+        app:cornerRadius="60dp">
 
     </Button>
 
