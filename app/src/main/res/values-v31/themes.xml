@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="CustomDrawableStyle">
+        <item name="android:background">#AEADAD</item> <!-- Arka plan rengi -->
+        <item name="android:padding">8dp</item> <!-- İstenilen iç boşluk -->
+        <item name="android:foreground">@drawable/baseline_lock_24</item>
+        <item name="android:drawable">@drawable/shape_linearborder</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:outlineProvider">bounds</item>
+        <item name="android:clipToOutline">true</item>
+    </style>
 </resources>

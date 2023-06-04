@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-  
+    <solid android:color="#00000000" /> <!-- Borderin iç rengi (saydam) -->
+    <stroke
+        android:width="0.5dp"
+        android:color="#000000" /> <!-- Border rengi (siyah) -->
+    <corners android:radius="5dp" /> <!-- Kenar yuvarlatma yarıçapı -->
+
+    <padding
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp"
+        android:bottom="6dp" /> <!-- Borderin etrafındaki boşluklar -->
+
+    <gradient
+        android:startColor="#80000000"
+        android:endColor="#00000000"
+        android:angle="270" /> <!-- Gölge rengi ve saydamlığı -->
 </shape>
+
+
+
+
+

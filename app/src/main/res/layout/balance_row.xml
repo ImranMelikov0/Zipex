@@ -1,6 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/balance_item_order_linear"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/balance_item_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/primary"
+                android:text="Sifarişlər"
+                android:layout_marginBottom="-4dp"
+                android:layout_marginTop="-4dp"
+                app:cornerRadius="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/balance_item_service_linear"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/balance_item_service"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:text="Xidmətlər"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
+                android:textColor="@color/primary"
+                app:cornerRadius="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/balance_title_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Balans: 100"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            >
+            <EditText
+                android:id="@+id/balance_item_addbalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_items"
+                android:padding="10dp"
+                android:inputType="number"
+                android:hint="0.0"/>
+            <Button
+                android:id="@+id/balance_item_addbalancebutton"
+                android:layout_marginTop="-2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="8dp"
+                android:backgroundTint="@color/primary"
+                app:cornerRadius="5dp"
+                android:text="Balans Artır"/>
+        </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_table_row"
+       android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearlayout1"
+                android:orientation="horizontal">
+                <TextView
+                    android:padding="5dp"
+                    android:background="@drawable/table_row_left"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Tarix"
+                    android:textAlignment="center"/>
+
+
+                <TextView
+                    android:padding="5dp"
+                    android:background="@drawable/table_row"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Məbləğ"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Balans"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:padding="5dp"
+                    android:background="@drawable/table_row_right"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ətraflı"
+                    android:textSize="16dp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout2">
+                <TextView
+                    android:id="@+id/balance_item_history"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2022.05.24"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:background="@drawable/table_row_bottom_left"
+                    android:padding="5dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_weight="1"
+                    android:id="@+id/balance_item_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Məbləğ"
+                    android:background="@drawable/table_row"
+                    android:padding="5dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:id="@+id/balance_item_balance"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:background="@drawable/table_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Balans"
+                    android:textAlignment="center"/>
+
+                <ImageView
+                    android:id="@+id/balance_item_view"
+                    android:background="@drawable/table_row_bottom_right"
+                    android:layout_weight="1"
+                    android:padding="2.5dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_remove_red_eye_24"
+                    />
+            </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>

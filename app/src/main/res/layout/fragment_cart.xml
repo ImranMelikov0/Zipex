@@ -39,22 +39,26 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
+            android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:id="@+id/linear"
             android:layout_below="@id/appBarLayout"
-            android:background="@drawable/shape_items_linearlayout"
-            android:layout_weight="1">
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_items_linearlayout">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="15dp"
                 android:text="Ödəniş olunmayan sifarişlər gün ərzində silinir.Siz sifarişləri seçərək ödəyə bilərsiniz"
                 android:textAlignment="center"
-                android:textSize="16dp"
-                android:textStyle="bold"
                 android:textColor="@color/primary"
-                android:layout_margin="15dp"/>
+                android:textSize="16dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -94,6 +98,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:textColor="@color/primary"
+        android:id="@+id/cryptoErrorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="Error! Try Again"
+        android:layout_gravity="center"
+        >
+    </TextView>
 
+    <ProgressBar
+        android:progressTint="@color/primary"
+        android:indeterminateTint="@color/primary"
+        android:id="@+id/cryptoProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+    </ProgressBar>
 
 </FrameLayout>
