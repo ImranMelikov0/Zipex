@@ -44,4 +44,31 @@
         android:layout_height="match_parent"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp" />
+
+    <TextView
+        android:textColor="@color/primary"
+        android:id="@+id/cryptoErrorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBarLayout"
+        android:textSize="30dp"
+        android:layout_marginTop="275dp"
+        android:layout_marginLeft="100dp"
+        android:text="Error! Try Again"
+        android:layout_gravity="center"
+        >
+    </TextView>
+
+    <ProgressBar
+        android:layout_marginTop="275dp"
+        android:layout_marginLeft="180dp"
+        android:progressTint="@color/primary"
+        android:indeterminateTint="@color/primary"
+        android:id="@+id/cryptoProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/appBarLayout"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+    </ProgressBar>
 </RelativeLayout>

@@ -11,8 +11,41 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
+            android:id="@+id/action_homeFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_linkFragment"
+            app:destination="@id/linkFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_orderFragment"
             app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_balanceFragment"
+            app:destination="@id/balanceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bonusFragment"
+            app:destination="@id/bonusFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_courierFragment"
+            app:destination="@id/courierFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_regularOrderFragment"
+            app:destination="@id/regularOrderFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_serviceFragment"
+            app:destination="@id/serviceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tariffFragment"
+            app:destination="@id/tariffFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
@@ -20,8 +53,11 @@
         android:label="fragment_order"
         tools:layout="@layout/fragment_order" >
         <action
-            android:id="@+id/action_orderFragment_to_linkFragment"
-            app:destination="@id/linkFragment" />
+            android:id="@+id/action_orderFragment_to_linkDetailFragment"
+            app:destination="@id/linkDetailFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/linkFragment"
@@ -29,8 +65,8 @@
         android:label="fragment_link"
         tools:layout="@layout/fragment_link" >
         <action
-            android:id="@+id/action_linkFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
+            android:id="@+id/action_linkFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -38,12 +74,283 @@
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action
-            android:id="@+id/action_cartFragment_to_balanceFragment"
-            app:destination="@id/balanceFragment" />
+            android:id="@+id/action_cartFragment_to_cartUpdateFragment"
+            app:destination="@id/cartUpdateFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/balanceFragment"
         android:name="com.imranmelikov.zipex.view.BalanceFragment"
         android:label="fragment_balance"
-        tools:layout="@layout/fragment_balance" />
+        tools:layout="@layout/fragment_balance" >
+        <action
+            android:id="@+id/action_balanceFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_balanceFragment_to_paymentAznFragment"
+            app:destination="@id/paymentAznFragment" />
+        <action
+            android:id="@+id/action_balanceFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.imranmelikov.zipex.view.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" >
+        <action
+            android:id="@+id/action_confirmationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mailFragment"
+        android:name="com.imranmelikov.zipex.view.MailFragment"
+        android:label="fragment_mail"
+        tools:layout="@layout/fragment_mail" >
+        <action
+            android:id="@+id/action_mailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/debtFragment"
+        android:name="com.imranmelikov.zipex.view.DebtFragment"
+        android:label="fragment_debt"
+        tools:layout="@layout/fragment_debt" >
+        <action
+            android:id="@+id/action_debtFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/debtHistoryFragment"
+        android:name="com.imranmelikov.zipex.view.DebtHistoryFragment"
+        android:label="fragment_debt_history"
+        tools:layout="@layout/fragment_debt_history" >
+        <action
+            android:id="@+id/action_debtHistoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/promoCodeFragment"
+        android:name="com.imranmelikov.zipex.view.PromoCodeFragment"
+        android:label="fragment_promo_code"
+        tools:layout="@layout/fragment_promo_code" >
+        <action
+            android:id="@+id/action_promoCodeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cleverDeclarationFragment"
+        android:name="com.imranmelikov.zipex.view.CleverDeclarationFragment"
+        android:label="fragment_clever_declaration"
+        tools:layout="@layout/fragment_clever_declaration" >
+        <action
+            android:id="@+id/action_cleverDeclarationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trendyolConfirmFragment"
+        android:name="com.imranmelikov.zipex.view.TrendyolConfirmFragment"
+        android:label="fragment_trendyol_confirm"
+        tools:layout="@layout/fragment_trendyol_confirm" >
+        <action
+            android:id="@+id/action_trendyolConfirmFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.imranmelikov.zipex.view.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.imranmelikov.zipex.view.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.imranmelikov.zipex.view.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_adminFragment_to_adminDetailFragment"
+            app:destination="@id/adminDetailFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_adminNewsFragment"
+            app:destination="@id/adminNewsFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_adminNotificationFragment2"
+            app:destination="@id/adminNotificationFragment2" />
+        <action
+            android:id="@+id/action_adminFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminDetailFragment"
+        android:name="com.imranmelikov.zipex.view.AdminDetailFragment"
+        android:label="fragment_admin_detail"
+        tools:layout="@layout/fragment_admin_detail" >
+        <action
+            android:id="@+id/action_adminDetailFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminNewsFragment"
+        android:name="com.imranmelikov.zipex.view.AdminNewsFragment"
+        android:label="fragment_admin_news"
+        tools:layout="@layout/fragment_admin_news" >
+        <action
+            android:id="@+id/action_adminNewsFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminNotificationFragment2"
+        android:name="com.imranmelikov.zipex.view.AdminNotificationFragment"
+        android:label="fragment_admin_notification"
+        tools:layout="@layout/fragment_admin_notification" >
+        <action
+            android:id="@+id/action_adminNotificationFragment2_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.imranmelikov.zipex.view.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" >
+        <action
+            android:id="@+id/action_contactFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.imranmelikov.zipex.view.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" >
+        <action
+            android:id="@+id/action_addressFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bonusFragment"
+        android:name="com.imranmelikov.zipex.view.BonusFragment"
+        android:label="fragment_bonus"
+        tools:layout="@layout/fragment_bonus" >
+        <action
+            android:id="@+id/action_bonusFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courierFragment"
+        android:name="com.imranmelikov.zipex.view.CourierFragment"
+        android:label="fragment_courier"
+        tools:layout="@layout/fragment_courier" >
+        <action
+            android:id="@+id/action_courierFragment_to_courierDetailFragment"
+            app:destination="@id/courierDetailFragment" />
+        <action
+            android:id="@+id/action_courierFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courierDetailFragment"
+        android:name="com.imranmelikov.zipex.view.CourierDetailFragment"
+        android:label="fragment_courier_detail"
+        tools:layout="@layout/fragment_courier_detail" >
+        <action
+            android:id="@+id/action_courierDetailFragment_to_courierFragment"
+            app:destination="@id/courierFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.imranmelikov.zipex.view.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/regularOrderFragment"
+        android:name="com.imranmelikov.zipex.view.RegularOrderFragment"
+        android:label="fragment_regular_order"
+        tools:layout="@layout/fragment_regular_order" >
+        <action
+            android:id="@+id/action_regularOrderFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="com.imranmelikov.zipex.view.ServiceFragment"
+        android:label="fragment_service"
+        tools:layout="@layout/fragment_service" >
+        <action
+            android:id="@+id/action_serviceFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tariffFragment"
+        android:name="com.imranmelikov.zipex.view.TariffFragment"
+        android:label="fragment_tariff"
+        tools:layout="@layout/fragment_tariff" >
+        <action
+            android:id="@+id/action_tariffFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.imranmelikov.zipex.view.NewsDetailFragment"
+        android:label="fragment_news_detail"
+        tools:layout="@layout/fragment_news_detail" >
+        <action
+            android:id="@+id/action_newsDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartUpdateFragment"
+        android:name="com.imranmelikov.zipex.view.CartUpdateFragment"
+        android:label="fragment_cart_update"
+        tools:layout="@layout/fragment_cart_update" >
+        <action
+            android:id="@+id/action_cartUpdateFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/linkDetailFragment"
+        android:name="com.imranmelikov.zipex.view.LinkDetailFragment"
+        android:label="fragment_link_detail"
+        tools:layout="@layout/fragment_link_detail" >
+        <action
+            android:id="@+id/action_linkDetailFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.imranmelikov.zipex.view.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_balanceFragment"
+            app:destination="@id/balanceFragment" />
+        <action
+            android:id="@+id/action_paymentFragment_to_cartFragment2"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentAznFragment"
+        android:name="com.imranmelikov.zipex.view.PaymentAznFragment"
+        android:label="fragment_payment_azn"
+        tools:layout="@layout/fragment_payment_azn" >
+        <action
+            android:id="@+id/action_paymentAznFragment_to_balanceFragment"
+            app:destination="@id/balanceFragment" />
+    </fragment>
 </navigation>

@@ -44,6 +44,28 @@
             android:layout_height="match_parent"
             android:id="@+id/recycler_notification"
             android:layout_below="@id/appBarLayout"/>
+
+
     </RelativeLayout>
 
+    <TextView
+        android:textColor="@color/primary"
+        android:id="@+id/cryptoErrorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="Error! Try Again"
+        android:layout_gravity="center"
+        >
+    </TextView>
+
+    <ProgressBar
+        android:progressTint="@color/primary"
+        android:indeterminateTint="@color/primary"
+        android:id="@+id/cryptoProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+    </ProgressBar>
 </FrameLayout>

@@ -1,17 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    >
+        <item
+            android:id="@+id/confirmationFragment"
+            android:title="Təsdiq gözləyən" />
+        <item
+            android:id="@+id/mailFragment"
+            android:title="Azərpoçt ilə göndər" />
+    <item
+        android:id="@+id/debtFragment"
+        android:title="Borclar" />
+        <item
+            android:id="@+id/debtHistoryFragment"
+            android:title="Borc Tarixçəsi" />
+    <item
+        android:id="@+id/promoCodeFragment"
+        android:title="Promo kodlar" />
+    <item
+        android:id="@+id/cleverDeclarationFragment"
+        android:title="Ağıllı bəyan" />
+    <item
+        android:id="@+id/trendyolConfirmFragment"
+        android:title="Trendyol Təsdiq" />
+    <item
+        android:id="@+id/contactFragment"
+        android:title="Əlaqə" />
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:title="@string/hello_blank_fragment" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:title="@string/hello_blank_fragment" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:title="@string/hello_blank_fragment" />
-    </group>
+
+    <item
+        android:id="@+id/menu_item1"
+        android:title=""
+        >
+        <menu>
+            <item
+                android:id="@+id/settingFragment"
+                android:title="Tənzimləmələr" />
+            <item
+                android:id="@+id/passwordFragment"
+                android:title="Şifrəni dəyiş" />
+            <item
+                android:id="@+id/adminFragment"
+                android:title="Adminlər üçün giriş" />
+        </menu>
+    </item>
 </menu>
