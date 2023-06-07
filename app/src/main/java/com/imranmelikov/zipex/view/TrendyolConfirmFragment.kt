@@ -5,14 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
+import com.imranmelikov.zipex.databinding.FragmentTrendyolConfirmBinding
 
 class TrendyolConfirmFragment : Fragment() {
+    private lateinit var binding:FragmentTrendyolConfirmBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trendyol_confirm, container, false)
+        binding= FragmentTrendyolConfirmBinding.inflate(inflater,container,false)
+        binding.back.setOnClickListener {
+            findNavController().navigate(TrendyolConfirmFragmentDirections.actionTrendyolConfirmFragmentToHomeFragment())
+        }
+        return binding.root
     }
 }

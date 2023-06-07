@@ -45,8 +45,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        binding.drawerLayout.closeDrawer(GravityCompat.START)
+       if (binding.drawerLayout.isOpen){
+           binding.drawerLayout.closeDrawer(GravityCompat.START)
+           }else{
+           super.onBackPressed()
+       }
     }
 
 

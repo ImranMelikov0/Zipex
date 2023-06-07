@@ -467,6 +467,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/shape_items_white"
                         android:padding="10dp"
+                        android:inputType="number"
                         android:singleLine="true" />
                 </LinearLayout>
                 <LinearLayout
@@ -489,6 +490,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/shape_items_white"
                         android:padding="10dp"
+                        android:inputType="number"
                         android:singleLine="true" />
                 </LinearLayout>
                 <LinearLayout
@@ -511,6 +513,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/shape_items_white"
                         android:padding="10dp"
+                        android:inputType="number"
                         android:singleLine="true" />
                 </LinearLayout>
                 <Button

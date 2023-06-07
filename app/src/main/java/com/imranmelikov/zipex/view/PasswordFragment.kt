@@ -5,15 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
+import com.imranmelikov.zipex.databinding.FragmentPasswordBinding
+import com.imranmelikov.zipex.databinding.FragmentPromoCodeBinding
 
 class PasswordFragment : Fragment() {
+    private lateinit var binding: FragmentPasswordBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_password, container, false)
+        binding= FragmentPasswordBinding.inflate(inflater,container,false)
+        binding.back.setOnClickListener {
+            findNavController().navigate(PasswordFragmentDirections.actionPasswordFragmentToHomeFragment())
+        }
+        return binding.root
     }
 }

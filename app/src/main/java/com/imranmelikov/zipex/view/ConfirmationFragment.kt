@@ -5,15 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
+import com.imranmelikov.zipex.databinding.FragmentConfirmationBinding
+import com.imranmelikov.zipex.databinding.FragmentDebtHistoryBinding
 
 class ConfirmationFragment : Fragment() {
+    private lateinit var binding: FragmentConfirmationBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_confirmation, container, false)
+        binding= FragmentConfirmationBinding.inflate(inflater,container,false)
+        binding.back.setOnClickListener {
+            findNavController().navigate(ConfirmationFragmentDirections.actionConfirmationFragmentToHomeFragment())
+        }
+        return binding.root
     }
 }

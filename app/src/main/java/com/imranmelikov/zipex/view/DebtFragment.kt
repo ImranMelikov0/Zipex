@@ -5,15 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
+import com.imranmelikov.zipex.databinding.FragmentDebtBinding
+import com.imranmelikov.zipex.databinding.FragmentDebtHistoryBinding
 
 class DebtFragment : Fragment() {
+    private lateinit var binding: FragmentDebtBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_debt, container, false)
+        binding= FragmentDebtBinding.inflate(inflater,container,false)
+        binding.back.setOnClickListener {
+            findNavController().navigate(DebtFragmentDirections.actionDebtFragmentToHomeFragment())
+        }
+        return binding.root
     }
 }

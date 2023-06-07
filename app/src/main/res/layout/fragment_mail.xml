@@ -51,6 +51,8 @@
 
             <LinearLayout
                 android:layout_margin="8dp"
+                android:id="@+id/linearsifaris"
+                android:background="@drawable/shape_items_linearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -60,14 +62,18 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/primary"
                     android:text="Sifariş edilənlər"
-                    android:layout_marginBottom="-4dp"
-                    android:layout_marginTop="-4dp"
+                    android:id="@+id/buttonsifaris"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
                     app:cornerRadius="5dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:background="@drawable/shape_items_linearlayout"
                 android:layout_margin="8dp"
+                android:id="@+id/linearpoct"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="match_parent"
@@ -79,6 +85,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
                     android:text="Poçta verilənlər"
+                    android:id="@+id/buttonpoct"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginBottom="-2dp"

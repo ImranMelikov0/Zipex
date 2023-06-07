@@ -5,15 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
+import com.imranmelikov.zipex.databinding.FragmentPaymentAznBinding
+import com.imranmelikov.zipex.databinding.FragmentPaymentBinding
 
 class PaymentFragment : Fragment() {
+    private lateinit var binding:FragmentPaymentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment, container, false)
+        binding= FragmentPaymentBinding.inflate(inflater,container,false)
+        binding.back.setOnClickListener {
+            findNavController().navigate(PaymentFragmentDirections.actionPaymentFragmentToBalanceFragment())
+        }
+        return binding.root
     }
 }
