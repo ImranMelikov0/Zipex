@@ -7,7 +7,7 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="0">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_margin="10dp"
@@ -106,7 +106,7 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0"
         android:orientation="vertical"
         android:background="@drawable/shape_items"
         android:backgroundTint="@color/openblue"
@@ -116,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="0">
             <TextView
                 android:id="@+id/id_title"
                 android:layout_weight="1"
@@ -144,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_weight="0">
                 <TextView
                     android:id="@+id/order_item_category"
                     android:layout_weight="1"
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
-                android:layout_weight="1">
+                android:layout_weight="0">
                 <TextView
                     android:id="@+id/order_item_price"
                     android:layout_weight="1"
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
-                android:layout_weight="1">
+                android:layout_weight="0">
                 <TextView
                     android:id="@+id/order_item_marketname"
                     android:layout_weight="1"
@@ -219,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
-                android:layout_weight="1">
+                android:layout_weight="0">
                 <TextView
                     android:id="@+id/order_item_marketcode"
                     android:layout_weight="1"
@@ -234,7 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_weight="0">
                 <TextView
                     android:id="@+id/order_item_catdirilmaofis"
                     android:layout_weight="1"
@@ -249,7 +249,7 @@
         </LinearLayout>
         <Button
             android:id="@+id/button1"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -260,7 +260,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linear1"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_weight="1"
@@ -530,4 +530,154 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/linear3"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="vertical"
+        android:background="@drawable/shape_items"
+        android:backgroundTint="@color/openblue"
+        >
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/id_title1"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:textAlignment="textStart"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="@color/primary"
+                android:text="Testtesttest"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#A3A3A3"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/order_item_category1"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategoriya:Test"
+                    android:textSize="16dp"
+                    android:textColor="@color/primary"/>
+                <TextView
+                    android:id="@+id/order_item_history1"
+                    android:textColor="@color/primary"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_marginRight="8dp"
+                    android:textSize="16dp"
+                    android:text="Tarix:2023-12-14"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/order_item_price1"
+                    android:layout_weight="1"
+                    android:textColor="@color/primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Qiymet:150.00"/>
+                <TextView
+                    android:id="@+id/order_item_catdirilma1"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Catdirilma:0.99"
+                    android:textSize="16dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/primary"
+                    android:textAlignment="textEnd"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/order_item_marketname1"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Magaza Adi:Magaza"
+                    android:textColor="@color/primary"/>
+                <TextView
+                    android:id="@+id/order_item_weight1"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/primary"
+                    android:text="Ceki:0.09"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/order_item_marketcode1"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary"
+                    android:text="Magaza Kodu"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/order_item_catdirilmaofis1"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Catdirilma Ofisi:"
+                    android:textColor="@color/primary"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
