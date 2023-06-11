@@ -10,7 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentOrderBinding
 import com.imranmelikov.zipex.databinding.FragmentRegularOrderBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegularOrderFragment : Fragment() {
 private lateinit var binding:FragmentRegularOrderBinding
     override fun onCreateView(

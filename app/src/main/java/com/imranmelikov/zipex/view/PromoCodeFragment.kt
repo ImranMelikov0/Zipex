@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentPromoCodeBinding
 import com.imranmelikov.zipex.databinding.FragmentTrendyolConfirmBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PromoCodeFragment : Fragment() {
     private lateinit var binding: FragmentPromoCodeBinding
 

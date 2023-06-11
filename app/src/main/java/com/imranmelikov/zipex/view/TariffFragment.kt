@@ -12,7 +12,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentServiceBinding
 import com.imranmelikov.zipex.databinding.FragmentTariffBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TariffFragment : Fragment() {
 private lateinit var binding: FragmentTariffBinding
     override fun onCreateView(

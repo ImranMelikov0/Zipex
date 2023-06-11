@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentNotificationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NotificationFragment : Fragment() {
     private lateinit var binding:FragmentNotificationBinding
 

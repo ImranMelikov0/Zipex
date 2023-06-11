@@ -261,6 +261,13 @@
                     android:layout_height="wrap_content"
                     android:text="Catdirilma Ofisi:"
                     android:textColor="@color/primary"/>
+                <ImageView
+                    android:id="@+id/image_pen"
+                    android:layout_weight="2"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_create_24"/>
 
             </LinearLayout>
             <LinearLayout
@@ -277,6 +284,13 @@
                     android:textSize="19dp"
                     android:textStyle="bold"
                     android:textColor="#FA0303"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary"
+                    android:text="Sığortala"
+                    android:id="@+id/cart_sigorta"
+                    app:cornerRadius="5dp" />
 
             </LinearLayout>
         </LinearLayout>

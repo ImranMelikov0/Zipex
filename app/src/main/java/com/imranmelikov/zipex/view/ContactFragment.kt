@@ -10,7 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentContactBinding
 import com.imranmelikov.zipex.databinding.FragmentCourierBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContactFragment : Fragment() {
     private lateinit var binding: FragmentContactBinding
 

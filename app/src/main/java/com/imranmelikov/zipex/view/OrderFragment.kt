@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentOrderBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OrderFragment : Fragment() {
 private lateinit var binding:FragmentOrderBinding
     override fun onCreateView(

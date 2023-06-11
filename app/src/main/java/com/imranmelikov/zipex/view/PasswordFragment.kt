@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentPasswordBinding
 import com.imranmelikov.zipex.databinding.FragmentPromoCodeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PasswordFragment : Fragment() {
     private lateinit var binding: FragmentPasswordBinding
 

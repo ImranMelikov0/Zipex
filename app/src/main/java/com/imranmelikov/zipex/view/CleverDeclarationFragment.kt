@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentCleverDeclarationBinding
 import com.imranmelikov.zipex.databinding.FragmentDebtHistoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CleverDeclarationFragment : Fragment() {
     private lateinit var binding: FragmentCleverDeclarationBinding
 

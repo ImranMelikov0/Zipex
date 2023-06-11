@@ -139,7 +139,51 @@
                     android:textColor="@color/primary"
                     android:text="Qeyd:"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mağaza adı"
+                    android:textStyle="bold"/>
 
+                <EditText
+                    android:id="@+id/magazaname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_items_white"
+                    android:padding="10dp"
+                    android:singleLine="true" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mağaza kodu"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/magazacode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_items_white"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:singleLine="true" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"

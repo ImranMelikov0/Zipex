@@ -10,7 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentBalanceBinding
 import com.imranmelikov.zipex.databinding.FragmentBonusBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BalanceFragment : Fragment() {
     private lateinit var binding:FragmentBalanceBinding
 

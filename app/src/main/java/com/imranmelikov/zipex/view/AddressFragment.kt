@@ -12,8 +12,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentAddressBinding
 import com.imranmelikov.zipex.databinding.FragmentBonusBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AddressFragment : Fragment() {
     private lateinit var binding:FragmentAddressBinding
 

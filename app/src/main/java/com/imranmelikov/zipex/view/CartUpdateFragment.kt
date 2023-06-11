@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentCartUpdateBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CartUpdateFragment : Fragment() {
     private lateinit var binding:FragmentCartUpdateBinding
 

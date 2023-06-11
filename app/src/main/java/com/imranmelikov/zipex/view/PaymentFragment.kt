@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentPaymentAznBinding
 import com.imranmelikov.zipex.databinding.FragmentPaymentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PaymentFragment : Fragment() {
     private lateinit var binding:FragmentPaymentBinding
 

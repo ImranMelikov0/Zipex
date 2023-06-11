@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentTrendyolConfirmBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TrendyolConfirmFragment : Fragment() {
     private lateinit var binding:FragmentTrendyolConfirmBinding
     override fun onCreateView(

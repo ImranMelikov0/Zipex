@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentDebtHistoryBinding
 import com.imranmelikov.zipex.databinding.FragmentPromoCodeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DebtHistoryFragment : Fragment() {
     private lateinit var binding: FragmentDebtHistoryBinding
 

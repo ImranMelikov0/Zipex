@@ -257,13 +257,23 @@
             android:text="Təsdiqlə"
             android:textColor="@color/primary"
             app:cornerRadius="5dp" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_weight="0"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="Sil"
+            android:textColor="@color/primary"
+            app:cornerRadius="5dp" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linear1"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="0"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -276,7 +286,7 @@
             android:layout_marginRight="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="0">
             <TextView
                 android:id="@+id/cart_idtitle"
                 android:maxLines="1"
@@ -296,7 +306,7 @@
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:orientation="vertical"
             android:background="@drawable/shape_items"
             android:backgroundTint="@color/openblue"
@@ -435,51 +445,6 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Mağaza adı"
-                        android:textStyle="bold"/>
-
-                    <EditText
-                        android:id="@+id/magazaname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_items_white"
-                        android:padding="10dp"
-                        android:singleLine="true" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Mağaza kodu"
-                        android:textStyle="bold"/>
-
-                    <EditText
-                        android:id="@+id/magazacode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_items_white"
-                        android:padding="10dp"
-                        android:inputType="number"
-                        android:singleLine="true" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:text="Çəki"
                         android:textStyle="bold"/>
 
@@ -524,6 +489,16 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:text="Təsdiqlə"
+                    android:textColor="@color/primary"
+                    app:cornerRadius="5dp" />
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_weight="0"
+                    android:layout_margin="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:text="Sil"
                     android:textColor="@color/primary"
                     app:cornerRadius="5dp" />
 
@@ -677,6 +652,26 @@
                     android:textColor="@color/primary"/>
 
             </LinearLayout>
+            <Button
+                android:id="@+id/butto5"
+                android:layout_weight="1"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Təsdiqlə"
+                android:textColor="@color/primary"
+                app:cornerRadius="5dp" />
+            <Button
+                android:id="@+id/button4"
+                android:layout_weight="0"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Sil"
+                android:textColor="@color/primary"
+                app:cornerRadius="5dp" />
 
         </LinearLayout>
     </LinearLayout>

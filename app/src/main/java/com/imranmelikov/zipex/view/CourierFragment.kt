@@ -10,7 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentCourierBinding
 import com.imranmelikov.zipex.databinding.FragmentLinkBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CourierFragment : Fragment() {
     private lateinit var binding: FragmentCourierBinding
 

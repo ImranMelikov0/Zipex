@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentSettingBinding
 import com.imranmelikov.zipex.databinding.FragmentTrendyolConfirmBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingFragment : Fragment() {
     private lateinit var binding: FragmentSettingBinding
 

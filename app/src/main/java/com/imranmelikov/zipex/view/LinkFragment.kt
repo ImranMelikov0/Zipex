@@ -10,7 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentLinkBinding
 import com.imranmelikov.zipex.databinding.FragmentTariffBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LinkFragment : Fragment() {
 private lateinit var binding: FragmentLinkBinding
     override fun onCreateView(

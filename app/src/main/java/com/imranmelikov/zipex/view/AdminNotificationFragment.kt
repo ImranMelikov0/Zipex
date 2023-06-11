@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentAdminNewsBinding
 import com.imranmelikov.zipex.databinding.FragmentAdminNotificationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AdminNotificationFragment : Fragment() {
     private lateinit var binding: FragmentAdminNotificationBinding
 
