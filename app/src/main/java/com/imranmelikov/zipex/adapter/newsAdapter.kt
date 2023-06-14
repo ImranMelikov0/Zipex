@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.imranmelikov.zipex.databinding.HomeItemRowBinding
 import com.imranmelikov.zipex.model.News
+import com.imranmelikov.zipex.view.HomeFragmentDirections
 import javax.inject.Inject
 
 class newsAdapter @Inject constructor(
@@ -49,7 +51,11 @@ class newsAdapter @Inject constructor(
         val newsArrayList=newsList.get(position)
         holder.binding.title.text=newsArrayList.title
         holder.binding.text.text=newsArrayList.post
-        glide.load(newsArrayList.imageUrl.toString())
+        glide.load(newsArrayList.imageUrl)
             .into(holder.binding.imageView)
+        holder.itemView.setOnClickListener {
+           val newsId= newsArrayList.uuid!!
+            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToNewsDetailFragment(newsId))
+        }
     }
 }

@@ -32,7 +32,7 @@ import com.imranmelikov.zipex.model.ZipexMoneyDepot
 interface ZipexDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(news: News)
-    @Query("SELECT * FROM News")
+    @Query("SELECT * FROM News ORDER BY uuid DESC")
     suspend fun getNews():List<News>
     @Query("SELECT * FROM News WHERE uuid=:NewsId")
     suspend fun getNew(NewsId:Int):News

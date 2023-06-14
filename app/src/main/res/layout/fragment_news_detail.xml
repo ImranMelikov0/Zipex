@@ -2,11 +2,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".view.NewsDetailFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/relative"
         android:layout_height="wrap_content">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -39,36 +40,53 @@
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-    <LinearLayout
-        android:layout_below="@id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_margin="15dp"
-        android:orientation="vertical"
-        android:background="@drawable/shape_linearborder"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_marginTop="15dp"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/regular_image"
-            android:src="@drawable/ic_launcher_background"/>
-        <TextView
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:id="@+id/news_titletext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Text"
-            android:textColor="@color/black"
-            android:textSize="18dp"/>
-        <TextView
-            android:layout_margin="15dp"
-            android:id="@+id/news_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="text"/>
-    </LinearLayout>
+            android:layout_below="@id/appBarLayout"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_margin="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_linearborder"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_weight="5"
+                        android:scaleType="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/regular_image"
+                        android:src="@drawable/ic_launcher_background"/>
+                    <TextView
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="0.3"
+                        android:layout_marginTop="15dp"
+                        android:id="@+id/news_titletext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"/>
+                    <TextView
+                        android:layout_margin="15dp"
+                        android:layout_weight="5"
+                        android:id="@+id/news_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:text="text Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak Text  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdakText  jaslkf lkas jlkafdj al skdjlkj lkj al jkkdj akljd klaas ldkjaklj ladsk jakl jlkadj l jlal ksdak"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
     </RelativeLayout>
 </FrameLayout>
