@@ -58,12 +58,8 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao):ZipexRepo {
         zipexDao.insertLink(link)
     }
 
-    override fun getLinks(): Resource<LiveData<List<Link>>> {
-        return try {
-            Resource.success(zipexDao.getLinks())
-        }catch (e:Exception){
-            Resource.error("Error in repo with Link",null)
-        }
+    override suspend fun getLinks(): List<Link> {
+        return zipexDao.getLinks()
     }
 
     override suspend fun deleteLink(link: Link) {

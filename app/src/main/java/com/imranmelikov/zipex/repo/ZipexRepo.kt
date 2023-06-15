@@ -39,7 +39,7 @@ interface ZipexRepo {
     suspend fun getNotification(NotificationId:Int): Notification
 
     suspend fun insertLink(link: Link)
-    fun getLinks():Resource<LiveData<List<Link>>>
+   suspend fun getLinks():List<Link>
     suspend fun deleteLink(link: Link)
     suspend fun updateLink(link: Link)
     suspend fun getLink(LinkId:Int): Link

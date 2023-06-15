@@ -49,7 +49,7 @@ interface ZipexDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLink(link: Link)
     @Query("SELECT * FROM Link")
-    fun getLinks():LiveData<List<Link>>
+   suspend fun getLinks():List<Link>
     @Delete
     suspend fun deleteLink(link: Link)
     @Update
