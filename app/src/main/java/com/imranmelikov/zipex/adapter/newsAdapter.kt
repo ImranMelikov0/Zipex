@@ -23,7 +23,7 @@ class newsAdapter @Inject constructor(
 ):RecyclerView.Adapter<newsAdapter.newsViewHolder>() {
     class newsViewHolder(var binding:HomeItemRowBinding):RecyclerView.ViewHolder(binding.root)
 
-    val diffUtil=object :DiffUtil.ItemCallback<News>(){
+   private val diffUtil=object :DiffUtil.ItemCallback<News>(){
         override fun areItemsTheSame(oldItem: News, newItem: News): Boolean {
             return oldItem==newItem
         }

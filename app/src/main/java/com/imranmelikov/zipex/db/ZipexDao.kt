@@ -39,8 +39,8 @@ interface ZipexDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNotification(notification: Notification)
-    @Query("SELECT * FROM Notification")
-    fun getNotifications():LiveData<List<Notification>>
+    @Query("SELECT * FROM Notification ORDER BY uuid DESC")
+   suspend fun getNotifications():List<Notification>
     @Delete
     suspend fun deleteNotification(notification: Notification)
     @Query("SELECT * FROM Notification WHERE uuid=:NotificationId")

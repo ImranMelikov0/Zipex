@@ -34,7 +34,7 @@ interface ZipexRepo {
     suspend fun getNew(newsId:Int):News
 
     suspend fun insertNotification(notification: Notification)
-    fun getNotifications():Resource<LiveData<List<Notification>>>
+   suspend fun getNotifications():List<Notification>
     suspend fun deleteNotification(notification: Notification)
     suspend fun getNotification(NotificationId:Int): Notification
 

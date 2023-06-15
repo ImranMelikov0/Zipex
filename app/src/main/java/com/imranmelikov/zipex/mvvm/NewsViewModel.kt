@@ -39,8 +39,8 @@ class NewsViewModel @Inject constructor(
     }
 
     fun getNews(){
+        newsMessage.value=Resource.loading(null)
         viewModelScope.launch(exceptionHandler) {
-            newsMessage.value=Resource.loading(null)
             var getNews=zipexRepo.getNews()
                 newsMessage.value=Resource.success(getNews)
         }

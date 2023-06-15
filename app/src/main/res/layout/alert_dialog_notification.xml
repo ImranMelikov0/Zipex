@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/title_notification_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Text"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="25dp"
+        android:textAlignment="center"
+        android:layout_weight="1"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/post_notification_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Text"
+        android:textAlignment="center"
+        android:layout_margin="5dp"
+        android:textSize="17dp"
+        android:layout_weight="1"/>
+<Button
+    android:id="@+id/notification_dialog_button"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/primary"
+    app:cornerRadius="5dp"
+    android:text="Bağla"/>
+</LinearLayout>

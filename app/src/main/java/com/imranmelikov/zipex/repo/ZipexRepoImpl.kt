@@ -42,13 +42,8 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao):ZipexRepo {
       zipexDao.insertNotification(notification)
     }
 
-    override fun getNotifications(): Resource<LiveData<List<Notification>>> {
-       return try {
-           val response=zipexDao.getNotifications()
-           Resource.success(response)
-       }catch (e:Exception){
-           Resource.error("Error in repo with notification",null)
-       }
+    override suspend fun getNotifications(): List<Notification> {
+       return zipexDao.getNotifications()
     }
 
     override suspend fun deleteNotification(notification: Notification) {
