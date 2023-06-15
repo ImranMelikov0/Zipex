@@ -42,25 +42,16 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_below="@id/appBarLayout"
+            android:id="@+id/regular_recyclerview"
             android:layout_width="match_parent"
-            android:layout_margin="15dp"
             android:layout_height="match_parent"
-            android:id="@+id/regular_recyclerview"/>
+            android:layout_below="@id/appBarLayout"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp" />
     </RelativeLayout>
 
-
-    <TextView
-        android:layout_below="@id/appBarLayout"
-        android:textColor="@color/primary"
-        android:id="@+id/cryptoErrorText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="Error! Try Again"
-        android:layout_gravity="center"
-        >
-    </TextView>
 
     <ProgressBar
         android:progressTint="@color/primary"

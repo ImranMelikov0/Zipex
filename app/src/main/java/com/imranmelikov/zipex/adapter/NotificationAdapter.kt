@@ -1,6 +1,8 @@
 package com.imranmelikov.zipex.adapter
 
 import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.Typeface
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -71,11 +73,16 @@ class NotificationAdapter @Inject constructor(
                 val alertDialog=alertDialogBuilder.create()
 
                 button.setOnClickListener {
+                    holder.binding.notificationImage.setImageResource(R.drawable.baseline_notification1)
+                    holder.binding.notificationTitletext.setTypeface(null,Typeface.NORMAL)
+                    holder.binding.notificationTitletext.setTextColor(Color.GRAY)
+                    holder.binding.notificationText.setTextColor(Color.GRAY)
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
                 it(notificationArrayList)
             }
+
         }
     }
 
