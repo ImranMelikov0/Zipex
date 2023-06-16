@@ -101,7 +101,7 @@ class CartFragment @Inject constructor(
                     binding.button.visibility=View.GONE
                 }
                 Status.SUCCESS->{
-                    Toast.makeText(requireContext(),"Məlumatlar əlavə edildi",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Məlumat əlavə olundu",Toast.LENGTH_SHORT).show()
                     binding.addrecyclerview.visibility=View.VISIBLE
                     binding.cryptoErrorText.visibility=View.GONE
                     binding.cryptoProgressBar.visibility=View.GONE
