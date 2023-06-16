@@ -21,7 +21,7 @@ class LinkViewModel @Inject constructor(
         get() = linkMessage
 
     fun makeLink(url:String,category:String,count:Int?,color:String,size:String,price:Int?,comment:String,history:String){
-        if (url.isEmpty()||category.isEmpty()||count==null||color.isEmpty()||size.isEmpty()||price==null||comment.isEmpty()||history.isEmpty()){
+        if (url.isEmpty()||category.isEmpty()||count==null||color.isEmpty()||size.isEmpty()||price==null||history.isEmpty()){
             linkMessage.value=Resource.error("Məlumatları daxil edin",null)
         }else{
             val link=Link(url,category,count,color,size,price,comment,history)

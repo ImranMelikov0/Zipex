@@ -25,6 +25,10 @@ class CartViewModel @Inject constructor(
     val cartid:LiveData<Link>
         get() = cartId
 
+    private val updateCart=MutableLiveData<Resource<Link>>()
+    val updateLink:LiveData<Resource<Link>>
+        get() = updateCart
+
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println("Error: ${throwable.localizedMessage}")
         cartMessage.value = Resource.error("Error", null)
@@ -39,6 +43,13 @@ class CartViewModel @Inject constructor(
     fun deleteCart(link: Link){
         viewModelScope.launch {
             zipexRepo.deleteLink(link)
+        }
+    }
+    fun updateCart(link: Link){
+        updateCart.value=Resource.loading(null)
+        viewModelScope.launch {
+            zipexRepo.updateLink(link)
+            updateCart.value=Resource.success(link)
         }
     }
     fun getCart(linkId:Int){

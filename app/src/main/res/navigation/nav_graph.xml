@@ -70,6 +70,10 @@
         <action
             android:id="@+id/action_linkFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <argument
+            android:name="CartString"
+            app:argType="string"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"

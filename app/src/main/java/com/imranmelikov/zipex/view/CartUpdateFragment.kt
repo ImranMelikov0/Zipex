@@ -22,6 +22,14 @@ class CartUpdateFragment : Fragment() {
         binding.back.setOnClickListener {
             findNavController().navigate(CartUpdateFragmentDirections.actionCartUpdateFragmentToCartFragment())
         }
+        arguments?.let {
+          val id1=  CartUpdateFragmentArgs.fromBundle(it).cartupdateId
+            if (id1==1){
+                findNavController().navigate(CartUpdateFragmentDirections.actionCartUpdateFragmentToCartFragment())
+            }
+        }
+
+
         return binding.root
     }
 }

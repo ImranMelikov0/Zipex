@@ -29,6 +29,12 @@ private lateinit var viewModel:LinkViewModel
     ): View? {
         binding= FragmentLinkBinding.inflate(inflater,container,false)
         viewModel=ViewModelProvider(requireActivity())[LinkViewModel::class.java]
+        arguments?.let {
+            val StringCart=  LinkFragmentArgs.fromBundle(it).CartString
+            if (StringCart.equals("String")){
+                findNavController().navigate(LinkFragmentDirections.actionLinkFragmentToCartFragment())
+            }
+        }
         binding.back.setOnClickListener {
             findNavController().navigate(LinkFragmentDirections.actionLinkFragmentToHomeFragment())
         }
