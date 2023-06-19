@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.util.Date
 
 @Entity
-data class Debt(val history:String,val amount:Int) {
+data class Debt(val history:String,val amount:Double) {
     @PrimaryKey(autoGenerate = true)
     var uuid:Int?=null
 }

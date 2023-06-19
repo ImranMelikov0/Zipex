@@ -1,11 +1,6 @@
 package com.imranmelikov.zipex.repo
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
 import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
@@ -90,18 +85,18 @@ interface ZipexRepo {
     suspend fun getOrder8(Order8Id:Int): Order8
 
     suspend fun insertBalanceTry(balanceTry: BalanceTry)
-    fun getBalanceTry():Resource<LiveData<List<BalanceTry>>>
+   suspend fun getBalanceTry():List<BalanceTry>
 
     suspend fun insertBalanceAzn(balanceAzn: BalanceAzn)
-    fun getBalanceAzn():Resource<LiveData<List<BalanceAzn>>>
+   suspend fun getBalanceAzn():List<BalanceAzn>
 
     suspend fun insertBalanceTotalTry(balanceTotalTry: BalanceTotalTry)
     suspend fun updateBalanceTotalTry(balanceTotalTry: BalanceTotalTry)
-    fun getBalanceTotalTry():Resource<LiveData<List<BalanceTotalTry>>>
+   suspend fun getBalanceTotalTry():BalanceTotalTry
 
     suspend fun insertBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn)
     suspend fun updateBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn)
-    fun getBalanceTotalAzn():Resource<LiveData<List<BalanceTotalAzn>>>
+   suspend fun getBalanceTotalAzn():BalanceTotalAzn
 
     suspend fun insertDebt(debt: Debt)
     suspend fun deleteDebt(debt: Debt)
@@ -118,4 +113,6 @@ interface ZipexRepo {
     suspend fun insertZipexMoney(zipexMoneyDepot: ZipexMoneyDepot)
     fun getZipexMoney():LiveData<List<ZipexMoneyDepot>>
     suspend fun updateZipexMoney(zipexMoneyDepot: ZipexMoneyDepot)
+
+
 }

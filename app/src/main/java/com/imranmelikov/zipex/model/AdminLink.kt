@@ -10,7 +10,7 @@ data class AdminLink(val url:String,
                      ,val count:Int
                      ,val color:String
                      ,val size:String
-                     ,val price:Int
+                     ,val price:Double
                      ,val comment:String
                      ,val history:String
                      ,val marketName:String

@@ -25,25 +25,25 @@ import com.imranmelikov.zipex.model.ZipexMoneyDepot
 
 @Database(entities = [News::class
     , Notification::class
-    ,Link::class
-    ,AdminLink::class
-    ,Order1::class
-    ,Order2::class
-    ,Order3::class
-    ,Order4::class
-    ,Order5::class
-    ,Order6::class
-    ,Order7::class
-    ,Order8::class
-    ,BalanceTotalAzn::class
-    ,BalanceAzn::class
-    ,BalanceTry::class
-    ,BalanceTotalTry::class
-    ,Debt::class
-    ,DebtTotal::class
-    ,DebtHistory::class
-    ,ZipexMoneyDepot::class]
-    , version = 1)
-abstract class ZipexDataBase:RoomDatabase() {
-abstract fun zipexDao():ZipexDao
+    , Link::class
+    , AdminLink::class
+    , Order1::class
+    , Order2::class
+    , Order3::class
+    , Order4::class
+    , Order5::class
+    , Order6::class
+    , Order7::class
+    , Order8::class
+    , BalanceTotalAzn::class
+    , BalanceAzn::class
+    , BalanceTry::class
+    , BalanceTotalTry::class
+    , Debt::class
+    , DebtTotal::class
+    , DebtHistory::class
+    , ZipexMoneyDepot::class]
+    , version = 2, exportSchema = false)
+abstract class ZipexDataBase1:RoomDatabase() {
+    abstract fun zipexDao1():ZipexDao1
 }

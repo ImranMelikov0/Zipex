@@ -9,6 +9,8 @@ import com.imranmelikov.zipex.repo.ZipexRepo
 import com.imranmelikov.zipex.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,11 +22,15 @@ class LinkViewModel @Inject constructor(
     val linkMsg:LiveData<Resource<Link>>
         get() = linkMessage
 
-    fun makeLink(url:String,category:String,count:Int?,color:String,size:String,price:Int?,comment:String,history:String){
+    fun makeLink(url:String,category:String,count:Int?,color:String,size:String,price:Double?,comment:String,history:String){
         if (url.isEmpty()||category.isEmpty()||count==null||color.isEmpty()||size.isEmpty()||price==null||history.isEmpty()){
             linkMessage.value=Resource.error("Məlumatları daxil edin",null)
         }else{
-            val link=Link(url,category,count,color,size,price,comment,history)
+            val price1= price.toDouble()
+            val decimalFormat = DecimalFormat("#.##")
+            decimalFormat.roundingMode = RoundingMode.HALF_UP
+            val roundedAmount = decimalFormat.format(price1).toDouble()
+            val link=Link(url,category,count,color,size,roundedAmount,comment,history)
             insertLink(link)
             linkMessage.value=Resource.success(link)
         }

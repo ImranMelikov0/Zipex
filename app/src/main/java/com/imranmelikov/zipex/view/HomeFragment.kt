@@ -22,8 +22,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.internal.NavigationMenuView
 import com.google.android.material.navigation.NavigationView
 import com.imranmelikov.zipex.R
+import com.imranmelikov.zipex.adapter.BalanceAdapter
 import com.imranmelikov.zipex.adapter.newsAdapter
 import com.imranmelikov.zipex.databinding.FragmentHomeBinding
+import com.imranmelikov.zipex.mvvm.BalanceViewModel
 import com.imranmelikov.zipex.mvvm.NewsViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +34,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment @Inject constructor(
-    private val newsAdapter: newsAdapter
+    private val newsAdapter: newsAdapter,
+    private val balanceAdapter: BalanceAdapter
 ) : Fragment() {
     private lateinit var binding:FragmentHomeBinding
     private lateinit var newsViewModel:NewsViewModel
@@ -89,6 +92,14 @@ class HomeFragment @Inject constructor(
         binding.homeRecyclerView.layoutManager=LinearLayoutManager(requireContext())
         newsViewModel.getNews()
         observeNews()
+
+        balanceAdapter.onItemClick={
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBalanceFragment())
+        }
+        balanceAdapter.onItemClick1={
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBalanceFragment())
+        }
+
     }
 
     private fun observeNews(){

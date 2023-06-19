@@ -17,6 +17,7 @@ import com.imranmelikov.zipex.mvvm.LinkViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
@@ -45,7 +46,7 @@ private lateinit var viewModel:LinkViewModel
             viewModel.makeLink(
                 binding.editLink.text.toString(),binding.editCategory.text.toString(),
                 binding.editquantity.text.toString().toIntOrNull(),binding.editcolor.text.toString(),
-                binding.editsize.text.toString(),binding.editprice.text.toString().toIntOrNull(),
+                binding.editsize.text.toString(),binding.editprice.text.toString().toDoubleOrNull(),
                 binding.editcomment.text.toString(),formatDate
             )
             observeLink()

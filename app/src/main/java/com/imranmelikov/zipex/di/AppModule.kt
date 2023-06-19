@@ -3,14 +3,12 @@ package com.imranmelikov.zipex.di
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.widget.ProgressBar
-import androidx.room.Dao
-import androidx.room.R
 import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
-import com.imranmelikov.zipex.db.ZipexDao
-import com.imranmelikov.zipex.db.ZipexDataBase
+import com.imranmelikov.zipex.db.ZipexDao1
+import com.imranmelikov.zipex.db.ZipexDataBase1
 import com.imranmelikov.zipex.repo.ZipexRepo
 import com.imranmelikov.zipex.repo.ZipexRepoImpl
 import dagger.Module
@@ -27,16 +25,16 @@ object AppModule {
 @Singleton
 @Provides
 fun injectDatabase(@ApplicationContext context:Context)=Room.databaseBuilder(
-    context,ZipexDataBase::class.java,"ZipexDb"
+    context, ZipexDataBase1::class.java,"ZipexDb1"
 ).build()
 
     @Singleton
     @Provides
-    fun injectDao(zipexDataBase: ZipexDataBase)=zipexDataBase.zipexDao()
+    fun injectDao(zipexDataBase1: ZipexDataBase1)=zipexDataBase1.zipexDao1()
 
     @Singleton
     @Provides
-    fun injectRepo(zipexDao: ZipexDao)=ZipexRepoImpl(zipexDao) as ZipexRepo
+    fun injectRepo(zipexDao1: ZipexDao1)=ZipexRepoImpl(zipexDao1) as ZipexRepo
 
     @Singleton
     @Provides

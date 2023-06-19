@@ -32,6 +32,8 @@ import com.imranmelikov.zipex.model.Link
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import javax.inject.Inject
 import kotlin.coroutines.coroutineContext
 
@@ -138,9 +140,13 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
                 if (editLink.text.toString().isEmpty()||editPrice.text.toString().isEmpty()||editQuantity.text.toString().isEmpty()){
                     Toast.makeText(holder.itemView.context,"Məlumatları daxil edin",Toast.LENGTH_SHORT).show()
                 }else{
+                   val price= editPrice.text.toString().toDouble()
+                    val decimalFormat = DecimalFormat("#.##")
+                    decimalFormat.roundingMode = RoundingMode.HALF_UP
+                    val roundedAmount = decimalFormat.format(price).toDouble()
                     val cart=Link(editLink.text.toString(),cartArraylist.category
                         ,editQuantity.text.toString().toInt(),cartArraylist.color,cartArraylist.size,
-                        editPrice.text.toString().toInt(),cartArraylist.comment,cartArraylist.history)
+                        roundedAmount,cartArraylist.comment,cartArraylist.history)
                     cart.uuid=cartArraylist.uuid
                     onItemClickCartUpdate?.let {
                         it(cart)

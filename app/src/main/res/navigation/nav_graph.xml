@@ -92,6 +92,9 @@
         <action
             android:id="@+id/action_cartFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_balanceFragment"
+            app:destination="@id/balanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/balanceFragment"
@@ -364,6 +367,10 @@
         <action
             android:id="@+id/action_paymentFragment_to_cartFragment2"
             app:destination="@id/cartFragment" />
+        <argument
+            android:name="balanceAmountTry"
+            app:argType="float"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/paymentAznFragment"
@@ -373,5 +380,12 @@
         <action
             android:id="@+id/action_paymentAznFragment_to_balanceFragment"
             app:destination="@id/balanceFragment" />
+        <argument
+            android:name="balanceAzn"
+            app:argType="float"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_paymentAznFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
 </navigation>

@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class BalanceTotalTry(val balanceTotal:Int) {
+data class BalanceTotalTry(val balanceTotal:Double) {
     @PrimaryKey(autoGenerate = true)
     var uuid:Int?=null
 }

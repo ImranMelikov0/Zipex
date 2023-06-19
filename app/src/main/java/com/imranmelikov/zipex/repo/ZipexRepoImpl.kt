@@ -1,8 +1,7 @@
 package com.imranmelikov.zipex.repo
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
-import com.imranmelikov.zipex.db.ZipexDao
+import com.imranmelikov.zipex.db.ZipexDao1
 import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
@@ -25,7 +24,7 @@ import com.imranmelikov.zipex.model.Order8
 import com.imranmelikov.zipex.model.ZipexMoneyDepot
 import com.imranmelikov.zipex.util.Resource
 
-class ZipexRepoImpl(private val zipexDao: ZipexDao):ZipexRepo {
+class ZipexRepoImpl(private val zipexDao: ZipexDao1):ZipexRepo {
     override suspend fun insertNews(news: News) {
         zipexDao.insertNews(news)
     }
@@ -258,24 +257,16 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao):ZipexRepo {
        zipexDao.insertBalanceTry(balanceTry)
     }
 
-    override fun getBalanceTry(): Resource<LiveData<List<BalanceTry>>> {
-        return try {
-            Resource.success(zipexDao.getBalanceTry())
-        }catch (e:Exception){
-            Resource.error("Error in repo with balanceTry",null)
-        }
+    override suspend fun getBalanceTry(): List<BalanceTry> {
+        return zipexDao.getBalanceTry()
     }
 
     override suspend fun insertBalanceAzn(balanceAzn: BalanceAzn) {
         zipexDao.insertBalanceAzn(balanceAzn)
     }
 
-    override fun getBalanceAzn(): Resource<LiveData<List<BalanceAzn>>> {
-        return try {
-            Resource.success(zipexDao.getBalanceAzn())
-        }catch (e:Exception){
-            Resource.error("Error in repo with balanceAzn",null)
-        }
+    override suspend fun getBalanceAzn(): List<BalanceAzn>{
+        return zipexDao.getBalanceAzn()
     }
 
     override suspend fun insertBalanceTotalTry(balanceTotalTry: BalanceTotalTry) {
@@ -286,12 +277,8 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao):ZipexRepo {
         zipexDao.updateBalanceTotalTry(balanceTotalTry)
     }
 
-    override fun getBalanceTotalTry(): Resource<LiveData<List<BalanceTotalTry>>> {
-        return try {
-            Resource.success(zipexDao.getBalanceTotalTry())
-        }catch (e:Exception){
-            Resource.error("Error in repo with balancetotaltry",null)
-        }
+    override suspend fun getBalanceTotalTry(): BalanceTotalTry{
+        return zipexDao.getBalanceTotalTry()
     }
 
     override suspend fun insertBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn) {
@@ -302,12 +289,8 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao):ZipexRepo {
         zipexDao.updateBalanceTotalAzn(balanceTotalAzn)
     }
 
-    override fun getBalanceTotalAzn(): Resource<LiveData<List<BalanceTotalAzn>>> {
-        return try {
-            Resource.success(zipexDao.getBalanceTotalAzn())
-        }catch (e:Exception){
-            Resource.error("Error in repo with balancetotalazn",null)
-        }
+    override suspend fun getBalanceTotalAzn(): BalanceTotalAzn {
+        return zipexDao.getBalanceTotalAzn()
     }
 
     override suspend fun insertDebt(debt: Debt) {
