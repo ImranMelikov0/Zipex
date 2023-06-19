@@ -1,8 +1,10 @@
 package com.imranmelikov.zipex.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.drawable.Drawable
 import android.widget.ProgressBar
+import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -45,5 +47,10 @@ fun injectDatabase(@ApplicationContext context:Context)=Room.databaseBuilder(
             .placeholder(progressBarDrawable)
             .error(progressBarDrawable)
       return  Glide.with(context).setDefaultRequestOptions(requestOptions)
+    }
+    @Singleton
+    @Provides
+    fun injectSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(context)
     }
     }

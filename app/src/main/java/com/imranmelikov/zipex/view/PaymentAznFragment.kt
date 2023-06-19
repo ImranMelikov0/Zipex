@@ -86,7 +86,7 @@ class PaymentAznFragment : Fragment() {
 
                 }
                 Status.ERROR->{
-                    Toast.makeText(requireContext(),"Xeta bas verdi", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Xəta baş verdi", Toast.LENGTH_SHORT).show()
                 }
                 Status.LOADING->{
 

@@ -62,6 +62,16 @@ class BalanceViewModel @Inject constructor(
         println("Error: ${throwable.localizedMessage}")
         balanceTryMutableLiveData.value = Resource.error("Error", null)
     }
+    private val exceptionHandlerUpdateTry = CoroutineExceptionHandler { coroutineContext, throwable ->
+        println("Error: ${throwable.localizedMessage}")
+        updateBalanceTotalTry.value = Resource.error("Error", null)
+    }
+    private val exceptionHandleUpdateAzn = CoroutineExceptionHandler { coroutineContext, throwable ->
+        println("Error: ${throwable.localizedMessage}")
+       updateBalanceTotalAzn.value = Resource.error("Error", null)
+    }
+
+    var showFirst:Boolean=true
 
     fun getBalanceTry(){
         balanceTryMutableLiveData.value=Resource.loading(null)
@@ -88,7 +98,7 @@ class BalanceViewModel @Inject constructor(
         }
     }
     fun updateBalanceTotalTry(balanceTotalTry: BalanceTotalTry){
-        viewModelScope.launch {
+        viewModelScope.launch (exceptionHandlerUpdateTry){
             zipexRepo.updateBalanceTotalTry(balanceTotalTry)
             updateBalanceTotalTry.value=Resource.success(balanceTotalTry)
         }
@@ -119,7 +129,7 @@ class BalanceViewModel @Inject constructor(
         }
     }
     fun updateBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn){
-        viewModelScope.launch {
+        viewModelScope.launch (exceptionHandleUpdateAzn){
             zipexRepo.updateBalanceTotalAzn(balanceTotalAzn)
             updateBalanceTotalAzn.value=Resource.success(balanceTotalAzn)
         }

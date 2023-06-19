@@ -11,9 +11,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.imranmelikov.zipex.adapter.BalanceAdapter
 import com.imranmelikov.zipex.databinding.FragmentBalanceBinding
+import com.imranmelikov.zipex.model.BalanceAzn
+import com.imranmelikov.zipex.model.BalanceTotalAzn
+import com.imranmelikov.zipex.model.BalanceTotalTry
+import com.imranmelikov.zipex.model.BalanceTry
 import com.imranmelikov.zipex.mvvm.BalanceViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -34,7 +40,9 @@ class BalanceFragment @Inject constructor(
         binding.back.setOnClickListener {
             findNavController().navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
         }
-//         startInsert()
+//            startInsert()
+
+
         binding.balanceRecyclerview.adapter=balanceAdapter
         binding.balanceRecyclerview.layoutManager=LinearLayoutManager(requireContext())
         viewModel.getBalanceTry()
@@ -98,5 +106,6 @@ class BalanceFragment @Inject constructor(
 //        viewModel.insertBalanceTry(balanceTry)
 //        viewModel.insertTotalBalanceAzn(balanceTotalAzn)
 //        viewModel.insertTotalBalanceTry(balanceTotalTry)
+//        viewModel.showFirst=false
 //    }
 }
