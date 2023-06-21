@@ -40,14 +40,14 @@ private lateinit var viewModel:LinkViewModel
             findNavController().navigate(LinkFragmentDirections.actionLinkFragmentToHomeFragment())
         }
         binding.linkadd.setOnClickListener {
-            val currentDate=LocalDate.now()
-            val formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val currentDate=LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
             val formatDate=currentDate.format(formatter)
             viewModel.makeLink(
                 binding.editLink.text.toString(),binding.editCategory.text.toString(),
                 binding.editquantity.text.toString().toIntOrNull(),binding.editcolor.text.toString(),
                 binding.editsize.text.toString(),binding.editprice.text.toString().toDoubleOrNull(),
-                binding.editcomment.text.toString(),formatDate
+                binding.editcomment.text.toString(),formatDate,binding.editCountry.text.toString(),"Sığortalanmayıb","Ödənilməyib"
             )
             observeLink()
         }
@@ -61,7 +61,7 @@ private lateinit var viewModel:LinkViewModel
                 }
                 Status.SUCCESS->{
                     Toast.makeText(requireContext(),"Məlumat əlavə olundu",Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(LinkFragmentDirections.actionLinkFragmentToCartFragment())
+                    findNavController().navigate(LinkFragmentDirections.actionLinkFragmentToPaymentFragment(5F))
                     viewModel.resetLinkMessage()
                 }
                 Status.LOADING->{

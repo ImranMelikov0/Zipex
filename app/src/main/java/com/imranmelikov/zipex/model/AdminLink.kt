@@ -12,10 +12,10 @@ data class AdminLink(val url:String,
                      ,val size:String
                      ,val price:Double
                      ,val comment:String
-                     ,val history:String
-                     ,val marketName:String
-                     ,val marketCode:String
-                     ,val office:String
+                     ,val history:String,
+                     val country:String,
+                     val sigorta:String,
+                     val payment:String,
                      ) {
     @PrimaryKey(autoGenerate = true)
     var uuid:Int?=null

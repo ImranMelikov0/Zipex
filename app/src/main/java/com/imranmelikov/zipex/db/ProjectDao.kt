@@ -11,7 +11,9 @@ import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
 import com.imranmelikov.zipex.model.BalanceTotalTry
+import com.imranmelikov.zipex.model.BalanceTotalUsd
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.BalanceUsd
 import com.imranmelikov.zipex.model.Debt
 import com.imranmelikov.zipex.model.DebtHistory
 import com.imranmelikov.zipex.model.DebtTotal
@@ -26,10 +28,11 @@ import com.imranmelikov.zipex.model.Order5
 import com.imranmelikov.zipex.model.Order6
 import com.imranmelikov.zipex.model.Order7
 import com.imranmelikov.zipex.model.Order8
+import com.imranmelikov.zipex.model.Order9
 import com.imranmelikov.zipex.model.ZipexMoneyDepot
 
 @Dao
-interface ZipexDao1 {
+interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(news: News)
     @Query("SELECT * FROM News ORDER BY uuid DESC")
@@ -48,7 +51,7 @@ interface ZipexDao1 {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLink(link: Link)
-    @Query("SELECT * FROM Link")
+    @Query("SELECT * FROM Link ORDER BY uuid DESC")
     suspend fun getLinks():List<Link>
     @Delete
     suspend fun deleteLink(link: Link)
@@ -60,7 +63,7 @@ interface ZipexDao1 {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAdminLink(adminLink: AdminLink)
     @Query("SELECT * FROM AdminLink")
-    fun getAdminLinks(): LiveData<List<AdminLink>>
+   suspend fun getAdminLinks(): List<AdminLink>
     @Delete
     suspend fun deleteAdminLink(adminLink: AdminLink)
     @Query("SELECT * FROM AdminLink WHERE uuid=:AdminLinkId")
@@ -69,7 +72,7 @@ interface ZipexDao1 {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder1(order1: Order1)
     @Query("SELECT * FROM Order1")
-    fun getOrder1s(): LiveData<List<Order1>>
+   suspend fun getOrder1s(): List<Order1>
     @Delete
     suspend fun deleteOrder1(order1: Order1)
     @Query("SELECT * FROM Order1 WHERE uuid=:Order1Id")
@@ -139,6 +142,15 @@ interface ZipexDao1 {
     suspend fun getOrder8(Order8Id:Int): Order8
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOrder9(order9: Order9)
+    @Query("SELECT * FROM Order9")
+    suspend fun getOrder9s(): List<Order9>
+    @Delete
+    suspend fun deleteOrder9(order9: Order9)
+    @Query("SELECT * FROM Order9 WHERE uuid=:Order9Id")
+    suspend fun getOrder9(Order9Id:Int): Order9
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBalanceTry(balanceTry: BalanceTry)
     @Query("SELECT * FROM BalanceTry ORDER BY uuid DESC")
     suspend fun getBalanceTry():List<BalanceTry>
@@ -161,6 +173,18 @@ interface ZipexDao1 {
     suspend fun updateBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn)
     @Query("SELECT * FROM BalanceTotalAzn")
     suspend fun getBalanceTotalAzn(): BalanceTotalAzn
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertBalanceUsd(balanceUsd: BalanceUsd)
+    @Query("SELECT * FROM BalanceUsd ORDER BY uuid DESC")
+    suspend fun getBalanceUsd():List<BalanceUsd>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertBalanceTotalUsd(balanceTotalUsd: BalanceTotalUsd)
+    @Update
+    suspend fun updateBalanceTotalUsd(balanceTotalUsd: BalanceTotalUsd)
+    @Query("SELECT * FROM BalanceTotalUsd ")
+    suspend fun getBalanceTotalUsd(): BalanceTotalUsd
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDebt(debt: Debt)
@@ -189,5 +213,4 @@ interface ZipexDao1 {
     fun getZipexMoney(): LiveData<List<ZipexMoneyDepot>>
     @Update
     suspend fun updateZipexMoney(zipexMoneyDepot: ZipexMoneyDepot)
-
 }

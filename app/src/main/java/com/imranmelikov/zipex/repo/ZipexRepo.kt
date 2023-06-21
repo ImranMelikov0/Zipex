@@ -5,7 +5,9 @@ import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
 import com.imranmelikov.zipex.model.BalanceTotalTry
+import com.imranmelikov.zipex.model.BalanceTotalUsd
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.BalanceUsd
 import com.imranmelikov.zipex.model.Debt
 import com.imranmelikov.zipex.model.DebtHistory
 import com.imranmelikov.zipex.model.DebtTotal
@@ -20,6 +22,7 @@ import com.imranmelikov.zipex.model.Order5
 import com.imranmelikov.zipex.model.Order6
 import com.imranmelikov.zipex.model.Order7
 import com.imranmelikov.zipex.model.Order8
+import com.imranmelikov.zipex.model.Order9
 import com.imranmelikov.zipex.model.ZipexMoneyDepot
 import com.imranmelikov.zipex.util.Resource
 
@@ -40,12 +43,12 @@ interface ZipexRepo {
     suspend fun getLink(LinkId:Int): Link
 
     suspend fun insertAdminLink(adminLink: AdminLink)
-    fun getAdminLinks():Resource<LiveData<List<AdminLink>>>
+   suspend fun getAdminLinks():List<AdminLink>
     suspend fun deleteAdminLink(adminLink: AdminLink)
     suspend fun getAdminLink(AdminLinkId:Int): AdminLink
 
     suspend fun insertOrder1(order1: Order1)
-    fun getOrder1s():Resource<LiveData<List<Order1>>>
+   suspend fun getOrder1s():List<Order1>
     suspend fun deleteOrder1(order1: Order1)
     suspend fun getOrder1(Order1Id:Int): Order1
 
@@ -84,6 +87,11 @@ interface ZipexRepo {
     suspend fun deleteOrder8(order8: Order8)
     suspend fun getOrder8(Order8Id:Int): Order8
 
+ suspend fun insertOrder9(order9: Order9)
+ suspend fun getOrder9s():List<Order9>
+ suspend fun deleteOrder9(order9: Order9)
+ suspend fun getOrder9(Order9Id:Int): Order9
+
     suspend fun insertBalanceTry(balanceTry: BalanceTry)
    suspend fun getBalanceTry():List<BalanceTry>
 
@@ -97,6 +105,13 @@ interface ZipexRepo {
     suspend fun insertBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn)
     suspend fun updateBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn)
    suspend fun getBalanceTotalAzn():BalanceTotalAzn
+
+ suspend fun insertBalanceUsd(balanceUsd: BalanceUsd)
+ suspend fun getBalanceUsd():List<BalanceUsd>
+
+ suspend fun insertBalanceTotalUsd(balanceTotalUsd: BalanceTotalUsd)
+ suspend fun updateBalanceTotalUsd(balanceTotalUsd: BalanceTotalUsd)
+ suspend fun getBalanceTotalUsd():BalanceTotalUsd
 
     suspend fun insertDebt(debt: Debt)
     suspend fun deleteDebt(debt: Debt)

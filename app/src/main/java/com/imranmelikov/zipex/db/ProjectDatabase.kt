@@ -6,7 +6,9 @@ import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
 import com.imranmelikov.zipex.model.BalanceTotalTry
+import com.imranmelikov.zipex.model.BalanceTotalUsd
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.BalanceUsd
 import com.imranmelikov.zipex.model.Debt
 import com.imranmelikov.zipex.model.DebtHistory
 import com.imranmelikov.zipex.model.DebtTotal
@@ -21,9 +23,10 @@ import com.imranmelikov.zipex.model.Order5
 import com.imranmelikov.zipex.model.Order6
 import com.imranmelikov.zipex.model.Order7
 import com.imranmelikov.zipex.model.Order8
+import com.imranmelikov.zipex.model.Order9
 import com.imranmelikov.zipex.model.ZipexMoneyDepot
 
-@Database(entities = [News::class
+@Database([News::class
     , Notification::class
     , Link::class
     , AdminLink::class
@@ -35,15 +38,18 @@ import com.imranmelikov.zipex.model.ZipexMoneyDepot
     , Order6::class
     , Order7::class
     , Order8::class
+    , Order9::class
     , BalanceTotalAzn::class
     , BalanceAzn::class
     , BalanceTry::class
     , BalanceTotalTry::class
+    ,BalanceUsd::class
+    ,BalanceTotalUsd::class
     , Debt::class
     , DebtTotal::class
     , DebtHistory::class
-    , ZipexMoneyDepot::class]
-    , version = 2, exportSchema = false)
-abstract class ZipexDataBase1:RoomDatabase() {
-    abstract fun zipexDao1():ZipexDao1
+    , ZipexMoneyDepot::class],
+version = 1)
+abstract class ProjectDatabase:RoomDatabase() {
+    abstract fun projectDao():ProjectDao
 }

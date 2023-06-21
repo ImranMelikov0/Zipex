@@ -53,6 +53,14 @@ class AdminNewsFragment : Fragment() {
                 ,binding.editTextText2.text.toString()
                 ,selectedimage)
         }
+
+        arguments?.let {
+            if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("string")){
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminFragment())
+            }else{
+
+            }
+        }
         return binding.root
     }
     private fun imageClick(){

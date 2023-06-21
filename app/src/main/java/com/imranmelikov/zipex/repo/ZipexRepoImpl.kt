@@ -1,12 +1,14 @@
 package com.imranmelikov.zipex.repo
 
 import androidx.lifecycle.LiveData
-import com.imranmelikov.zipex.db.ZipexDao1
+import com.imranmelikov.zipex.db.ProjectDao
 import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
 import com.imranmelikov.zipex.model.BalanceTotalTry
+import com.imranmelikov.zipex.model.BalanceTotalUsd
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.BalanceUsd
 import com.imranmelikov.zipex.model.Debt
 import com.imranmelikov.zipex.model.DebtHistory
 import com.imranmelikov.zipex.model.DebtTotal
@@ -21,10 +23,11 @@ import com.imranmelikov.zipex.model.Order5
 import com.imranmelikov.zipex.model.Order6
 import com.imranmelikov.zipex.model.Order7
 import com.imranmelikov.zipex.model.Order8
+import com.imranmelikov.zipex.model.Order9
 import com.imranmelikov.zipex.model.ZipexMoneyDepot
 import com.imranmelikov.zipex.util.Resource
 
-class ZipexRepoImpl(private val zipexDao: ZipexDao1):ZipexRepo {
+class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
     override suspend fun insertNews(news: News) {
         zipexDao.insertNews(news)
     }
@@ -77,12 +80,8 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao1):ZipexRepo {
         zipexDao.insertAdminLink(adminLink)
     }
 
-    override fun getAdminLinks(): Resource<LiveData<List<AdminLink>>> {
-        return try {
-            Resource.success(zipexDao.getAdminLinks())
-        }catch (e:Exception){
-            Resource.error("Error in repo with adminlink",null)
-        }
+    override suspend fun getAdminLinks(): List<AdminLink>{
+        return zipexDao.getAdminLinks()
     }
 
     override suspend fun deleteAdminLink(adminLink: AdminLink) {
@@ -97,12 +96,8 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao1):ZipexRepo {
        zipexDao.insertOrder1(order1)
     }
 
-    override fun getOrder1s(): Resource<LiveData<List<Order1>>> {
-       return try {
-           Resource.success(zipexDao.getOrder1s())
-       }catch (e:Exception){
-           Resource.error("Error in repo with order1",null)
-       }
+    override suspend fun getOrder1s(): List<Order1> {
+       return zipexDao.getOrder1s()
     }
 
     override suspend fun deleteOrder1(order1: Order1) {
@@ -253,6 +248,22 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao1):ZipexRepo {
        return zipexDao.getOrder8(Order8Id)
     }
 
+    override suspend fun insertOrder9(order9: Order9) {
+        zipexDao.insertOrder9(order9)
+    }
+
+    override suspend fun getOrder9s(): List<Order9> {
+       return zipexDao.getOrder9s()
+    }
+
+    override suspend fun deleteOrder9(order9: Order9) {
+        zipexDao.deleteOrder9(order9)
+    }
+
+    override suspend fun getOrder9(Order9Id: Int): Order9 {
+       return zipexDao.getOrder9(Order9Id)
+    }
+
     override suspend fun insertBalanceTry(balanceTry: BalanceTry) {
        zipexDao.insertBalanceTry(balanceTry)
     }
@@ -291,6 +302,26 @@ class ZipexRepoImpl(private val zipexDao: ZipexDao1):ZipexRepo {
 
     override suspend fun getBalanceTotalAzn(): BalanceTotalAzn {
         return zipexDao.getBalanceTotalAzn()
+    }
+
+    override suspend fun insertBalanceUsd(balanceUsd: BalanceUsd) {
+        zipexDao.insertBalanceUsd(balanceUsd)
+    }
+
+    override suspend fun getBalanceUsd(): List<BalanceUsd> {
+        return zipexDao.getBalanceUsd()
+    }
+
+    override suspend fun insertBalanceTotalUsd(balanceTotalUsd: BalanceTotalUsd) {
+        zipexDao.insertBalanceTotalUsd(balanceTotalUsd)
+    }
+
+    override suspend fun updateBalanceTotalUsd(balanceTotalUsd: BalanceTotalUsd) {
+        zipexDao.updateBalanceTotalUsd(balanceTotalUsd)
+    }
+
+    override suspend fun getBalanceTotalUsd(): BalanceTotalUsd {
+       return zipexDao.getBalanceTotalUsd()
     }
 
     override suspend fun insertDebt(debt: Debt) {

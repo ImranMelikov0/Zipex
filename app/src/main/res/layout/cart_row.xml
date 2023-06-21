@@ -147,6 +147,25 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1">
                 <TextView
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:id="@+id/cart_country"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/primary"
+                    android:text="Olke:"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+                <TextView
                     android:id="@+id/cart_payment"
                     android:layout_weight="1"
                     android:textSize="19dp"
@@ -261,13 +280,15 @@
          android:layout_margin="8dp"
          android:background="@drawable/shape_items_linearlayout"
          android:layout_weight="1">
+
          <Button
+             android:id="@+id/onlinePay"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
              android:layout_marginLeft="2dp"
              android:layout_marginTop="-2dp"
              android:layout_marginRight="2dp"
              android:layout_marginBottom="-2dp"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
              android:backgroundTint="@color/white"
              android:text="Onlayn Ödəniş"
              android:textColor="@color/primary"

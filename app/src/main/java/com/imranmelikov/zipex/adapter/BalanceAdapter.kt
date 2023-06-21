@@ -27,6 +27,8 @@ class BalanceAdapter @Inject constructor():RecyclerView.Adapter<BalanceAdapter.B
    var balanceList2=BalanceTotalTry(0.0)
     var balanceList3= BalanceTotalAzn(0.0)
     var onItemClick:((String)->Unit)?=null
+    var onItemClickToPayment:((Float)->Unit)?=null
+    var onItemClickToPaymentAzn:((Float)->Unit)?=null
     var onItemClick1:((String)->Unit)?=null
    private var showFirst:Boolean=true
 
@@ -100,7 +102,10 @@ return if (showFirst){
                     Toast.makeText(holder.itemView.context,"Balansı qeyd edin",Toast.LENGTH_SHORT).show()
                 }else{
                     val amount=holder.binding.balanceItemAddbalance.text.toString().toFloat()
-                    Navigation.findNavController(it).navigate(BalanceFragmentDirections.actionBalanceFragmentToPaymentFragment(amount))
+                    Navigation.findNavController(it).navigate(BalanceFragmentDirections.actionBalanceFragmentToPaymentFragment())
+                    onItemClickToPayment?.let {
+                        it(amount)
+                    }
                 }
             }
             holder.binding.balanceItemHistory.text=balanceArrayList.history
@@ -147,8 +152,11 @@ return if (showFirst){
                 } else {
                     val amount = holder.binding.balanceItemAddbalance.text.toString().toFloat()
                     Navigation.findNavController(it).navigate(
-                        BalanceFragmentDirections.actionBalanceFragmentToPaymentAznFragment(amount)
+                        BalanceFragmentDirections.actionBalanceFragmentToPaymentAznFragment()
                     )
+                    onItemClickToPaymentAzn?.let {
+                        it(amount)
+                    }
                 }
             }
 
@@ -156,6 +164,7 @@ return if (showFirst){
             holder.binding.balanceItemPrice.text = balanceList1Array.amount.toString()
             holder.binding.balanceItemBalance.text = balanceList1Array.balance.toString()
             holder.binding.balanceTitleBalance.text="Balans : ${balanceList3.balanceTotal.toString()} AZN"
+
             holder.binding.balanceItemOrder.setOnClickListener {view->
                 showFirst = true
                 Navigation.findNavController(view).navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())

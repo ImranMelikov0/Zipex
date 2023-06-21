@@ -22,17 +22,30 @@ class LinkViewModel @Inject constructor(
     val linkMsg:LiveData<Resource<Link>>
         get() = linkMessage
 
-    fun makeLink(url:String,category:String,count:Int?,color:String,size:String,price:Double?,comment:String,history:String){
-        if (url.isEmpty()||category.isEmpty()||count==null||color.isEmpty()||size.isEmpty()||price==null||history.isEmpty()){
+    fun makeLink(url:String,category:String,count:Int?,color:String,size:String,price:Double?,comment:String,history:String,country:String,sigorta:String,payment:String){
+        if (url.isEmpty()||category.isEmpty()||count==null||color.isEmpty()||size.isEmpty()||price==null||history.isEmpty()||country.isEmpty()||sigorta.isEmpty()||payment.isEmpty()){
             linkMessage.value=Resource.error("Məlumatları daxil edin",null)
         }else{
-            val price1= price.toDouble()
-            val decimalFormat = DecimalFormat("#.##")
-            decimalFormat.roundingMode = RoundingMode.HALF_UP
-            val roundedAmount = decimalFormat.format(price1).toDouble()
-            val link=Link(url,category,count,color,size,roundedAmount,comment,history)
-            insertLink(link)
-            linkMessage.value=Resource.success(link)
+            if (country.equals("Türkiye")){
+                val price1= price.toDouble()
+                val decimalFormat = DecimalFormat("#.##")
+                decimalFormat.roundingMode = RoundingMode.HALF_UP
+                val roundedAmount = decimalFormat.format(price1).toDouble()
+                val link=Link(url,category,count,color,size,roundedAmount,comment,history,country,sigorta,payment)
+                insertLink(link)
+                linkMessage.value=Resource.success(link)
+            }else if(country.equals("Amerika")){
+                val price1= price.toDouble()
+                val decimalFormat = DecimalFormat("#.##")
+                decimalFormat.roundingMode = RoundingMode.HALF_UP
+                val roundedAmount = decimalFormat.format(price1).toDouble()
+                val link=Link(url,category,count,color,size,roundedAmount,comment,history,country,sigorta,payment)
+                insertLink(link)
+                linkMessage.value=Resource.success(link)
+            }else{
+                linkMessage.value=Resource.error("Ölkə hissəsinə Türkiye və ya Amerika daxil edin",null)
+            }
+
         }
     }
 

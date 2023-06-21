@@ -13,6 +13,7 @@ import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
@@ -29,6 +30,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.CartRowBinding
 import com.imranmelikov.zipex.model.Link
+import com.imranmelikov.zipex.view.CartFragmentDirections
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -42,6 +44,8 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
 
     var onItemClickCartUpdate:((Link)->Unit)?=null
     var onItemClickDelete:((Link)->Unit)?=null
+    var onItemClickBalancePay:((Link)->Unit)?=null
+    var onItemClickOnlinePay:((Link)->Unit)?=null
 
     private val diffUtil=object :DiffUtil.ItemCallback<Link>(){
         override fun areItemsTheSame(oldItem: Link, newItem: Link): Boolean {
@@ -75,7 +79,26 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
         holder.binding.cartHistory.text="Tarix: ${cartArraylist.history}"
         holder.binding.cartQuantity.text="Say: ${cartArraylist.count.toString()}"
         holder.binding.cartSize.text="Ölçü: ${cartArraylist.size}"
-        holder.binding.cartPrice.text="Qiymət: ${cartArraylist.price.toDouble().toString()}"
+        holder.binding.cartCountry.text="Ölkə: ${cartArraylist.country}"
+        if (cartArraylist.country.equals("Türkiye")){
+            holder.binding.cartPrice.text="Qiymət: ${cartArraylist.price} TRY"
+        }else{
+            holder.binding.cartPrice.text="Qiymət: ${cartArraylist.price} USD"
+        }
+
+        if (cartArraylist.payment.equals("Ödənilib")){
+            holder.binding.cartUpdate.visibility=View.GONE
+            holder.binding.cartDelete.visibility=View.GONE
+            holder.binding.cartBalancePay.visibility=View.GONE
+            holder.binding.cartOnlinePay.visibility=View.GONE
+        }else{
+
+        }
+        if (cartArraylist.sigorta.equals("Sığortalanıb")){
+            holder.binding.cartSigorta.visibility=View.GONE
+        }else{
+
+        }
 
         val spannableStringColor=SpannableString(holder.binding.cartColor.text)
         val endlengthColor=5
@@ -107,17 +130,37 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
         spannableStringPrice.setSpan(StyleSpan(Typeface.BOLD),endlengthPrice,holder.binding.cartPrice.text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         holder.binding.cartPrice.text=spannableStringPrice
 
-        val text="Ödəniş: Ödənilməyib"
-        val spannableString= SpannableString(text)
-        val endLength=7
-        val color=R.color.red
-        val colorPrimary=R.color.primary
-        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(holder.itemView.context,colorPrimary)),0,endLength, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(holder.itemView.context,color)),endLength,text.length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(StyleSpan(Typeface.BOLD),endLength,text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        holder.binding.cartPayment.text=spannableString
+        val spannableStringCountry=SpannableString(holder.binding.cartCountry.text)
+        val endlengthCountry=4
+        spannableStringCountry.setSpan(StyleSpan(Typeface.BOLD),endlengthCountry,holder.binding.cartCountry.text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        holder.binding.cartCountry.text=spannableStringCountry
+
+        if (cartArraylist.payment.equals("Ödənilməyib")){
+            val text="Ödəniş: Ödənilməyib"
+            val spannableString= SpannableString(text)
+            val endLength=7
+            val color=R.color.red
+            val colorPrimary=R.color.primary
+            spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(holder.itemView.context,colorPrimary)),0,endLength, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannableString.setSpan(
+                ForegroundColorSpan(ContextCompat.getColor(holder.itemView.context,color)),endLength,text.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannableString.setSpan(StyleSpan(Typeface.BOLD),endLength,text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            holder.binding.cartPayment.text=spannableString
+        }else{
+            val text="Ödəniş: Ödənilib"
+            val spannableString= SpannableString(text)
+            val endLength=7
+            val color=R.color.green
+            val colorPrimary=R.color.primary
+            spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(holder.itemView.context,colorPrimary)),0,endLength, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannableString.setSpan(
+                ForegroundColorSpan(ContextCompat.getColor(holder.itemView.context,color)),endLength,text.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannableString.setSpan(StyleSpan(Typeface.BOLD),endLength,text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            holder.binding.cartPayment.text=spannableString
+        }
+
 
         holder.binding.cartUpdate.setOnClickListener {
             val dialogview=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_cart_update,null)
@@ -146,7 +189,7 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
                     val roundedAmount = decimalFormat.format(price).toDouble()
                     val cart=Link(editLink.text.toString(),cartArraylist.category
                         ,editQuantity.text.toString().toInt(),cartArraylist.color,cartArraylist.size,
-                        roundedAmount,cartArraylist.comment,cartArraylist.history)
+                        roundedAmount,cartArraylist.comment,cartArraylist.history,cartArraylist.country,cartArraylist.sigorta,cartArraylist.payment)
                     cart.uuid=cartArraylist.uuid
                     onItemClickCartUpdate?.let {
                         it(cart)
@@ -187,6 +230,33 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
         }
         holder.binding.cartView.setOnClickListener {
             Toast.makeText(holder.itemView.context,"Sayta keçmək mümkün olmadı",Toast.LENGTH_SHORT).show()
+        }
+        holder.binding.balancebuttonpay.setOnClickListener {
+            val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_pay_balance,null)
+            val no=dialogView.findViewById<Button>(R.id.no)
+            val yes=dialogView.findViewById<Button>(R.id.yes)
+
+            val alertDialogBuilder= AlertDialog.Builder(holder.itemView.context)
+            alertDialogBuilder.setView(dialogView)
+
+            val alertDialog=alertDialogBuilder.create()
+            no.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            yes.setOnClickListener {
+                onItemClickBalancePay?.let {
+                    it(cartArraylist)
+                }
+                alertDialog.dismiss()
+            }
+            alertDialog.show()
+
+        }
+        holder.binding.onlinePay.setOnClickListener {view->
+            Navigation.findNavController(view).navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(2F,2))
+            onItemClickOnlinePay?.let {
+                it(cartArraylist)
+            }
         }
     }
 }

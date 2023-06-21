@@ -181,7 +181,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/shape_items_white"
                     android:padding="10dp"
-                    android:inputType="number"
                     android:singleLine="true" />
             </LinearLayout>
 
@@ -209,6 +208,7 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/buttonreject"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
@@ -229,6 +229,7 @@
             android:background="@drawable/shape_items_linearlayout"
             android:layout_weight="1">
             <Button
+                android:id="@+id/buttonconfirm"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="-2dp"
                 android:layout_marginRight="2dp"

@@ -8,6 +8,7 @@ import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
 import com.imranmelikov.zipex.model.BalanceTotalTry
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.Link
 import com.imranmelikov.zipex.repo.ZipexRepo
 import com.imranmelikov.zipex.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -72,7 +73,8 @@ class BalanceViewModel @Inject constructor(
     }
 
     var showFirst:Boolean=true
-
+    var getDouble:Double=0.0
+    var getLink:Link=Link("","",0,"","",0.0,"","","","","")
     fun getBalanceTry(){
         balanceTryMutableLiveData.value=Resource.loading(null)
         viewModelScope.launch(exceptionHandlerTry){
