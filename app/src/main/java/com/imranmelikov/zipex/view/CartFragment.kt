@@ -80,6 +80,10 @@ class CartFragment @Inject constructor(
         balanceViewModel.getTotalBalanceTry()
         observeBalance()
 
+        cartAdapter.onItemClickUpdateSigorta={
+            viewModel.updateCart(it)
+            findNavController().navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(9F))
+        }
     }
 
     private fun observeCart(){

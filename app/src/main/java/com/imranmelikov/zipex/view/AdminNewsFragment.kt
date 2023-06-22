@@ -57,8 +57,14 @@ class AdminNewsFragment : Fragment() {
         arguments?.let {
             if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("string")){
                 findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminFragment())
-            }else{
-
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1")){
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder")){
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("order2")){
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            }else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("update")){
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
             }
         }
         return binding.root

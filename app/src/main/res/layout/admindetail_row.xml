@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,97 +13,213 @@
             android:layout_margin="10dp"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/order_sifaris"
+            <LinearLayout
+                android:id="@+id/sifarislinear"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/primary"
-                android:text="Sifariş edilib"
-                app:cornerRadius="5dp" />
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_sifaris"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="Sifariş edilib"
+                    app:cornerRadius="5dp" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/order_anbar"
+            <LinearLayout
+                android:id="@+id/anbarlinear"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/primary"
-                android:text="Xarici Anbardadır"
-                app:cornerRadius="5dp" />
-            <Button
-                android:id="@+id/order_smartbeyangozleyir"
-                android:text="SMART-a bəyan gözləyir"
-                android:backgroundTint="@color/primary"
-                android:layout_weight="1"
-                app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/order_smartbeyanedilib"
-                android:text="SMART-a bəyan edilib"
-                android:backgroundTint="@color/primary"
-                android:layout_weight="1"
-                app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/order_yol"
-                android:text="Yola düşüb"
-                android:backgroundTint="@color/primary"
-                android:layout_weight="1"
-                app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:id="@+id/order_gomruk"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_anbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="Xarici Anbardadır"
+                    app:cornerRadius="5dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/smartbeyangozleyirlinear"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/primary"
-                android:text="Gömrük yoxlaması"
-                app:cornerRadius="5dp" />
-            <Button
-                android:id="@+id/order_cesidleme"
-                android:text="Çeşidləmə"
-                android:backgroundTint="@color/primary"
-                android:layout_weight="1"
-                app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_smartbeyangozleyir"
+                    android:text="SMART-a bəyan gözləyir"
+                    android:backgroundTint="@color/primary"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    app:cornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/smartbeyanediliblinear"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/order_catib"
-                android:text="Çatıb"
-                android:backgroundTint="@color/primary"
-                android:layout_weight="1"
-                app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_smartbeyanedilib"
+                    android:text="SMART-a bəyan edilib"
+                    android:backgroundTint="@color/primary"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    app:cornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/yollinear"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/order_tehvil"
-                android:text="Təhvil verilib"
-                android:backgroundTint="@color/primary"
-                android:layout_weight="1"
-                app:cornerRadius="5dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_yol"
+                    android:text="Yola düşüb"
+                    android:backgroundTint="@color/primary"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    app:cornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/gomruklinear"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_gomruk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="Gömrük yoxlaması"
+                    app:cornerRadius="5dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/cesidlemelinear"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_cesidleme"
+                    android:text="Çeşidləmə"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    android:backgroundTint="@color/primary"
+                    android:layout_weight="1"
+                    app:cornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/catiblinear"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_catib"
+                    android:text="Çatıb"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    android:backgroundTint="@color/primary"
+                    android:layout_weight="1"
+                    app:cornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/tehvillinear"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginRight="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/order_tehvil"
+                    android:text="Təhvil verilib"
+                    android:backgroundTint="@color/primary"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    app:cornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>
 
 
     <LinearLayout
         android:id="@+id/linear2"
-        android:visibility="gone"
-        android:layout_margin="10dp"
+        android:visibility="visible"
+        android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
@@ -120,6 +236,8 @@
             <TextView
                 android:id="@+id/id_title"
                 android:layout_weight="1"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:layout_width="match_parent"
                 android:textAlignment="textStart"
                 android:layout_height="wrap_content"
@@ -148,6 +266,8 @@
                 <TextView
                     android:id="@+id/order_item_category"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Kategoriya:Test"
@@ -173,6 +293,8 @@
                 <TextView
                     android:id="@+id/order_item_price"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:textColor="@color/primary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -181,6 +303,8 @@
                 <TextView
                     android:id="@+id/order_item_catdirilma"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Catdirilma:0.99"
@@ -199,6 +323,8 @@
                     android:id="@+id/order_item_marketname"
                     android:layout_weight="1"
                     android:textSize="16dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Magaza Adi:Magaza"
@@ -207,6 +333,8 @@
                     android:id="@+id/order_item_weight"
                     android:layout_weight="1"
                     android:textSize="16dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
@@ -224,6 +352,8 @@
                     android:id="@+id/order_item_marketcode"
                     android:layout_weight="1"
                     android:textSize="16dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary"
@@ -247,26 +377,84 @@
             </LinearLayout>
 
         </LinearLayout>
-        <Button
-            android:id="@+id/button1"
-            android:layout_weight="0"
-            android:layout_margin="15dp"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:text="Təsdiqlə"
-            android:textColor="@color/primary"
-            app:cornerRadius="5dp" />
-        <Button
-            android:id="@+id/button2"
-            android:layout_weight="0"
-            android:layout_margin="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:text="Sil"
-            android:textColor="@color/primary"
-            app:cornerRadius="5dp" />
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_margin="5dp">
+            <LinearLayout
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Çəki"
+                    android:id="@+id/cekitopedittext"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/ceki"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_items_white"
+                    android:padding="10dp"
+                    android:inputType="numberDecimal"
+                    android:singleLine="true" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/catdirilmatopedittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Çatdırılma"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/catdirilma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_items_white"
+                    android:padding="10dp"
+                    android:inputType="numberDecimal"
+                    android:singleLine="true" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/button"
+                android:layout_weight="1"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Təsdiqlə"
+                android:textColor="@color/primary"
+                app:cornerRadius="5dp" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_weight="0"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Sil"
+                android:textColor="@color/primary"
+                app:cornerRadius="5dp" />
+
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linear1"
@@ -429,84 +617,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_margin="5dp">
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Çəki"
-                        android:textStyle="bold"/>
 
-                    <EditText
-                        android:id="@+id/ceki"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_items_white"
-                        android:padding="10dp"
-                        android:inputType="number"
-                        android:singleLine="true" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Çatdırılma"
-                        android:textStyle="bold"/>
-
-                    <EditText
-                        android:id="@+id/catdirilma"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_items_white"
-                        android:padding="10dp"
-                        android:inputType="number"
-                        android:singleLine="true" />
-                </LinearLayout>
-                <Button
-                    android:id="@+id/button"
-                    android:layout_weight="1"
-                    android:layout_margin="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:text="Təsdiqlə"
-                    android:textColor="@color/primary"
-                    app:cornerRadius="5dp" />
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_weight="0"
-                    android:layout_margin="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:text="Sil"
-                    android:textColor="@color/primary"
-                    app:cornerRadius="5dp" />
-
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/linear3"
         android:layout_margin="10dp"
         android:layout_width="match_parent"

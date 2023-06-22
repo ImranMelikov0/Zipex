@@ -7,8 +7,10 @@
     android:orientation="vertical"
     >
     <HorizontalScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,93 +18,212 @@
             android:orientation="horizontal"
             android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:id="@+id/sifarislinear"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_sifaris"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="3dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:backgroundTint="@color/primary"
                 android:text="Sifariş edilib"
                 app:cornerRadius="5dp" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/anbarlinear"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_anbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="3dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:backgroundTint="@color/primary"
                 android:text="Xarici Anbardadır"
                 app:cornerRadius="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/smartbeyangozleyirlinear"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_smartbeyangozleyir"
                 android:text="SMART-a bəyan gözləyir"
                 android:backgroundTint="@color/primary"
                 android:layout_weight="1"
                 app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/smartbeyanediliblinear"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_smartbeyanedilib"
                 android:text="SMART-a bəyan edilib"
                 android:backgroundTint="@color/primary"
                 android:layout_weight="1"
                 app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/yollinear"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_yol"
                 android:text="Yola düşüb"
                 android:backgroundTint="@color/primary"
                 android:layout_weight="1"
                 app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/gomruklinear"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_gomruk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="3dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:backgroundTint="@color/primary"
                 android:text="Gömrük yoxlaması"
                 app:cornerRadius="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cesidlemelinear"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_cesidleme"
                 android:text="Çeşidləmə"
                 android:backgroundTint="@color/primary"
                 android:layout_weight="1"
                 app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/catiblinear"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_catib"
                 android:text="Çatıb"
                 android:backgroundTint="@color/primary"
                 android:layout_weight="1"
                 app:cornerRadius="5dp"
-                android:layout_marginRight="3dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tehvillinear"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_weight="1">
             <Button
                 android:id="@+id/order_tehvil"
                 android:text="Təhvil verilib"
                 android:backgroundTint="@color/primary"
                 android:layout_weight="1"
                 app:cornerRadius="5dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+        </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>
 
     <LinearLayout
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -119,10 +240,13 @@
             <TextView
                 android:id="@+id/id_title"
                 android:layout_weight="1"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:layout_width="match_parent"
                 android:textAlignment="textStart"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="17dp"
                 android:textColor="@color/primary"
                 android:text="Testtesttest"/>
             <ImageView
@@ -175,6 +299,7 @@
                     android:id="@+id/order_item_history"
                     android:textColor="@color/primary"
                     android:layout_weight="1"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="textEnd"
@@ -195,6 +320,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:text="Qiymet:150.00"/>
                 <TextView
                     android:id="@+id/order_item_catdirilma"
@@ -203,6 +330,8 @@
                     android:layout_height="wrap_content"
                     android:text="Catdirilma:0.99"
                     android:textSize="16dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_marginRight="8dp"
                     android:textColor="@color/primary"
                     android:textAlignment="textEnd"/>
@@ -218,6 +347,8 @@
                     android:layout_weight="1"
                     android:textSize="16dp"
                     android:layout_width="match_parent"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_height="wrap_content"
                     android:text="Magaza Adi:Magaza"
                     android:textColor="@color/primary"/>
@@ -225,6 +356,8 @@
                     android:id="@+id/order_item_weight"
                     android:layout_weight="1"
                     android:textSize="16dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
@@ -242,6 +375,8 @@
                     android:id="@+id/order_item_marketcode"
                     android:layout_weight="1"
                     android:textSize="16dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary"
@@ -264,6 +399,7 @@
                 <ImageView
                     android:id="@+id/image_pen"
                     android:layout_weight="2"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -281,8 +417,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sığortalanmayıb"
-                    android:textSize="19dp"
+                    android:textSize="18dp"
+                    android:id="@+id/sigorta"
                     android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
                     android:textColor="#FA0303"/>
                 <Button
                     android:layout_width="wrap_content"

@@ -57,6 +57,30 @@
                 android:textColor="@color/primary"
                 app:cornerRadius="5dp" />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/debthistory_usdbutton"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/debt_history_usd"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:text="USD"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
+                android:textColor="@color/primary"
+                app:cornerRadius="5dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout

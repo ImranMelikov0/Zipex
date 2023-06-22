@@ -104,6 +104,10 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
        zipexDao.deleteOrder1(order1)
     }
 
+    override suspend fun updateOrder1(order1: Order1) {
+        zipexDao.updateOrder1(order1)
+    }
+
     override suspend fun getOrder1(Order1Id: Int): Order1 {
         return zipexDao.getOrder1(Order1Id)
     }
@@ -112,16 +116,16 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.insertOrder2(order2)
     }
 
-    override fun getOrder2s(): Resource<LiveData<List<Order2>>> {
-        return try {
-            Resource.success(zipexDao.getOrder2s())
-        }catch (e:Exception){
-            Resource.error("Error in repo with order2",null)
-        }
+    override suspend fun getOrder2s(): List<Order2> {
+        return zipexDao.getOrder2s()
     }
 
     override suspend fun deleteOrder2(order2: Order2) {
         zipexDao.deleteOrder2(order2)
+    }
+
+    override suspend fun updateOrder2(order2: Order2) {
+        zipexDao.updateOrder2(order2)
     }
 
     override suspend fun getOrder2(Order2Id: Int): Order2 {
@@ -132,16 +136,16 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.insertOrder3(order3)
     }
 
-    override fun getOrder3s(): Resource<LiveData<List<Order3>>> {
-        return try {
-            Resource.success(zipexDao.getOrder3s())
-        }catch (e:Exception){
-            Resource.error("Error in repo with order3",null)
-        }
+    override suspend fun getOrder3s(): List<Order3> {
+        return zipexDao.getOrder3s()
     }
 
     override suspend fun deleteOrder3(order3: Order3) {
         zipexDao.deleteOrder3(order3)
+    }
+
+    override suspend fun updateOrder3(order3: Order3) {
+       zipexDao.updateOrder3(order3)
     }
 
     override suspend fun getOrder3(Order3Id: Int): Order3 {
@@ -152,12 +156,8 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.insertOrder4(order4)
     }
 
-    override fun getOrder4s(): Resource<LiveData<List<Order4>>> {
-        return try {
-            Resource.success(zipexDao.getOrder4s())
-        }catch (e:Exception){
-            Resource.error("Error in repo with order4",null)
-        }
+    override suspend fun getOrder4s(): List<Order4> {
+        return zipexDao.getOrder4s()
     }
 
     override suspend fun deleteOrder4(order4: Order4) {
@@ -172,12 +172,8 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.insertOrder5(order5)
     }
 
-    override fun getOrder5s(): Resource<LiveData<List<Order5>>> {
-        return try {
-            Resource.success(zipexDao.getOrder5s())
-        }catch (e:Exception){
-            Resource.error("Error in repo with order5",null)
-        }
+    override suspend fun getOrder5s(): List<Order5> {
+        return zipexDao.getOrder5s()
     }
 
     override suspend fun deleteOrder5(order5: Order5) {
@@ -192,12 +188,8 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.insertOrder6(order6)
     }
 
-    override fun getOrder6s(): Resource<LiveData<List<Order6>>> {
-        return try {
-            Resource.success(zipexDao.getOrder6s())
-        }catch (e:Exception){
-            Resource.error("Error in repo with order6",null)
-        }
+    override suspend fun getOrder6s(): List<Order6> {
+        return zipexDao.getOrder6s()
     }
 
     override suspend fun deleteOrder6(order6: Order6) {
@@ -212,12 +204,8 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.insertOrder7(order7)
     }
 
-    override fun getOrder7s(): Resource<LiveData<List<Order7>>> {
-        return try {
-            Resource.success(zipexDao.getOrder7s())
-        }catch (e:Exception){
-            Resource.error("Error in repo with order7",null)
-        }
+    override suspend fun getOrder7s(): List<Order7> {
+        return zipexDao.getOrder7s()
     }
 
     override suspend fun deleteOrder7(order7: Order7) {
@@ -232,12 +220,8 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.insertOrder8(order8)
     }
 
-    override fun getOrder8s(): Resource<LiveData<List<Order8>>> {
-        return try {
-            Resource.success(zipexDao.getOrder8s())
-        }catch (e:Exception){
-            Resource.error("Error in repo with order8",null)
-        }
+    override suspend fun getOrder8s(): List<Order8> {
+        return zipexDao.getOrder8s()
     }
 
     override suspend fun deleteOrder8(order8: Order8) {

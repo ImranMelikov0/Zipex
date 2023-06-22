@@ -16,6 +16,7 @@
             android:id="@+id/debt_aznbutton"
             android:layout_margin="8dp"
             android:layout_width="match_parent"
+            android:background="@drawable/shape_items_linearlayout"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
@@ -25,8 +26,10 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/primary"
                 android:text="AZN"
-                android:layout_marginBottom="-4dp"
-                android:layout_marginTop="-4dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
                 app:cornerRadius="5dp" />
         </LinearLayout>
 
@@ -54,9 +57,33 @@
                 app:cornerRadius="5dp" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/debthistory_usdbutton"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/debt_history_usd"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:text="USD"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
+                android:textColor="@color/primary"
+                app:cornerRadius="5dp" />
+
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:background="@drawable/shape_items"
+        android:background="@drawable/shape_table_row_balance"
         android:layout_marginTop="18dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -96,7 +123,7 @@
             android:textColor="@color/black"/>
     </LinearLayout>
     <LinearLayout
-        android:background="@drawable/shape_items"
+        android:background="@drawable/shape_table_row_balance_bottom"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_weight="1"

@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_orderFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_adminNewsFragment"
+            app:destination="@id/adminNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/linkFragment"
@@ -108,6 +111,9 @@
         <action
             android:id="@+id/action_cartFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_adminNewsFragment"
+            app:destination="@id/adminNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/balanceFragment"
@@ -150,6 +156,9 @@
         <action
             android:id="@+id/action_debtFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_debtFragment_to_adminNewsFragment"
+            app:destination="@id/adminNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/debtHistoryFragment"
@@ -159,6 +168,9 @@
         <action
             android:id="@+id/action_debtHistoryFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_debtHistoryFragment_to_adminNewsFragment"
+            app:destination="@id/adminNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/promoCodeFragment"
@@ -234,6 +246,9 @@
         <action
             android:id="@+id/action_adminDetailFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
+        <action
+            android:id="@+id/action_adminDetailFragment_to_adminNewsFragment"
+            app:destination="@id/adminNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminNewsFragment"
@@ -255,30 +270,16 @@
             android:name="order2"
             app:argType="integer"
             android:defaultValue="0" />
-        <argument
-            android:name="order3"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="order4"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="order5"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="order6"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="order7"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="order8"
-            app:argType="integer"
-            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_adminNewsFragment_to_adminDetailFragment"
+            app:destination="@id/adminDetailFragment" />
+
+        <action
+            android:id="@+id/action_adminNewsFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_adminNewsFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminNotificationFragment2"

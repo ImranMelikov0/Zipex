@@ -10,8 +10,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/debt_azn_button"
@@ -58,6 +57,30 @@
                 app:cornerRadius="5dp" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/debthistory_usdbutton"
+            android:background="@drawable/shape_items_linearlayout"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/debt_history_usd"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:text="USD"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="-2dp"
+                android:layout_marginTop="-2dp"
+                android:textColor="@color/primary"
+                app:cornerRadius="5dp" />
+
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linearbutton"
@@ -94,17 +117,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
         android:layout_below="@id/linearbutton"
-        android:background="@drawable/shape_table_row"
+        android:background="@drawable/shape_table_row_balance"
         android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/linearlayout1"
+
             android:orientation="horizontal">
             <TextView
                 android:padding="5dp"
@@ -145,56 +168,61 @@
                 android:textSize="16dp"
                 android:textColor="@color/black"/>
         </LinearLayout>
-        <LinearLayout
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/debt_lineartable"
+        android:layout_weight="1"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_table_row_balance_bottom"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout2">
+        <TextView
+            android:id="@+id/debt_history"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/linearlayout2">
-            <TextView
-                android:id="@+id/debt_history"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="2022.05.24"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:background="@drawable/table_row_bottom_left"
-                android:padding="5dp"
-                android:textAlignment="center"/>
+            android:text="2022.05.24"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:background="@drawable/table_row_bottom_left"
+            android:padding="5dp"
+            android:textAlignment="center"/>
 
-            <TextView
-                android:id="@+id/debt_price"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Məbləğ"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:background="@drawable/table_row"
-                android:padding="5dp"
-                android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/debt_price"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Məbləğ"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:background="@drawable/table_row"
+            android:padding="5dp"
+            android:textAlignment="center"/>
 
-            <ImageView
-                android:id="@+id/debt_pay"
-                android:layout_weight="1"
-                android:padding="2.5dp"
-                android:background="@drawable/table_row"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_payment_24"
-                android:textAlignment="center"/>
+        <ImageView
+            android:id="@+id/debt_pay"
+            android:layout_weight="1"
+            android:padding="2.5dp"
+            android:background="@drawable/table_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_payment_24"
+            android:textAlignment="center"/>
 
-            <ImageView
-                android:id="@+id/debt_view"
-                android:background="@drawable/table_row_bottom_right"
-                android:layout_weight="1"
-                android:padding="2.5dp"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_remove_red_eye_24"
-                />
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/debt_view"
+            android:background="@drawable/table_row_bottom_right"
+            android:layout_weight="1"
+            android:padding="2.5dp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_remove_red_eye_24"
+            />
     </LinearLayout>
 </RelativeLayout>

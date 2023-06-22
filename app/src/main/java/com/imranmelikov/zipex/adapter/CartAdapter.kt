@@ -46,6 +46,7 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
     var onItemClickDelete:((Link)->Unit)?=null
     var onItemClickBalancePay:((Link)->Unit)?=null
     var onItemClickOnlinePay:((Link)->Unit)?=null
+    var onItemClickUpdateSigorta:((Link)->Unit)?=null
 
     private val diffUtil=object :DiffUtil.ItemCallback<Link>(){
         override fun areItemsTheSame(oldItem: Link, newItem: Link): Boolean {
@@ -95,7 +96,10 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
 
         }
         if (cartArraylist.sigorta.equals("Sığortalanıb")){
+            holder.binding.SigortaText.text=cartArraylist.sigorta
             holder.binding.cartSigorta.visibility=View.GONE
+            val color=ContextCompat.getColor(holder.itemView.context,R.color.green)
+            holder.binding.SigortaText.setTextColor(color)
         }else{
 
         }
@@ -148,9 +152,9 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
             spannableString.setSpan(StyleSpan(Typeface.BOLD),endLength,text.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             holder.binding.cartPayment.text=spannableString
         }else{
-            val text="Ödəniş: Ödənilib"
+            val text="Ödənilib"
             val spannableString= SpannableString(text)
-            val endLength=7
+            val endLength=0
             val color=R.color.green
             val colorPrimary=R.color.primary
             spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(holder.itemView.context,colorPrimary)),0,endLength, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -225,9 +229,35 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
             clipboard.setPrimaryClip(clip)
             Toast.makeText(holder.itemView.context,"Link kopyalandı",Toast.LENGTH_SHORT).show()
         }
+
         holder.binding.cartSigorta.setOnClickListener {
-            Toast.makeText(holder.itemView.context,"Sığorta mövcud deyil",Toast.LENGTH_SHORT).show()
+            val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_sigorta,null)
+            val no=dialogView.findViewById<Button>(R.id.no)
+            val yes=dialogView.findViewById<Button>(R.id.yes)
+
+            val alertDialogBuilder= AlertDialog.Builder(holder.itemView.context)
+            alertDialogBuilder.setView(dialogView)
+
+            val alertDialog=alertDialogBuilder.create()
+            no.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            yes.setOnClickListener {
+                val cartUpdateSigorta=Link(cartArraylist.url,cartArraylist.category,cartArraylist.count,cartArraylist.color,cartArraylist.size,cartArraylist.price,cartArraylist.comment,cartArraylist.history,cartArraylist.country,"Sığortalanıb",cartArraylist.payment)
+                cartUpdateSigorta.uuid=cartArraylist.uuid
+                onItemClickUpdateSigorta?.let {
+                    it(cartUpdateSigorta)
+                }
+                Toast.makeText(holder.itemView.context,"Sifariş uğurla sığortalandı!",Toast.LENGTH_SHORT).show()
+                holder.binding.SigortaText.text=cartArraylist.sigorta
+                val color=ContextCompat.getColor(holder.itemView.context,R.color.green)
+                holder.binding.SigortaText.setTextColor(color)
+                holder.binding.cartSigorta.visibility=View.GONE
+                alertDialog.dismiss()
+            }
+            alertDialog.show()
         }
+
         holder.binding.cartView.setOnClickListener {
             Toast.makeText(holder.itemView.context,"Sayta keçmək mümkün olmadı",Toast.LENGTH_SHORT).show()
         }

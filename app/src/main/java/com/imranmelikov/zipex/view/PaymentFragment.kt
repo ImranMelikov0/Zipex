@@ -61,6 +61,8 @@ class PaymentFragment @Inject constructor(
                 findNavController().popBackStack()
             }else if(PaymentFragmentArgs.fromBundle(it).balanceAmountTry==5F){
                 findNavController().navigate(PaymentFragmentDirections.actionPaymentFragmentToCartFragment2())
+            }else if (PaymentFragmentArgs.fromBundle(it).balanceAmountTry==9F){
+                findNavController().navigate(PaymentFragmentDirections.actionPaymentFragmentToCartFragment2())
             }else{
 
             }

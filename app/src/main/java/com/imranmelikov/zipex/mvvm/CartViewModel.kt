@@ -17,8 +17,6 @@ class CartViewModel @Inject constructor(
     private val zipexRepo: ZipexRepo
 ):ViewModel() {
 
-    var adminBoolean:Boolean=true
-
     private val cartMessage=MutableLiveData<Resource<List<Link>>>()
     val cartMsg:LiveData<Resource<List<Link>>>
         get() = cartMessage

@@ -4,9 +4,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.bumptech.glide.RequestManager
 import com.imranmelikov.zipex.adapter.AdminAdapter
+import com.imranmelikov.zipex.adapter.AdminDetailAdapter
 import com.imranmelikov.zipex.adapter.BalanceAdapter
 import com.imranmelikov.zipex.adapter.CartAdapter
 import com.imranmelikov.zipex.adapter.NotificationAdapter
+import com.imranmelikov.zipex.adapter.OrderAdapter
 import com.imranmelikov.zipex.adapter.RegularOrderAdapter
 import com.imranmelikov.zipex.adapter.newsAdapter
 import javax.inject.Inject
@@ -18,7 +20,9 @@ class ZipexFragmentFactory @Inject constructor(
    private val regularOrderAdapter: RegularOrderAdapter,
    private val cartAdapter: CartAdapter,
    private val balanceAdapter: BalanceAdapter,
-   private val adminAdapter: AdminAdapter
+   private val adminAdapter: AdminAdapter,
+   private val adminDetailAdapter: AdminDetailAdapter,
+   private val orderAdapter: OrderAdapter
 ):FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
@@ -31,6 +35,8 @@ class ZipexFragmentFactory @Inject constructor(
             CartFragment::class.java.name->CartFragment(cartAdapter)
             BalanceFragment::class.java.name->BalanceFragment(balanceAdapter)
             AdminFragment::class.java.name->AdminFragment(adminAdapter)
+            AdminDetailFragment::class.java.name->AdminDetailFragment(adminDetailAdapter)
+            OrderFragment::class.java.name->OrderFragment(orderAdapter)
             else->super.instantiate(classLoader, className)
         }
 

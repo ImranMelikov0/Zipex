@@ -75,31 +75,39 @@ interface ProjectDao {
    suspend fun getOrder1s(): List<Order1>
     @Delete
     suspend fun deleteOrder1(order1: Order1)
+
+    @Update
+    suspend fun updateOrder1(order1: Order1)
     @Query("SELECT * FROM Order1 WHERE uuid=:Order1Id")
     suspend fun getOrder1(Order1Id:Int): Order1
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder2(order2: Order2)
     @Query("SELECT * FROM Order2")
-    fun getOrder2s(): LiveData<List<Order2>>
+   suspend fun getOrder2s(): List<Order2>
     @Delete
     suspend fun deleteOrder2(order2: Order2)
+    @Update
+    suspend fun updateOrder2(order2: Order2)
     @Query("SELECT * FROM Order2 WHERE uuid=:Order2Id")
     suspend fun getOrder2(Order2Id:Int): Order2
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder3(order3: Order3)
     @Query("SELECT * FROM Order3")
-    fun getOrder3s(): LiveData<List<Order3>>
+   suspend fun getOrder3s(): List<Order3>
     @Delete
     suspend fun deleteOrder3(order3: Order3)
+
+    @Update
+    suspend fun updateOrder3(order3: Order3)
     @Query("SELECT * FROM Order3 WHERE uuid=:Order3Id")
     suspend fun getOrder3(Order3Id:Int): Order3
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder4(order4: Order4)
     @Query("SELECT * FROM Order4")
-    fun getOrder4s(): LiveData<List<Order4>>
+   suspend fun getOrder4s(): List<Order4>
     @Delete
     suspend fun deleteOrder4(order4: Order4)
     @Query("SELECT * FROM Order4 WHERE uuid=:Order4Id")
@@ -108,7 +116,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder5(order5: Order5)
     @Query("SELECT * FROM Order5")
-    fun getOrder5s(): LiveData<List<Order5>>
+   suspend fun getOrder5s(): List<Order5>
     @Delete
     suspend fun deleteOrder5(order5: Order5)
     @Query("SELECT * FROM Order5 WHERE uuid=:Order5Id")
@@ -117,7 +125,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder6(order6: Order6)
     @Query("SELECT * FROM Order6")
-    fun getOrder6s(): LiveData<List<Order6>>
+   suspend fun getOrder6s(): List<Order6>
     @Delete
     suspend fun deleteOrder6(order6: Order6)
     @Query("SELECT * FROM Order6 WHERE uuid=:Order6Id")
@@ -126,7 +134,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder7(order7: Order7)
     @Query("SELECT * FROM Order7")
-    fun getOrder7s(): LiveData<List<Order7>>
+   suspend fun getOrder7s(): List<Order7>
     @Delete
     suspend fun deleteOrder7(order7: Order7)
     @Query("SELECT * FROM Order7 WHERE uuid=:Order7Id")
@@ -135,7 +143,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder8(order8: Order8)
     @Query("SELECT * FROM Order8")
-    fun getOrder8s(): LiveData<List<Order8>>
+   suspend fun getOrder8s(): List<Order8>
     @Delete
     suspend fun deleteOrder8(order8: Order8)
     @Query("SELECT * FROM Order8 WHERE uuid=:Order8Id")

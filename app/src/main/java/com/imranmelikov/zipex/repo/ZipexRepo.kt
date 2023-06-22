@@ -50,40 +50,43 @@ interface ZipexRepo {
     suspend fun insertOrder1(order1: Order1)
    suspend fun getOrder1s():List<Order1>
     suspend fun deleteOrder1(order1: Order1)
+    suspend fun updateOrder1(order1: Order1)
     suspend fun getOrder1(Order1Id:Int): Order1
 
     suspend fun insertOrder2(order2: Order2)
-    fun getOrder2s():Resource<LiveData<List<Order2>>>
+   suspend fun getOrder2s():List<Order2>
     suspend fun deleteOrder2(order2: Order2)
+    suspend fun updateOrder2(order2: Order2)
     suspend fun getOrder2(Order2Id:Int): Order2
 
     suspend fun insertOrder3(order3: Order3)
-    fun getOrder3s():Resource<LiveData<List<Order3>>>
+   suspend fun getOrder3s():List<Order3>
     suspend fun deleteOrder3(order3: Order3)
+    suspend fun updateOrder3(order3: Order3)
     suspend fun getOrder3(Order3Id:Int): Order3
 
     suspend fun insertOrder4(order4: Order4)
-    fun getOrder4s():Resource<LiveData<List<Order4>>>
+   suspend fun getOrder4s():List<Order4>
     suspend fun deleteOrder4(order4: Order4)
     suspend fun getOrder4(Order4Id:Int): Order4
 
     suspend fun insertOrder5(order5: Order5)
-    fun getOrder5s():Resource<LiveData<List<Order5>>>
+   suspend fun getOrder5s():List<Order5>
     suspend fun deleteOrder5(order5: Order5)
     suspend fun getOrder5(Order5Id:Int): Order5
 
     suspend fun insertOrder6(order6: Order6)
-    fun getOrder6s():Resource<LiveData<List<Order6>>>
+   suspend fun getOrder6s():List<Order6>
     suspend fun deleteOrder6(order6: Order6)
     suspend fun getOrder6(Order6Id:Int): Order6
 
     suspend fun insertOrder7(order7: Order7)
-    fun getOrder7s():Resource<LiveData<List<Order7>>>
+   suspend fun getOrder7s():List<Order7>
     suspend fun deleteOrder7(order7: Order7)
     suspend fun getOrder7(Order7Id:Int): Order7
 
     suspend fun insertOrder8(order8: Order8)
-    fun getOrder8s():Resource<LiveData<List<Order8>>>
+   suspend fun getOrder8s():List<Order8>
     suspend fun deleteOrder8(order8: Order8)
     suspend fun getOrder8(Order8Id:Int): Order8
 

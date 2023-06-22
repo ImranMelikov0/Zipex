@@ -1,10 +1,13 @@
 package com.imranmelikov.zipex.adapter
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.marginBottom
@@ -120,6 +123,27 @@ return if (showFirst){
                     it("a")
                 }
             }
+            holder.binding.balanceItemView.setOnClickListener {
+                    val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_view,null)
+                    val close=dialogView.findViewById<Button>(R.id.close)
+                    val url=dialogView.findViewById<TextView>(R.id.url)
+                    val price=dialogView.findViewById<TextView>(R.id.price)
+                    val color=dialogView.findViewById<TextView>(R.id.color)
+
+                    url.text=balanceArrayList.amount.toString()
+                    price.text=balanceArrayList.balance.toString()
+                    color.text=balanceArrayList.history
+
+                    val alertDialogBuilder= AlertDialog.Builder(holder.itemView.context)
+                    alertDialogBuilder.setView(dialogView)
+
+                    val alertDialog=alertDialogBuilder.create()
+                    close.setOnClickListener {
+                        alertDialog.dismiss()
+                    }
+
+                    alertDialog.show()
+            }
         }else {
 
             val balanceList1Array = balanceList1.get(position)
@@ -172,11 +196,28 @@ return if (showFirst){
                     it("b")
                 }
         }
+            holder.binding.balanceItemView.setOnClickListener {
+                val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_view,null)
+                val close=dialogView.findViewById<Button>(R.id.close)
+                val url=dialogView.findViewById<TextView>(R.id.url)
+                val price=dialogView.findViewById<TextView>(R.id.price)
+                val color=dialogView.findViewById<TextView>(R.id.color)
+
+                url.text=balanceList1Array.amount.toString()
+                price.text=balanceList1Array.balance.toString()
+                color.text=balanceList1Array.history
+
+                val alertDialogBuilder= AlertDialog.Builder(holder.itemView.context)
+                alertDialogBuilder.setView(dialogView)
+
+                val alertDialog=alertDialogBuilder.create()
+                close.setOnClickListener {
+                    alertDialog.dismiss()
+                }
+
+                alertDialog.show()
+            }
             }
 
-
-        holder.binding.balanceItemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context,"Məlumatlara ətraflı baxmaq mümkün olmadı",Toast.LENGTH_SHORT).show()
-        }
     }
 }

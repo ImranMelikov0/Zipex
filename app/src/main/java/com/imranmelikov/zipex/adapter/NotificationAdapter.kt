@@ -54,6 +54,14 @@ class NotificationAdapter @Inject constructor(
         holder.binding.notificationTitletext.text=notificationArrayList.title
         holder.binding.notificationText.text=notificationArrayList.post
 
+        if (holder.binding.notificationTitletext.text==notificationArrayList.title){
+            holder.binding.notificationImage.setImageResource(R.drawable.baseline_notification1)
+            holder.binding.notificationTitletext.setTypeface(null,Typeface.NORMAL)
+            holder.binding.notificationTitletext.setTextColor(Color.GRAY)
+            holder.binding.notificationText.setTextColor(Color.GRAY)
+        }else{
+
+        }
         holder.itemView.setOnClickListener {
             onItemClick?.let {
                 val dialogview=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_notification,null)
@@ -79,9 +87,11 @@ class NotificationAdapter @Inject constructor(
                     holder.binding.notificationText.setTextColor(Color.GRAY)
                     alertDialog.dismiss()
                 }
+
                 alertDialog.show()
                 it(notificationArrayList)
             }
+
 
         }
     }
