@@ -43,13 +43,13 @@ import com.imranmelikov.zipex.model.ZipexMoneyDepot
     , BalanceAzn::class
     , BalanceTry::class
     , BalanceTotalTry::class
-    ,BalanceUsd::class
-    ,BalanceTotalUsd::class
+    , BalanceUsd::class
+    , BalanceTotalUsd::class
     , Debt::class
     , DebtTotal::class
     , DebtHistory::class
     , ZipexMoneyDepot::class],
-version = 1)
-abstract class ProjectDatabase:RoomDatabase() {
-    abstract fun projectDao():ProjectDao
+    version = 1)
+abstract class ProjectZipexDatabase:RoomDatabase() {
+    abstract fun projectZipexDao():ProjectZipexDao
 }

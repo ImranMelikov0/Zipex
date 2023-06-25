@@ -1,12 +1,15 @@
 package com.imranmelikov.zipex.view
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -82,28 +85,269 @@ private lateinit var viewModel:Order1ViewModel
         observeOrder7()
         observeOrder8()
         observeOrder9()
+        orderButtons()
 
         orderAdapter.onItemClickOrder1={
+//            viewModel.order1=it
+//            viewModel.onItemString="b"
             val order1=Order1(it.url,it.category,it.count,it.color,it.size,it.price,it.comment,it.history,it.country,"Sığortalanıb",it.payment,it.marketName,it.marketCode,it.office)
             order1.uuid=it.uuid
             viewModel.updateOrder1(order1)
-            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update"))
+            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update1"))
         }
+//        if (viewModel.onItemString=="b"){
+//            val order1=Order1(viewModel.order1.url,viewModel.order1.category,viewModel.order1.count,viewModel.order1.color,viewModel.order1.size,viewModel.order1.price,viewModel.order1.comment,viewModel.order1.history,viewModel.order1.country,"Sığortalanıb",viewModel.order1.payment,viewModel.order1.marketName,viewModel.order1.marketCode,viewModel.order1.office)
+//            order1.uuid=viewModel.order1.uuid
+//            viewModel.updateOrder1(order1)
+//            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update"))
+//            viewModel.onItemString="a"
+//        }else{
+//
+//        }
 
         orderAdapter.onItemClickOrder2={
+//            viewModel2.order2=it
+//            viewModel.onItemString="c"
             val order2=Order2(it.url,it.category,it.count,it.color,it.size,it.price,it.comment,it.history,it.country,"Sığortalanıb",it.payment,it.marketName,it.marketCode,it.office)
             order2.uuid=it.uuid
             viewModel2.updateOrder2(order2)
-            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update"))
+            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update2"))
+
         }
+//        if (viewModel.onItemString=="c"){
+//            val order2=Order2(viewModel2.order2.url,viewModel2.order2.category,viewModel2.order2.count,viewModel2.order2.color,viewModel2.order2.size,viewModel2.order2.price,viewModel2.order2.comment,viewModel2.order2.history,viewModel2.order2.country,"Sığortalanıb",viewModel2.order2.payment,viewModel2.order2.marketName,viewModel2.order2.marketCode,viewModel2.order2.office)
+//            order2.uuid=viewModel2.order2.uuid
+//            viewModel2.updateOrder2(order2)
+//            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update"))
+//            viewModel.onItemString="a"
+//        }else{
+//
+//        }
 
         orderAdapter.onItemClickOrder3={
-            val order3= Order3(it.url,it.category,it.count,it.color,it.size,it.price,it.comment,it.history,it.country,"Sığortalanıb",it.payment,it.marketName,it.marketCode,it.office)
+//            viewModel3.order3=it
+//            viewModel.onItemString="d"
+            val order3=Order3(it.url,it.category,it.count,it.color,it.size,it.price,it.comment,it.history,it.country,"Sığortalanıb",it.payment,it.marketName,it.marketCode,it.office,it.delivery,it.weight)
             order3.uuid=it.uuid
             viewModel3.updateOrder3(order3)
-            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update"))
+            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update3"))
+
         }
+//        if (viewModel.onItemString=="d"){
+//            val order3=Order3(viewModel3.order3.url,viewModel3.order3.category,viewModel3.order3.count,viewModel3.order3.color,viewModel3.order3.size,viewModel3.order3.price,viewModel3.order3.comment,viewModel3.order3.history,viewModel3.order3.country,"Sığortalanıb",viewModel3.order3.payment,viewModel3.order3.marketName,viewModel3.order3.marketCode,viewModel3.order3.office,viewModel3.order3.delivery,viewModel3.order3.weight)
+//            order3.uuid=viewModel3.order3.uuid
+//            viewModel3.updateOrder3(order3)
+//            findNavController().navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("update"))
+//            viewModel.onItemString="a"
+//        }else{
+//
+//        }
         return binding.root
+    }
+
+    private fun orderButtons(){
+        val myColor= ContextCompat.getColor(requireContext() , R.color.primary)
+       binding.orderSifaris.setOnClickListener {
+            orderAdapter.showFirst=1
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order1"))
+        }
+        binding.orderAnbar.setOnClickListener {
+           orderAdapter.showFirst=2
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
+        }
+        binding.orderSmartbeyangozleyir.setOnClickListener {
+           orderAdapter.showFirst=3
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order3"))
+        }
+        binding.orderSmartbeyanedilib.setOnClickListener {
+           orderAdapter.showFirst=4
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order4"))
+        }
+        binding.orderYol.setOnClickListener {
+           orderAdapter.showFirst=5
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order5"))
+        }
+        binding.orderGomruk.setOnClickListener {
+           orderAdapter.showFirst=6
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order6"))
+        }
+        binding.orderCesidleme.setOnClickListener {
+           orderAdapter.showFirst=7
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order7"))
+        }
+       binding.orderCatib.setOnClickListener {
+           orderAdapter.showFirst=8
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order8"))
+        }
+        binding.orderTehvil.setOnClickListener {
+           orderAdapter.showFirst=9
+            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order9"))
+        }
+        if (orderAdapter.showFirst==1){
+            binding.orderAnbar.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
+            binding.orderYol.setBackgroundColor(Color.WHITE)
+            binding.orderGomruk.setBackgroundColor(Color.WHITE)
+            binding.orderCesidleme.setBackgroundColor(Color.WHITE)
+            binding.orderCatib.setBackgroundColor(Color.WHITE)
+            binding.orderTehvil.setBackgroundColor(Color.WHITE)
+
+            binding.orderAnbar.setTextColor(myColor)
+            binding.orderSmartbeyanedilib.setTextColor(myColor)
+            binding.orderSmartbeyangozleyir.setTextColor(myColor)
+            binding.orderYol.setTextColor(myColor)
+            binding.orderGomruk.setTextColor(myColor)
+            binding.orderCesidleme.setTextColor(myColor)
+            binding.orderCatib.setTextColor(myColor)
+            binding.orderTehvil.setTextColor(myColor)
+        }else if(orderAdapter.showFirst==2){
+            binding.orderSifaris.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
+            binding.orderYol.setBackgroundColor(Color.WHITE)
+            binding.orderGomruk.setBackgroundColor(Color.WHITE)
+            binding.orderCesidleme.setBackgroundColor(Color.WHITE)
+            binding.orderCatib.setBackgroundColor(Color.WHITE)
+            binding.orderTehvil.setBackgroundColor(Color.WHITE)
+
+            binding.orderSifaris.setTextColor(myColor)
+            binding.orderSmartbeyanedilib.setTextColor(myColor)
+            binding.orderSmartbeyangozleyir.setTextColor(myColor)
+            binding.orderYol.setTextColor(myColor)
+            binding.orderGomruk.setTextColor(myColor)
+            binding.orderCesidleme.setTextColor(myColor)
+            binding.orderCatib.setTextColor(myColor)
+            binding.orderTehvil.setTextColor(myColor)
+        }else if (orderAdapter.showFirst==3){
+            binding.orderAnbar.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
+            binding.orderSifaris.setBackgroundColor(Color.WHITE)
+            binding.orderYol.setBackgroundColor(Color.WHITE)
+            binding.orderGomruk.setBackgroundColor(Color.WHITE)
+            binding.orderCesidleme.setBackgroundColor(Color.WHITE)
+            binding.orderCatib.setBackgroundColor(Color.WHITE)
+            binding.orderTehvil.setBackgroundColor(Color.WHITE)
+
+            binding.orderAnbar.setTextColor(myColor)
+            binding.orderSmartbeyanedilib.setTextColor(myColor)
+            binding.orderSifaris.setTextColor(myColor)
+            binding.orderYol.setTextColor(myColor)
+            binding.orderGomruk.setTextColor(myColor)
+            binding.orderCesidleme.setTextColor(myColor)
+            binding.orderCatib.setTextColor(myColor)
+            binding.orderTehvil.setTextColor(myColor)
+
+        }else if(orderAdapter.showFirst==4){
+            binding.orderAnbar.setBackgroundColor(Color.WHITE)
+            binding.orderSifaris.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
+            binding.orderYol.setBackgroundColor(Color.WHITE)
+            binding.orderGomruk.setBackgroundColor(Color.WHITE)
+            binding.orderCesidleme.setBackgroundColor(Color.WHITE)
+            binding.orderCatib.setBackgroundColor(Color.WHITE)
+            binding.orderTehvil.setBackgroundColor(Color.WHITE)
+
+            binding.orderAnbar.setTextColor(myColor)
+            binding.orderSifaris.setTextColor(myColor)
+            binding.orderSmartbeyangozleyir.setTextColor(myColor)
+            binding.orderYol.setTextColor(myColor)
+            binding.orderGomruk.setTextColor(myColor)
+            binding.orderCesidleme.setTextColor(myColor)
+            binding.orderCatib.setTextColor(myColor)
+            binding.orderTehvil.setTextColor(myColor)
+
+        }else if (orderAdapter.showFirst==5){
+            binding.orderAnbar.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
+            binding.orderSifaris.setBackgroundColor(Color.WHITE)
+            binding.orderGomruk.setBackgroundColor(Color.WHITE)
+            binding.orderCesidleme.setBackgroundColor(Color.WHITE)
+            binding.orderCatib.setBackgroundColor(Color.WHITE)
+            binding.orderTehvil.setBackgroundColor(Color.WHITE)
+
+            binding.orderAnbar.setTextColor(myColor)
+            binding.orderSmartbeyanedilib.setTextColor(myColor)
+            binding.orderSmartbeyangozleyir.setTextColor(myColor)
+            binding.orderSifaris.setTextColor(myColor)
+            binding.orderGomruk.setTextColor(myColor)
+            binding.orderCesidleme.setTextColor(myColor)
+            binding.orderCatib.setTextColor(myColor)
+            binding.orderTehvil.setTextColor(myColor)
+        }else if (orderAdapter.showFirst==6){
+            binding.orderAnbar.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
+            binding.orderYol.setBackgroundColor(Color.WHITE)
+            binding.orderSifaris.setBackgroundColor(Color.WHITE)
+            binding.orderCesidleme.setBackgroundColor(Color.WHITE)
+            binding.orderCatib.setBackgroundColor(Color.WHITE)
+            binding.orderTehvil.setBackgroundColor(Color.WHITE)
+
+            binding.orderAnbar.setTextColor(myColor)
+            binding.orderSmartbeyanedilib.setTextColor(myColor)
+            binding.orderSmartbeyangozleyir.setTextColor(myColor)
+            binding.orderYol.setTextColor(myColor)
+            binding.orderSifaris.setTextColor(myColor)
+            binding.orderCesidleme.setTextColor(myColor)
+            binding.orderCatib.setTextColor(myColor)
+            binding.orderTehvil.setTextColor(myColor)
+        }else if (orderAdapter.showFirst==7){
+            binding.orderAnbar.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
+            binding.orderYol.setBackgroundColor(Color.WHITE)
+            binding.orderGomruk.setBackgroundColor(Color.WHITE)
+            binding.orderSifaris.setBackgroundColor(Color.WHITE)
+            binding.orderCatib.setBackgroundColor(Color.WHITE)
+            binding.orderTehvil.setBackgroundColor(Color.WHITE)
+
+            binding.orderAnbar.setTextColor(myColor)
+            binding.orderSmartbeyanedilib.setTextColor(myColor)
+            binding.orderSmartbeyangozleyir.setTextColor(myColor)
+            binding.orderYol.setTextColor(myColor)
+            binding.orderGomruk.setTextColor(myColor)
+            binding.orderSifaris.setTextColor(myColor)
+            binding.orderCatib.setTextColor(myColor)
+            binding.orderTehvil.setTextColor(myColor)
+        }else if (orderAdapter.showFirst==8){
+            binding.orderAnbar.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
+            binding.orderYol.setBackgroundColor(Color.WHITE)
+            binding.orderGomruk.setBackgroundColor(Color.WHITE)
+            binding.orderCesidleme.setBackgroundColor(Color.WHITE)
+            binding.orderSifaris.setBackgroundColor(Color.WHITE)
+            binding.orderTehvil.setBackgroundColor(Color.WHITE)
+
+            binding.orderAnbar.setTextColor(myColor)
+            binding.orderSmartbeyanedilib.setTextColor(myColor)
+            binding.orderSmartbeyangozleyir.setTextColor(myColor)
+            binding.orderYol.setTextColor(myColor)
+            binding.orderGomruk.setTextColor(myColor)
+            binding.orderCesidleme.setTextColor(myColor)
+            binding.orderSifaris.setTextColor(myColor)
+            binding.orderTehvil.setTextColor(myColor)
+        }else if (orderAdapter.showFirst==9){
+            binding.orderAnbar.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
+            binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
+            binding.orderYol.setBackgroundColor(Color.WHITE)
+            binding.orderGomruk.setBackgroundColor(Color.WHITE)
+            binding.orderCesidleme.setBackgroundColor(Color.WHITE)
+            binding.orderCatib.setBackgroundColor(Color.WHITE)
+            binding.orderSifaris.setBackgroundColor(Color.WHITE)
+
+            binding.orderAnbar.setTextColor(myColor)
+            binding.orderSmartbeyanedilib.setTextColor(myColor)
+            binding.orderSmartbeyangozleyir.setTextColor(myColor)
+            binding.orderYol.setTextColor(myColor)
+            binding.orderGomruk.setTextColor(myColor)
+            binding.orderCesidleme.setTextColor(myColor)
+            binding.orderCatib.setTextColor(myColor)
+            binding.orderSifaris.setTextColor(myColor)
+        }
     }
 
     private fun observeOrder1(){

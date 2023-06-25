@@ -123,8 +123,7 @@ class PaymentFragment @Inject constructor(
                                         decimalFormat.roundingMode = RoundingMode.HALF_UP
                                         val roundedAmount = decimalFormat.format(totalTryPlus).toDouble()
                                             val currentDate = LocalDateTime.now()
-                                            val formatter =
-                                                DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
+                                            val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
                                             val formatDate = currentDate.format(formatter)
                                             val insertBalanceTry =BalanceTry(formatDate, price, roundedAmount)
                                             viewModel.insertBalanceTry(insertBalanceTry)
@@ -225,6 +224,8 @@ class PaymentFragment @Inject constructor(
                     totalTry.uuid = getAmount.uuid
 
                     viewModel.updateBalanceTotalTry(totalTry)
+                viewModel.getBalanceTotalTry=totalTry
+
                     val currentDate = LocalDateTime.now()
                     val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
                     val formatDate = currentDate.format(formatter)

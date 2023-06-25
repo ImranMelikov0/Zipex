@@ -153,6 +153,7 @@ class CartFragment @Inject constructor(
                                                         val updateTotalTry= BalanceTotalTry(roundedAmount)
                                                         updateTotalTry.uuid=balanceTotalTry.uuid
                                                         balanceViewModel.updateBalanceTotalTry(updateTotalTry)
+                                                        balanceViewModel.getBalanceTotalTry=updateTotalTry
                                                         val currentDate= LocalDateTime.now()
                                                         val formatter= DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
                                                         val formatDate=currentDate.format(formatter)

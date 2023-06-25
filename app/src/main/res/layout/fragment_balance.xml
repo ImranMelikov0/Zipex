@@ -39,11 +39,186 @@
 
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/linearbuttons"
+            android:layout_below="@id/appBarLayout"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/balance_item_order_linear"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/balance_item_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/primary"
+                    android:text="Sifarişlər"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    app:cornerRadius="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/balance_item_service_linear"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/balance_item_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:text="Xidmətlər"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    android:textColor="@color/primary"
+                    app:cornerRadius="5dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/debthistory_usdbutton"
+                android:background="@drawable/shape_items_linearlayout"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent"
+                android:layout_weight="1.06">
+
+                <Button
+                    android:id="@+id/debt_history_usd"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:text="USD"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="-2dp"
+                    android:layout_marginTop="-2dp"
+                    android:textColor="@color/primary"
+                    app:cornerRadius="5dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/linearcommon"
+            android:layout_below="@id/linearbuttons"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/balance_title_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Balans: 100"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:id="@+id/edittextbuttonlinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                >
+                <EditText
+                    android:id="@+id/balance_item_addbalance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_items"
+                    android:padding="10dp"
+                    android:inputType="numberDecimal"
+                    android:hint="0.0"/>
+                <Button
+                    android:id="@+id/balance_item_addbalancebutton"
+                    android:layout_marginTop="-2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.7"
+                    android:layout_marginLeft="8dp"
+                    android:backgroundTint="@color/primary"
+                    app:cornerRadius="5dp"
+                    android:text="Balans Artır"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+
+                android:background="@drawable/shape_table_row_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearlayout1"
+                android:orientation="horizontal">
+                <TextView
+                    android:padding="5dp"
+                    android:background="@drawable/table_row_left"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Tarix"
+                    android:textAlignment="center"/>
+
+
+                <TextView
+                    android:padding="5dp"
+                    android:background="@drawable/table_row"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Məbləğ"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:padding="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Balans"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:padding="5dp"
+                    android:background="@drawable/table_row_right"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ətraflı"
+                    android:textSize="16dp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/balance_recyclerview"
-            android:layout_below="@id/appBarLayout"/>
+            android:layout_below="@id/linearcommon"/>
     </RelativeLayout>
 
 

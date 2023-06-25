@@ -27,13 +27,13 @@ import javax.inject.Inject
 class BalanceAdapter @Inject constructor():RecyclerView.Adapter<BalanceAdapter.BalanceViewHolder>() {
     class BalanceViewHolder(var binding:BalanceRowBinding):RecyclerView.ViewHolder(binding.root)
 
-   var balanceList2=BalanceTotalTry(0.0)
-    var balanceList3= BalanceTotalAzn(0.0)
+//   var balanceList2=BalanceTotalTry(0.0)
+//    var balanceList3= BalanceTotalAzn(0.0)
     var onItemClick:((String)->Unit)?=null
-    var onItemClickToPayment:((Float)->Unit)?=null
-    var onItemClickToPaymentAzn:((Float)->Unit)?=null
+//    var onItemClickToPayment:((Float)->Unit)?=null
+//    var onItemClickToPaymentAzn:((Float)->Unit)?=null
     var onItemClick1:((String)->Unit)?=null
-   private var showFirst:Boolean=true
+    var showFirst:Int=1
 
     private val diffUtil=object :DiffUtil.ItemCallback<BalanceTry>(){
         override fun areItemsTheSame(oldItem: BalanceTry, newItem: BalanceTry): Boolean {
@@ -71,64 +71,35 @@ class BalanceAdapter @Inject constructor():RecyclerView.Adapter<BalanceAdapter.B
     }
 
     override fun getItemCount(): Int {
-return if (showFirst){
+return if (showFirst==1){
     balanceList.size
-}else{
+}else if (showFirst==2){
     balanceList1.size
+}else{
+    balanceList.size
 }
     }
 
     override fun onBindViewHolder(holder: BalanceViewHolder, position: Int) {
-        if (showFirst){
-            val myColor= ContextCompat.getColor(holder.itemView.context, R.color.primary)
+        if (showFirst==1){
             val balanceArrayList=balanceList.get(position)
-            if (position==0){
-                holder.binding.linearbuttons.visibility=View.VISIBLE
-                holder.binding.linearcommon.visibility=View.VISIBLE
-            }else{
-                holder.binding.linearbuttons.visibility=View.GONE
-                holder.binding.linearcommon.visibility=View.GONE
-            }
+
 //            if (position==balanceList.size-1){
 //                val params=holder.binding.linearlayout2.layoutParams as LinearLayout.LayoutParams
 //                params.bottomMargin=45
 //                holder.binding.linearlayout2.layoutParams=params
 //            }
-
-            holder.binding.balanceItemService.setBackgroundColor(Color.WHITE)
-            holder.binding.balanceItemService.setTextColor(myColor)
-            holder.binding.balanceItemOrder.setTextColor(Color.WHITE)
-            holder.binding.balanceItemOrder.setBackgroundColor(myColor)
-
-            holder.binding.balanceItemAddbalancebutton.setOnClickListener {
-                if (holder.binding.balanceItemAddbalance.text.toString().isEmpty()){
-                    Toast.makeText(holder.itemView.context,"Balansı qeyd edin",Toast.LENGTH_SHORT).show()
-                }else{
-                    val amount=holder.binding.balanceItemAddbalance.text.toString().toFloat()
-                    Navigation.findNavController(it).navigate(BalanceFragmentDirections.actionBalanceFragmentToPaymentFragment())
-                    onItemClickToPayment?.let {
-                        it(amount)
-                    }
-                }
-            }
             holder.binding.balanceItemHistory.text=balanceArrayList.history
             holder.binding.balanceItemPrice.text=balanceArrayList.amount.toString()
             holder.binding.balanceItemBalance.text=balanceArrayList.balance.toString()
-        holder.binding.balanceTitleBalance.text="Balans : ${balanceList2.balanceTotal.toString()} TL"
 
-            holder.binding.balanceItemService.setOnClickListener {view->
-                showFirst=false
-                Navigation.findNavController(view).navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
-                onItemClick?.let {
-                    it("a")
-                }
-            }
+
             holder.binding.balanceItemView.setOnClickListener {
                     val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_view,null)
                     val close=dialogView.findViewById<Button>(R.id.close)
                     val url=dialogView.findViewById<TextView>(R.id.url)
                     val price=dialogView.findViewById<TextView>(R.id.price)
-                    val color=dialogView.findViewById<TextView>(R.id.color)
+                    val color=dialogView.findViewById<TextView>(R.id.count)
 
                     url.text=balanceArrayList.amount.toString()
                     price.text=balanceArrayList.balance.toString()
@@ -144,18 +115,9 @@ return if (showFirst){
 
                     alertDialog.show()
             }
-        }else {
+        }else if (showFirst==2){
 
             val balanceList1Array = balanceList1.get(position)
-            val myColor = ContextCompat.getColor(holder.itemView.context, R.color.primary)
-
-            if (position==0){
-                holder.binding.linearbuttons.visibility=View.VISIBLE
-                holder.binding.linearcommon.visibility=View.VISIBLE
-            }else{
-                holder.binding.linearbuttons.visibility=View.GONE
-                holder.binding.linearcommon.visibility=View.GONE
-            }
 
 //            if (position==balanceList1.size-1){
 //                val params=holder.binding.linearlayout2.layoutParams as LinearLayout.LayoutParams
@@ -163,45 +125,16 @@ return if (showFirst){
 //                holder.binding.linearlayout2.layoutParams=params
 //            }
 
-
-            holder.binding.balanceItemService.setBackgroundColor(myColor)
-            holder.binding.balanceItemService.setTextColor(Color.WHITE)
-            holder.binding.balanceItemOrder.setTextColor(myColor)
-            holder.binding.balanceItemOrder.setBackgroundColor(Color.WHITE)
-
-            holder.binding.balanceItemAddbalancebutton.setOnClickListener {
-                if (holder.binding.balanceItemAddbalance.text.toString().isEmpty()) {
-                    Toast.makeText(holder.itemView.context, "Balansı qeyd edin", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
-                    val amount = holder.binding.balanceItemAddbalance.text.toString().toFloat()
-                    Navigation.findNavController(it).navigate(
-                        BalanceFragmentDirections.actionBalanceFragmentToPaymentAznFragment()
-                    )
-                    onItemClickToPaymentAzn?.let {
-                        it(amount)
-                    }
-                }
-            }
-
             holder.binding.balanceItemHistory.text = balanceList1Array.history
             holder.binding.balanceItemPrice.text = balanceList1Array.amount.toString()
             holder.binding.balanceItemBalance.text = balanceList1Array.balance.toString()
-            holder.binding.balanceTitleBalance.text="Balans : ${balanceList3.balanceTotal.toString()} AZN"
 
-            holder.binding.balanceItemOrder.setOnClickListener {view->
-                showFirst = true
-                Navigation.findNavController(view).navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
-                onItemClick1?.let {
-                    it("b")
-                }
-        }
             holder.binding.balanceItemView.setOnClickListener {
                 val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_view,null)
                 val close=dialogView.findViewById<Button>(R.id.close)
                 val url=dialogView.findViewById<TextView>(R.id.url)
                 val price=dialogView.findViewById<TextView>(R.id.price)
-                val color=dialogView.findViewById<TextView>(R.id.color)
+                val color=dialogView.findViewById<TextView>(R.id.count)
 
                 url.text=balanceList1Array.amount.toString()
                 price.text=balanceList1Array.balance.toString()
@@ -217,7 +150,9 @@ return if (showFirst){
 
                 alertDialog.show()
             }
-            }
+            }else{
+
+        }
 
     }
 }

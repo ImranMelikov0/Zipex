@@ -37,7 +37,7 @@ import javax.inject.Inject
 class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
     class OrderViewHolder(var binding:OrderItemRowBinding):RecyclerView.ViewHolder(binding.root)
 
-    private var showFirst:Int=1
+    var showFirst:Int=1
     var onItemClickOrder1:((Order1)->Unit)?=null
     var onItemClickOrder2:((Order2)->Unit)?=null
     var onItemClickOrder3:((Order3)->Unit)?=null
@@ -206,7 +206,6 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
     }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
-        val myColor= ContextCompat.getColor(holder.itemView.context, R.color.primary)
         holder.binding.orderItemImage.setOnClickListener {
             val dialogview=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_imagefile,null)
             val button=dialogview.findViewById<Button>(R.id.dialog_button)
@@ -234,43 +233,6 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             }
             alertDialog.show()
         }
-        holder.binding.orderSifaris.setOnClickListener {
-            showFirst=1
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-        holder.binding.orderAnbar.setOnClickListener {
-            showFirst=2
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-        holder.binding.orderSmartbeyangozleyir.setOnClickListener {
-            showFirst=3
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-        holder.binding.orderSmartbeyanedilib.setOnClickListener {
-            showFirst=4
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-        holder.binding.orderYol.setOnClickListener {
-            showFirst=5
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-        holder.binding.orderGomruk.setOnClickListener {
-            showFirst=6
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-        holder.binding.orderCesidleme.setOnClickListener {
-            showFirst=7
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-        holder.binding.orderCatib.setOnClickListener {
-            showFirst=8
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-        holder.binding.orderTehvil.setOnClickListener {
-            showFirst=9
-            Navigation.findNavController(it).navigate(OrderFragmentDirections.actionOrderFragmentToAdminNewsFragment("order2"))
-        }
-
 
         if (showFirst==1){
             val order1ArrayList=order1List.get(position)
@@ -291,38 +253,6 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 holder.binding.cartSigorta.visibility=View.GONE
             }else{
 
-            }
-
-            holder.binding.orderAnbar.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
-            holder.binding.orderYol.setBackgroundColor(Color.WHITE)
-            holder.binding.orderGomruk.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCesidleme.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCatib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderTehvil.setBackgroundColor(Color.WHITE)
-
-            holder.binding.orderAnbar.setTextColor(myColor)
-            holder.binding.orderSmartbeyanedilib.setTextColor(myColor)
-            holder.binding.orderSmartbeyangozleyir.setTextColor(myColor)
-            holder.binding.orderYol.setTextColor(myColor)
-            holder.binding.orderGomruk.setTextColor(myColor)
-            holder.binding.orderCesidleme.setTextColor(myColor)
-            holder.binding.orderCatib.setTextColor(myColor)
-            holder.binding.orderTehvil.setTextColor(myColor)
-
-            if (position==0){
-
-            }else{
-                holder.binding.orderAnbar.visibility=View.GONE
-                holder.binding.orderCatib.visibility=View.GONE
-                holder.binding.orderGomruk.visibility=View.GONE
-                holder.binding.orderTehvil.visibility=View.GONE
-                holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                holder.binding.orderYol.visibility=View.GONE
-                holder.binding.orderCesidleme.visibility=View.GONE
-                holder.binding.orderSifaris.visibility=View.GONE
             }
 
 
@@ -529,36 +459,6 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
 
             }
 
-            holder.binding.orderSifaris.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
-            holder.binding.orderYol.setBackgroundColor(Color.WHITE)
-            holder.binding.orderGomruk.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCesidleme.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCatib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderTehvil.setBackgroundColor(Color.WHITE)
-
-            holder.binding.orderSifaris.setTextColor(myColor)
-            holder.binding.orderSmartbeyanedilib.setTextColor(myColor)
-            holder.binding.orderSmartbeyangozleyir.setTextColor(myColor)
-            holder.binding.orderYol.setTextColor(myColor)
-            holder.binding.orderGomruk.setTextColor(myColor)
-            holder.binding.orderCesidleme.setTextColor(myColor)
-            holder.binding.orderCatib.setTextColor(myColor)
-            holder.binding.orderTehvil.setTextColor(myColor)
-            if (position==0){
-
-                }else{
-                    holder.binding.orderAnbar.visibility=View.GONE
-                    holder.binding.orderCatib.visibility=View.GONE
-                    holder.binding.orderGomruk.visibility=View.GONE
-                    holder.binding.orderTehvil.visibility=View.GONE
-                    holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                    holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                    holder.binding.orderYol.visibility=View.GONE
-                    holder.binding.orderCesidleme.visibility=View.GONE
-                    holder.binding.orderSifaris.visibility=View.GONE
-                }
 
 
             holder.binding.orderItemTimeHistory.setOnClickListener {
@@ -750,8 +650,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 holder.binding.orderItemPrice.text="Qiymət: ${order3ArrayList.price}"
                 holder.binding.orderItemMarketcode.text="Mağaza kodu: ${order3ArrayList.marketCode}"
                 holder.binding.orderItemMarketname.text="Mağaza adı: ${order3ArrayList.marketName}"
-                holder.binding.orderItemCatdirilma.text="Çatdırılma: 0.00"
-                holder.binding.orderItemWeight.text="Çəki: 0.00"
+                holder.binding.orderItemCatdirilma.text="Çatdırılma: ${order3ArrayList.delivery.toDouble()}"
+                holder.binding.orderItemWeight.text="Çəki: ${order3ArrayList.weight.toDouble()}"
                 holder.binding.orderItemCatdirilmaofis.text="Çatdırılma ofisi: Azərbaycanda hər hansısa bir yer"
 
             if (order3ArrayList.sigorta.equals("Sığortalanıb")){
@@ -762,38 +662,6 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             }else{
 
             }
-
-            holder.binding.orderAnbar.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSifaris.setBackgroundColor(Color.WHITE)
-            holder.binding.orderYol.setBackgroundColor(Color.WHITE)
-            holder.binding.orderGomruk.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCesidleme.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCatib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderTehvil.setBackgroundColor(Color.WHITE)
-
-            holder.binding.orderAnbar.setTextColor(myColor)
-            holder.binding.orderSmartbeyanedilib.setTextColor(myColor)
-            holder.binding.orderSifaris.setTextColor(myColor)
-            holder.binding.orderYol.setTextColor(myColor)
-            holder.binding.orderGomruk.setTextColor(myColor)
-            holder.binding.orderCesidleme.setTextColor(myColor)
-            holder.binding.orderCatib.setTextColor(myColor)
-            holder.binding.orderTehvil.setTextColor(myColor)
-            if (position==0){
-
-                }else{
-                    holder.binding.orderAnbar.visibility=View.GONE
-                    holder.binding.orderCatib.visibility=View.GONE
-                    holder.binding.orderGomruk.visibility=View.GONE
-                    holder.binding.orderTehvil.visibility=View.GONE
-                    holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                    holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                    holder.binding.orderYol.visibility=View.GONE
-                    holder.binding.orderCesidleme.visibility=View.GONE
-                    holder.binding.orderSifaris.visibility=View.GONE
-                }
-
 
             holder.binding.orderItemTimeHistory.setOnClickListener {
                 val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_history,null)
@@ -983,8 +851,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             holder.binding.orderItemPrice.text="Qiymət: ${order4ArrayList.price}"
             holder.binding.orderItemMarketcode.text="Mağaza kodu: ${order4ArrayList.marketCode}"
             holder.binding.orderItemMarketname.text="Mağaza adı: ${order4ArrayList.marketName}"
-            holder.binding.orderItemCatdirilma.text="Çatdırılma: 0.00"
-            holder.binding.orderItemWeight.text="Çəki: 0.00"
+            holder.binding.orderItemCatdirilma.text="Çatdırılma: ${order4ArrayList.delivery.toDouble()}"
+            holder.binding.orderItemWeight.text="Çəki: ${order4ArrayList.weight.toDouble()}"
             holder.binding.orderItemCatdirilmaofis.text="Çatdırılma ofisi: Azərbaycanda hər hansısa bir yer"
 
             if (order4ArrayList.sigorta.equals("Sığortalanıb")){
@@ -995,39 +863,9 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
 
             }
 
-            holder.binding.orderAnbar.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSifaris.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
-            holder.binding.orderYol.setBackgroundColor(Color.WHITE)
-            holder.binding.orderGomruk.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCesidleme.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCatib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderTehvil.setBackgroundColor(Color.WHITE)
+                holder.binding.imagePen.visibility=View.GONE
+                holder.binding.cartSigorta.visibility=View.GONE
 
-            holder.binding.orderAnbar.setTextColor(myColor)
-            holder.binding.orderSifaris.setTextColor(myColor)
-            holder.binding.orderSmartbeyangozleyir.setTextColor(myColor)
-            holder.binding.orderYol.setTextColor(myColor)
-            holder.binding.orderGomruk.setTextColor(myColor)
-            holder.binding.orderCesidleme.setTextColor(myColor)
-            holder.binding.orderCatib.setTextColor(myColor)
-            holder.binding.orderTehvil.setTextColor(myColor)
-            if (position==0){
-                holder.binding.imagePen.visibility=View.GONE
-                holder.binding.cartSigorta.visibility=View.GONE
-            }else{
-                holder.binding.orderAnbar.visibility=View.GONE
-                holder.binding.orderCatib.visibility=View.GONE
-                holder.binding.orderGomruk.visibility=View.GONE
-                holder.binding.orderTehvil.visibility=View.GONE
-                holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                holder.binding.orderYol.visibility=View.GONE
-                holder.binding.orderCesidleme.visibility=View.GONE
-                holder.binding.orderSifaris.visibility=View.GONE
-                holder.binding.imagePen.visibility=View.GONE
-                holder.binding.cartSigorta.visibility=View.GONE
-            }
 
             holder.binding.orderItemTimeHistory.setOnClickListener {
                 val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_history,null)
@@ -1192,8 +1030,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             holder.binding.orderItemPrice.text="Qiymət: ${order5ArrayList.price}"
             holder.binding.orderItemMarketcode.text="Mağaza kodu: ${order5ArrayList.marketCode}"
             holder.binding.orderItemMarketname.text="Mağaza adı: ${order5ArrayList.marketName}"
-            holder.binding.orderItemCatdirilma.text="Çatdırılma: ${order5ArrayList.delivery}"
-            holder.binding.orderItemWeight.text="Çəki: ${order5ArrayList.weight}"
+            holder.binding.orderItemCatdirilma.text="Çatdırılma: ${order5ArrayList.delivery.toDouble()}"
+            holder.binding.orderItemWeight.text="Çəki: ${order5ArrayList.weight.toDouble()}"
             holder.binding.orderItemCatdirilmaofis.text="Çatdırılma ofisi: Azərbaycanda hər hansısa bir yer"
 
 
@@ -1204,41 +1042,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             }else{
 
             }
-
-            holder.binding.orderAnbar.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSifaris.setBackgroundColor(Color.WHITE)
-            holder.binding.orderGomruk.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCesidleme.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCatib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderTehvil.setBackgroundColor(Color.WHITE)
-
-            holder.binding.orderAnbar.setTextColor(myColor)
-            holder.binding.orderSmartbeyanedilib.setTextColor(myColor)
-            holder.binding.orderSmartbeyangozleyir.setTextColor(myColor)
-            holder.binding.orderSifaris.setTextColor(myColor)
-            holder.binding.orderGomruk.setTextColor(myColor)
-            holder.binding.orderCesidleme.setTextColor(myColor)
-            holder.binding.orderCatib.setTextColor(myColor)
-            holder.binding.orderTehvil.setTextColor(myColor)
-            if (position==0){
                 holder.binding.imagePen.visibility=View.GONE
                 holder.binding.cartSigorta.visibility=View.GONE
-            }else{
-                holder.binding.orderAnbar.visibility=View.GONE
-                holder.binding.orderCatib.visibility=View.GONE
-                holder.binding.orderGomruk.visibility=View.GONE
-                holder.binding.orderTehvil.visibility=View.GONE
-                holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                holder.binding.orderYol.visibility=View.GONE
-                holder.binding.orderCesidleme.visibility=View.GONE
-                holder.binding.orderSifaris.visibility=View.GONE
-                holder.binding.imagePen.visibility=View.GONE
-                holder.binding.cartSigorta.visibility=View.GONE
-            }
-
 
             holder.binding.orderItemTimeHistory.setOnClickListener {
                 val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_history,null)
@@ -1402,8 +1207,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             holder.binding.orderItemPrice.text="Qiymət: ${order6ArrayList.price}"
             holder.binding.orderItemMarketcode.text="Mağaza kodu: ${order6ArrayList.marketCode}"
             holder.binding.orderItemMarketname.text="Mağaza adı: ${order6ArrayList.marketName}"
-            holder.binding.orderItemCatdirilma.text="Çatdırılma: 0.00"
-            holder.binding.orderItemWeight.text="Çəki: 0.00"
+            holder.binding.orderItemCatdirilma.text="Çatdırılma: ${order6ArrayList.delivery.toDouble()}"
+            holder.binding.orderItemWeight.text="Çəki: ${order6ArrayList.weight.toDouble()}"
             holder.binding.orderItemCatdirilmaofis.text="Çatdırılma ofisi: Azərbaycanda hər hansısa bir yer"
 
             if (order6ArrayList.sigorta.equals("Sığortalanıb")){
@@ -1414,40 +1219,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
 
             }
 
-
-            holder.binding.orderAnbar.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
-            holder.binding.orderYol.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSifaris.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCesidleme.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCatib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderTehvil.setBackgroundColor(Color.WHITE)
-
-            holder.binding.orderAnbar.setTextColor(myColor)
-            holder.binding.orderSmartbeyanedilib.setTextColor(myColor)
-            holder.binding.orderSmartbeyangozleyir.setTextColor(myColor)
-            holder.binding.orderYol.setTextColor(myColor)
-            holder.binding.orderSifaris.setTextColor(myColor)
-            holder.binding.orderCesidleme.setTextColor(myColor)
-            holder.binding.orderCatib.setTextColor(myColor)
-            holder.binding.orderTehvil.setTextColor(myColor)
-            if (position==0){
                 holder.binding.imagePen.visibility=View.GONE
                 holder.binding.cartSigorta.visibility=View.GONE
-            }else{
-                holder.binding.orderAnbar.visibility=View.GONE
-                holder.binding.orderCatib.visibility=View.GONE
-                holder.binding.orderGomruk.visibility=View.GONE
-                holder.binding.orderTehvil.visibility=View.GONE
-                holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                holder.binding.orderYol.visibility=View.GONE
-                holder.binding.orderCesidleme.visibility=View.GONE
-                holder.binding.orderSifaris.visibility=View.GONE
-                holder.binding.imagePen.visibility=View.GONE
-                holder.binding.cartSigorta.visibility=View.GONE
-            }
 
             holder.binding.orderItemTimeHistory.setOnClickListener {
                 val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_history,null)
@@ -1612,8 +1385,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             holder.binding.orderItemPrice.text="Qiymət: ${order7ArrayList.price}"
             holder.binding.orderItemMarketcode.text="Mağaza kodu: ${order7ArrayList.marketCode}"
             holder.binding.orderItemMarketname.text="Mağaza adı: ${order7ArrayList.marketName}"
-            holder.binding.orderItemCatdirilma.text="Çatdırılma: 0.00"
-            holder.binding.orderItemWeight.text="Çəki: 0.00"
+            holder.binding.orderItemCatdirilma.text="Çatdırılma: ${order7ArrayList.delivery.toDouble()}"
+            holder.binding.orderItemWeight.text="Çəki: ${order7ArrayList.weight.toDouble()}"
             holder.binding.orderItemCatdirilmaofis.text="Çatdırılma ofisi: Azərbaycanda hər hansısa bir yer"
 
             if (order7ArrayList.sigorta.equals("Sığortalanıb")){
@@ -1624,40 +1397,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
 
             }
 
-            holder.binding.orderAnbar.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
-            holder.binding.orderYol.setBackgroundColor(Color.WHITE)
-            holder.binding.orderGomruk.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSifaris.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCatib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderTehvil.setBackgroundColor(Color.WHITE)
-
-            holder.binding.orderAnbar.setTextColor(myColor)
-            holder.binding.orderSmartbeyanedilib.setTextColor(myColor)
-            holder.binding.orderSmartbeyangozleyir.setTextColor(myColor)
-            holder.binding.orderYol.setTextColor(myColor)
-            holder.binding.orderGomruk.setTextColor(myColor)
-            holder.binding.orderSifaris.setTextColor(myColor)
-            holder.binding.orderCatib.setTextColor(myColor)
-            holder.binding.orderTehvil.setTextColor(myColor)
-            if (position==0){
                 holder.binding.imagePen.visibility=View.GONE
                 holder.binding.cartSigorta.visibility=View.GONE
-            }else{
-                holder.binding.orderAnbar.visibility=View.GONE
-                holder.binding.orderCatib.visibility=View.GONE
-                holder.binding.orderGomruk.visibility=View.GONE
-                holder.binding.orderTehvil.visibility=View.GONE
-                holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                holder.binding.orderYol.visibility=View.GONE
-                holder.binding.orderCesidleme.visibility=View.GONE
-                holder.binding.orderSifaris.visibility=View.GONE
-                holder.binding.imagePen.visibility=View.GONE
-                holder.binding.cartSigorta.visibility=View.GONE
-            }
-
 
             holder.binding.orderItemTimeHistory.setOnClickListener {
                 val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_history,null)
@@ -1823,8 +1564,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             holder.binding.orderItemPrice.text="Qiymət: ${order8ArrayList.price}"
             holder.binding.orderItemMarketcode.text="Mağaza kodu: ${order8ArrayList.marketCode}"
             holder.binding.orderItemMarketname.text="Mağaza adı: ${order8ArrayList.marketName}"
-            holder.binding.orderItemCatdirilma.text="Çatdırılma: 0.00"
-            holder.binding.orderItemWeight.text="Çəki: 0.00"
+            holder.binding.orderItemCatdirilma.text="Çatdırılma: ${order8ArrayList.delivery.toDouble()}"
+            holder.binding.orderItemWeight.text="Çəki: ${order8ArrayList.weight.toDouble()}"
             holder.binding.orderItemCatdirilmaofis.text="Çatdırılma ofisi: Azərbaycanda hər hansısa bir yer"
 
             if (order8ArrayList.sigorta.equals("Sığortalanıb")){
@@ -1835,39 +1576,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
 
             }
 
-            holder.binding.orderAnbar.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
-            holder.binding.orderYol.setBackgroundColor(Color.WHITE)
-            holder.binding.orderGomruk.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCesidleme.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSifaris.setBackgroundColor(Color.WHITE)
-            holder.binding.orderTehvil.setBackgroundColor(Color.WHITE)
-
-            holder.binding.orderAnbar.setTextColor(myColor)
-            holder.binding.orderSmartbeyanedilib.setTextColor(myColor)
-            holder.binding.orderSmartbeyangozleyir.setTextColor(myColor)
-            holder.binding.orderYol.setTextColor(myColor)
-            holder.binding.orderGomruk.setTextColor(myColor)
-            holder.binding.orderCesidleme.setTextColor(myColor)
-            holder.binding.orderSifaris.setTextColor(myColor)
-            holder.binding.orderTehvil.setTextColor(myColor)
-            if (position==0){
                 holder.binding.imagePen.visibility=View.GONE
                 holder.binding.cartSigorta.visibility=View.GONE
-            }else{
-                holder.binding.orderAnbar.visibility=View.GONE
-                holder.binding.orderCatib.visibility=View.GONE
-                holder.binding.orderGomruk.visibility=View.GONE
-                holder.binding.orderTehvil.visibility=View.GONE
-                holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                holder.binding.orderYol.visibility=View.GONE
-                holder.binding.orderCesidleme.visibility=View.GONE
-                holder.binding.orderSifaris.visibility=View.GONE
-                holder.binding.imagePen.visibility=View.GONE
-                holder.binding.cartSigorta.visibility=View.GONE
-            }
 
             holder.binding.orderItemTimeHistory.setOnClickListener {
                 val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_history,null)
@@ -2031,8 +1741,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
             holder.binding.orderItemPrice.text="Qiymət: ${order9ArrayList.price}"
             holder.binding.orderItemMarketcode.text="Mağaza kodu: ${order9ArrayList.marketCode}"
             holder.binding.orderItemMarketname.text="Mağaza adı: ${order9ArrayList.marketName}"
-            holder.binding.orderItemCatdirilma.text="Çatdırılma: 0.00"
-            holder.binding.orderItemWeight.text="Çəki: 0.00"
+            holder.binding.orderItemCatdirilma.text="Çatdırılma: ${order9ArrayList.delivery.toDouble()}"
+            holder.binding.orderItemWeight.text="Çəki: ${order9ArrayList.weight.toDouble()}"
             holder.binding.orderItemCatdirilmaofis.text="Çatdırılma ofisi: Azərbaycanda hər hansısa bir yer"
 
             if (order9ArrayList.sigorta.equals("Sığortalanıb")){
@@ -2043,39 +1753,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
 
             }
 
-            holder.binding.orderAnbar.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyanedilib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSmartbeyangozleyir.setBackgroundColor(Color.WHITE)
-            holder.binding.orderYol.setBackgroundColor(Color.WHITE)
-            holder.binding.orderGomruk.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCesidleme.setBackgroundColor(Color.WHITE)
-            holder.binding.orderCatib.setBackgroundColor(Color.WHITE)
-            holder.binding.orderSifaris.setBackgroundColor(Color.WHITE)
-
-            holder.binding.orderAnbar.setTextColor(myColor)
-            holder.binding.orderSmartbeyanedilib.setTextColor(myColor)
-            holder.binding.orderSmartbeyangozleyir.setTextColor(myColor)
-            holder.binding.orderYol.setTextColor(myColor)
-            holder.binding.orderGomruk.setTextColor(myColor)
-            holder.binding.orderCesidleme.setTextColor(myColor)
-            holder.binding.orderCatib.setTextColor(myColor)
-            holder.binding.orderSifaris.setTextColor(myColor)
-            if (position==0){
                 holder.binding.imagePen.visibility=View.GONE
                 holder.binding.cartSigorta.visibility=View.GONE
-            }else{
-                holder.binding.orderAnbar.visibility=View.GONE
-                holder.binding.orderCatib.visibility=View.GONE
-                holder.binding.orderGomruk.visibility=View.GONE
-                holder.binding.orderTehvil.visibility=View.GONE
-                holder.binding.orderSmartbeyanedilib.visibility=View.GONE
-                holder.binding.orderSmartbeyangozleyir.visibility=View.GONE
-                holder.binding.orderYol.visibility=View.GONE
-                holder.binding.orderCesidleme.visibility=View.GONE
-                holder.binding.orderSifaris.visibility=View.GONE
-                holder.binding.imagePen.visibility=View.GONE
-                holder.binding.cartSigorta.visibility=View.GONE
-            }
 
             holder.binding.orderItemTimeHistory.setOnClickListener {
                 val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_history,null)

@@ -46,7 +46,7 @@ class NotificationViewModel @Inject constructor(
         if (title.isEmpty()||post.isEmpty()){
             notificationErrorMessage.value=Resource.error("Məlumatları daxil edin",null)
         }else{
-            val notification=Notification(title,post)
+            val notification=Notification(title,post,"a")
             insertNotification(notification)
             notificationErrorMessage.value=Resource.success(notification)
         }
@@ -58,6 +58,11 @@ class NotificationViewModel @Inject constructor(
    private fun insertNotification(notification: Notification){
         viewModelScope.launch {
             zipexRepo.insertNotification(notification)
+        }
+    }
+    fun updateNotification(notification: Notification){
+        viewModelScope.launch {
+            zipexRepo.updateNotification(notification)
         }
     }
     fun deleteNotification(notification: Notification){

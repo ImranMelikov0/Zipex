@@ -24,6 +24,7 @@ class NotificationAdapter @Inject constructor(
 
    var onItemClick:((Notification)->Unit)?=null
      var  notification:Notification?=null
+    var onItemUpdate:((Notification)->Unit)?=null
 
    private val diffUtil=object :DiffUtil.ItemCallback<Notification>(){
         override fun areItemsTheSame(oldItem: Notification, newItem: Notification): Boolean {
@@ -54,7 +55,7 @@ class NotificationAdapter @Inject constructor(
         holder.binding.notificationTitletext.text=notificationArrayList.title
         holder.binding.notificationText.text=notificationArrayList.post
 
-        if (holder.binding.notificationTitletext.text==notificationArrayList.title){
+        if (notificationArrayList.titleGray=="b"){
             holder.binding.notificationImage.setImageResource(R.drawable.baseline_notification1)
             holder.binding.notificationTitletext.setTypeface(null,Typeface.NORMAL)
             holder.binding.notificationTitletext.setTextColor(Color.GRAY)
@@ -63,6 +64,9 @@ class NotificationAdapter @Inject constructor(
 
         }
         holder.itemView.setOnClickListener {
+            onItemUpdate?.let {
+                it(notificationArrayList)
+            }
             onItemClick?.let {
                 val dialogview=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_notification,null)
                 val titletextview=dialogview.findViewById<TextView>(R.id.title_notification_dialog)

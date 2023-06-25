@@ -32,7 +32,7 @@ import com.imranmelikov.zipex.model.Order9
 import com.imranmelikov.zipex.model.ZipexMoneyDepot
 
 @Dao
-interface ProjectDao {
+interface ProjectZipexDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(news: News)
     @Query("SELECT * FROM News ORDER BY uuid DESC")
@@ -42,6 +42,8 @@ interface ProjectDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNotification(notification: Notification)
+    @Update
+    suspend fun updateNotification(notification: Notification)
     @Query("SELECT * FROM Notification ORDER BY uuid DESC")
     suspend fun getNotifications():List<Notification>
     @Delete
@@ -63,7 +65,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAdminLink(adminLink: AdminLink)
     @Query("SELECT * FROM AdminLink")
-   suspend fun getAdminLinks(): List<AdminLink>
+    suspend fun getAdminLinks(): List<AdminLink>
     @Delete
     suspend fun deleteAdminLink(adminLink: AdminLink)
     @Query("SELECT * FROM AdminLink WHERE uuid=:AdminLinkId")
@@ -72,7 +74,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder1(order1: Order1)
     @Query("SELECT * FROM Order1")
-   suspend fun getOrder1s(): List<Order1>
+    suspend fun getOrder1s(): List<Order1>
     @Delete
     suspend fun deleteOrder1(order1: Order1)
 
@@ -84,7 +86,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder2(order2: Order2)
     @Query("SELECT * FROM Order2")
-   suspend fun getOrder2s(): List<Order2>
+    suspend fun getOrder2s(): List<Order2>
     @Delete
     suspend fun deleteOrder2(order2: Order2)
     @Update
@@ -95,7 +97,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder3(order3: Order3)
     @Query("SELECT * FROM Order3")
-   suspend fun getOrder3s(): List<Order3>
+    suspend fun getOrder3s(): List<Order3>
     @Delete
     suspend fun deleteOrder3(order3: Order3)
 
@@ -107,7 +109,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder4(order4: Order4)
     @Query("SELECT * FROM Order4")
-   suspend fun getOrder4s(): List<Order4>
+    suspend fun getOrder4s(): List<Order4>
     @Delete
     suspend fun deleteOrder4(order4: Order4)
     @Query("SELECT * FROM Order4 WHERE uuid=:Order4Id")
@@ -116,7 +118,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder5(order5: Order5)
     @Query("SELECT * FROM Order5")
-   suspend fun getOrder5s(): List<Order5>
+    suspend fun getOrder5s(): List<Order5>
     @Delete
     suspend fun deleteOrder5(order5: Order5)
     @Query("SELECT * FROM Order5 WHERE uuid=:Order5Id")
@@ -125,7 +127,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder6(order6: Order6)
     @Query("SELECT * FROM Order6")
-   suspend fun getOrder6s(): List<Order6>
+    suspend fun getOrder6s(): List<Order6>
     @Delete
     suspend fun deleteOrder6(order6: Order6)
     @Query("SELECT * FROM Order6 WHERE uuid=:Order6Id")
@@ -134,7 +136,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder7(order7: Order7)
     @Query("SELECT * FROM Order7")
-   suspend fun getOrder7s(): List<Order7>
+    suspend fun getOrder7s(): List<Order7>
     @Delete
     suspend fun deleteOrder7(order7: Order7)
     @Query("SELECT * FROM Order7 WHERE uuid=:Order7Id")
@@ -143,7 +145,7 @@ interface ProjectDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder8(order8: Order8)
     @Query("SELECT * FROM Order8")
-   suspend fun getOrder8s(): List<Order8>
+    suspend fun getOrder8s(): List<Order8>
     @Delete
     suspend fun deleteOrder8(order8: Order8)
     @Query("SELECT * FROM Order8 WHERE uuid=:Order8Id")
@@ -198,27 +200,27 @@ interface ProjectDao {
     suspend fun insertDebt(debt: Debt)
     @Delete
     suspend fun deleteDebt(debt: Debt)
-    @Query("SELECT * FROM Debt")
-    fun getDebt(): LiveData<List<Debt>>
+    @Query("SELECT * FROM Debt ORDER BY uuid DESC")
+   suspend fun getDebt(): List<Debt>
     @Query("DELETE FROM Debt")
     suspend fun deleteDebts()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDebtHistory(debtHistory: DebtHistory)
-    @Query("SELECT * FROM DebtHistory")
-    fun getDebtHistory(): LiveData<List<DebtHistory>>
+    @Query("SELECT * FROM DebtHistory ORDER BY uuid DESC")
+   suspend fun getDebtHistory(): List<DebtHistory>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDebtTotal(debtTotal: DebtTotal)
     @Update
     suspend fun updateDebtTotal(debtTotal: DebtTotal)
     @Query("SELECT * FROM DebtTotal")
-    fun getDebtTotal(): LiveData<List<DebtTotal>>
+   suspend fun getDebtTotal(): DebtTotal
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertZipexMoney(zipexMoneyDepot: ZipexMoneyDepot)
     @Query("SELECT * FROM ZipexMoneyDepot")
-    fun getZipexMoney(): LiveData<List<ZipexMoneyDepot>>
+    suspend fun getZipexMoney(): List<ZipexMoneyDepot>
     @Update
     suspend fun updateZipexMoney(zipexMoneyDepot: ZipexMoneyDepot)
 }

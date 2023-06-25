@@ -25,7 +25,7 @@ class Order2ViewModel @Inject constructor(
         println("Error: ${throwable.localizedMessage}")
         order2Message.value = Resource.error("Error", null)
     }
-
+    var order2:Order2=Order2("","",0,"","",0.0,"","","","","","","","")
     fun insertOrder2(order2: Order2){
         viewModelScope.launch {
             zipexRepo.insertOrder2(order2)

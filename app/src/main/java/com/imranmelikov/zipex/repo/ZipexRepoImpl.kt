@@ -1,7 +1,7 @@
 package com.imranmelikov.zipex.repo
 
 import androidx.lifecycle.LiveData
-import com.imranmelikov.zipex.db.ProjectDao
+import com.imranmelikov.zipex.db.ProjectZipexDao
 import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
@@ -27,7 +27,7 @@ import com.imranmelikov.zipex.model.Order9
 import com.imranmelikov.zipex.model.ZipexMoneyDepot
 import com.imranmelikov.zipex.util.Resource
 
-class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
+class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
     override suspend fun insertNews(news: News) {
         zipexDao.insertNews(news)
     }
@@ -42,6 +42,10 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
 
     override suspend fun insertNotification(notification: Notification) {
       zipexDao.insertNotification(notification)
+    }
+
+    override suspend fun updateNotification(notification: Notification) {
+        zipexDao.updateNotification(notification)
     }
 
     override suspend fun getNotifications(): List<Notification> {
@@ -316,12 +320,8 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.deleteDebt(debt)
     }
 
-    override fun getDebt(): Resource<LiveData<List<Debt>>> {
-        return try {
-            Resource.success(zipexDao.getDebt())
-        }catch (e:Exception){
-            Resource.error("Error in repo with debt",null)
-        }
+    override suspend fun getDebt(): List<Debt>{
+        return zipexDao.getDebt()
     }
 
     override suspend fun deleteDebts() {
@@ -332,12 +332,8 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
         zipexDao.insertDebtHistory(debtHistory)
     }
 
-    override fun getDebtHistory(): Resource<LiveData<List<DebtHistory>>> {
-        return try {
-            Resource.success(zipexDao.getDebtHistory())
-        }catch (e:Exception){
-            Resource.error("Error in repo with debtHistory",null)
-        }
+    override suspend fun getDebtHistory(): List<DebtHistory> {
+        return zipexDao.getDebtHistory()
     }
 
     override suspend fun insertDebtTotal(debtTotal: DebtTotal) {
@@ -348,19 +344,15 @@ class ZipexRepoImpl(private val zipexDao: ProjectDao):ZipexRepo {
        zipexDao.updateDebtTotal(debtTotal)
     }
 
-    override fun getDebtTotal(): Resource<LiveData<List<DebtTotal>>> {
-        return try {
-            Resource.success(zipexDao.getDebtTotal())
-        }catch (e:Exception){
-            Resource.error("Error in repo with debttotal",null)
-        }
+    override suspend fun getDebtTotal(): DebtTotal{
+        return zipexDao.getDebtTotal()
     }
 
     override suspend fun insertZipexMoney(zipexMoneyDepot: ZipexMoneyDepot) {
         zipexDao.insertZipexMoney(zipexMoneyDepot)
     }
 
-    override fun getZipexMoney(): LiveData<List<ZipexMoneyDepot>> {
+    override suspend fun getZipexMoney(): List<ZipexMoneyDepot>{
         return zipexDao.getZipexMoney()
     }
 

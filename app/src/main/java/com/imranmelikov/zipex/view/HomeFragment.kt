@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +27,7 @@ import com.imranmelikov.zipex.adapter.BalanceAdapter
 import com.imranmelikov.zipex.adapter.newsAdapter
 import com.imranmelikov.zipex.databinding.FragmentHomeBinding
 import com.imranmelikov.zipex.mvvm.BalanceViewModel
+import com.imranmelikov.zipex.mvvm.DebtViewModel
 import com.imranmelikov.zipex.mvvm.NewsViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,12 +41,16 @@ class HomeFragment @Inject constructor(
 ) : Fragment() {
     private lateinit var binding:FragmentHomeBinding
     private lateinit var newsViewModel:NewsViewModel
+    private lateinit var debtViewModel:DebtViewModel
+    private lateinit var balanceViewModel: BalanceViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding= FragmentHomeBinding.inflate(inflater,container,false)
         newsViewModel=ViewModelProvider(requireActivity())[NewsViewModel::class.java]
+        debtViewModel=ViewModelProvider(requireActivity()).get(DebtViewModel::class.java)
+        balanceViewModel=ViewModelProvider(requireActivity()).get(BalanceViewModel::class.java)
 
         binding.homeMenu.setOnClickListener {
             (activity as? MainActivity)?.handleButtonClick()
@@ -91,14 +97,28 @@ class HomeFragment @Inject constructor(
 
         binding.homeRecyclerView.layoutManager=LinearLayoutManager(requireContext())
         newsViewModel.getNews()
-        observeNews()
+        debtViewModel.getDebtTotal()
+        balanceViewModel.getTotalBalanceAzn()
+        balanceViewModel.getTotalBalanceTry()
 
-        balanceAdapter.onItemClick={
+        observeNews()
+        observeDebtTotal()
+        observeBalanceTotalTry()
+        observeBalanceTotalAzn()
+
+      if ( balanceViewModel.onItemClick=="b"){
+          findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBalanceFragment())
+          balanceViewModel.onItemClick="a"
+      }else{
+
+      }
+
+       if ( balanceViewModel.onItemClick=="c") {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBalanceFragment())
-        }
-        balanceAdapter.onItemClick1={
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBalanceFragment())
-        }
+           balanceViewModel.onItemClick="a"
+        }else{
+
+       }
 
     }
 
@@ -130,5 +150,26 @@ class HomeFragment @Inject constructor(
     }
 
 
+    private fun observeDebtTotal(){
+        debtViewModel.debtTotalMsg.observe(viewLifecycleOwner, Observer {
+            it.data?.let {
+                debtViewModel.getDebtTotal=it
+            }
+        })
+    }
+    private fun observeBalanceTotalTry(){
+        balanceViewModel.balanceTotalTryLiveData.observe(viewLifecycleOwner, Observer {
+            it.data?.let {
+                balanceViewModel.getBalanceTotalTry=it
+            }
+        })
+    }
+    private fun observeBalanceTotalAzn(){
+        balanceViewModel.balanceTotalAznLiveData.observe(viewLifecycleOwner, Observer {
+            it.data?.let {
+                balanceViewModel.getBalanceTotalAzn=it
+            }
+        })
+    }
 
 }

@@ -55,16 +55,93 @@ class AdminNewsFragment : Fragment() {
         }
 
         arguments?.let {
-            if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("string")){
+            if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("string")) {
                 findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminFragment())
-            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1")){
-                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
-            }else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder")){
-                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
-            }else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("order2")){
+            } else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1")) {
                 findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
-            }else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("update")){
+            } else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("order2")) {
                 findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            } else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("update2")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            } else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("update1")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            }else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("update3")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            }
+            else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("debt")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToDebtFragment())
+            }  else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("order3")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            } else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("order4")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            } else if (AdminNewsFragmentArgs.fromBundle(it).admin.equals("order5")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order6")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order7")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            }
+            else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order8")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order9")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToOrderFragment())
+            }
+            else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1.1")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1.2")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1.3")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1.4")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1.5")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1.6")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1.7")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("order1.8")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder1")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder2")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder3")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder4")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder5")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder6")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder7")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder8")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }
+            else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("orderadmin1")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("orderadmin2")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("orderadmin3")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("orderadmin4")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("orderadmin5")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("orderadmin6")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("orderadmin7")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("orderadmin8")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }
+            else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("adminorder9")) {
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToAdminDetailFragment())
+            }else if(AdminNewsFragmentArgs.fromBundle(it).admin.equals("notification")){
+                findNavController().navigate(AdminNewsFragmentDirections.actionAdminNewsFragmentToNotificationFragment())
+            }else{
+
             }
         }
         return binding.root

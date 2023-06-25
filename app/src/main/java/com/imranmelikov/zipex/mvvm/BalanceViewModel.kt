@@ -8,6 +8,7 @@ import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
 import com.imranmelikov.zipex.model.BalanceTotalTry
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.Debt
 import com.imranmelikov.zipex.model.Link
 import com.imranmelikov.zipex.repo.ZipexRepo
 import com.imranmelikov.zipex.util.Resource
@@ -73,7 +74,12 @@ class BalanceViewModel @Inject constructor(
     }
 
     var showFirst:Boolean=true
+    var showFirstDebt:Int=0
     var getDouble:Double=0.0
+    var onItemClick="a"
+    var getBalanceTotalAzn:BalanceTotalAzn=BalanceTotalAzn(0.0)
+    var getBalanceTotalTry:BalanceTotalTry=BalanceTotalTry(0.0)
+    var getDebt:Debt=Debt("",0.0)
     var getLink:Link=Link("","",0,"","",0.0,"","","","","")
     fun getBalanceTry(){
         balanceTryMutableLiveData.value=Resource.loading(null)

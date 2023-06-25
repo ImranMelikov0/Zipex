@@ -9,8 +9,8 @@ import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
-import com.imranmelikov.zipex.db.ProjectDao
-import com.imranmelikov.zipex.db.ProjectDatabase
+import com.imranmelikov.zipex.db.ProjectZipexDao
+import com.imranmelikov.zipex.db.ProjectZipexDatabase
 import com.imranmelikov.zipex.repo.ZipexRepo
 import com.imranmelikov.zipex.repo.ZipexRepoImpl
 import dagger.Module
@@ -27,16 +27,16 @@ object AppModule {
 @Singleton
 @Provides
 fun injectDatabase(@ApplicationContext context:Context)=Room.databaseBuilder(
-    context, ProjectDatabase::class.java,"ProjectDatabase"
+    context, ProjectZipexDatabase::class.java,"ProjectZipexDatabase"
 ).build()
 
     @Singleton
     @Provides
-    fun injectDao(projectDatabase: ProjectDatabase)=projectDatabase.projectDao()
+    fun injectDao(projectDatabase: ProjectZipexDatabase)=projectDatabase.projectZipexDao()
 
     @Singleton
     @Provides
-    fun injectRepo(projectDao: ProjectDao)=ZipexRepoImpl(projectDao) as ZipexRepo
+    fun injectRepo(projectDao: ProjectZipexDao)=ZipexRepoImpl(projectDao) as ZipexRepo
 
     @Singleton
     @Provides

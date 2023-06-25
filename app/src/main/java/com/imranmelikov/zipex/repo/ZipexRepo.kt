@@ -32,6 +32,7 @@ interface ZipexRepo {
     suspend fun getNew(newsId:Int):News
 
     suspend fun insertNotification(notification: Notification)
+    suspend fun updateNotification(notification: Notification)
    suspend fun getNotifications():List<Notification>
     suspend fun deleteNotification(notification: Notification)
     suspend fun getNotification(NotificationId:Int): Notification
@@ -118,18 +119,18 @@ interface ZipexRepo {
 
     suspend fun insertDebt(debt: Debt)
     suspend fun deleteDebt(debt: Debt)
-    fun getDebt():Resource<LiveData<List<Debt>>>
+   suspend fun getDebt():List<Debt>
     suspend fun deleteDebts()
 
     suspend fun insertDebtHistory(debtHistory: DebtHistory)
-    fun getDebtHistory():Resource<LiveData<List<DebtHistory>>>
+   suspend fun getDebtHistory():List<DebtHistory>
 
     suspend fun insertDebtTotal(debtTotal: DebtTotal)
     suspend fun updateDebtTotal(debtTotal: DebtTotal)
-    fun getDebtTotal():Resource<LiveData<List<DebtTotal>>>
+   suspend fun getDebtTotal():DebtTotal
 
     suspend fun insertZipexMoney(zipexMoneyDepot: ZipexMoneyDepot)
-    fun getZipexMoney():LiveData<List<ZipexMoneyDepot>>
+   suspend fun getZipexMoney():List<ZipexMoneyDepot>
     suspend fun updateZipexMoney(zipexMoneyDepot: ZipexMoneyDepot)
 
 

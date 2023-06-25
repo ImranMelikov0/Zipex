@@ -27,6 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.adapter.NotificationAdapter
 import com.imranmelikov.zipex.databinding.FragmentNotificationBinding
+import com.imranmelikov.zipex.model.Notification
 import com.imranmelikov.zipex.mvvm.NotificationViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,6 +53,7 @@ class NotificationFragment @Inject constructor(
             val layoutPosition=viewHolder.layoutPosition
             val selectedNotification=notificationAdapter.notificationList[layoutPosition]
             viewModel.deleteNotification(selectedNotification)
+            findNavController().navigate(NotificationFragmentDirections.actionNotificationFragmentToAdminNewsFragment("notification"))
         }
         override fun onChildDraw(
             c: Canvas,
@@ -128,6 +130,11 @@ class NotificationFragment @Inject constructor(
             viewModel.getNotificationSingle(it.uuid!!)
         }
         observeNotificationId()
+        notificationAdapter.onItemUpdate={
+            val notification=Notification(it.title,it.post,"b")
+            notification.uuid=it.uuid
+            viewModel.updateNotification(notification)
+        }
         return binding.root
     }
     private fun observeNotification(){

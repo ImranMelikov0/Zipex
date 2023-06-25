@@ -159,6 +159,9 @@
         <action
             android:id="@+id/action_debtFragment_to_adminNewsFragment"
             app:destination="@id/adminNewsFragment" />
+        <action
+            android:id="@+id/action_debtFragment_to_paymentAznFragment"
+            app:destination="@id/paymentAznFragment" />
     </fragment>
     <fragment
         android:id="@+id/debtHistoryFragment"
@@ -280,6 +283,15 @@
         <action
             android:id="@+id/action_adminNewsFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_adminNewsFragment_to_debtFragment"
+            app:destination="@id/debtFragment" />
+        <action
+            android:id="@+id/action_adminNewsFragment_to_debtHistoryFragment"
+            app:destination="@id/debtHistoryFragment" />
+        <action
+            android:id="@+id/action_adminNewsFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminNotificationFragment2"
@@ -346,6 +358,9 @@
         <action
             android:id="@+id/action_notificationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_adminNewsFragment"
+            app:destination="@id/adminNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/regularOrderFragment"
@@ -464,5 +479,8 @@
             android:name="link"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_paymentAznFragment_to_debtFragment"
+            app:destination="@id/debtFragment" />
     </fragment>
 </navigation>
