@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.text.Editable
@@ -12,6 +13,7 @@ import android.text.SpannableString
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +34,7 @@ import com.imranmelikov.zipex.databinding.CartRowBinding
 import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.Link
 import com.imranmelikov.zipex.view.CartFragmentDirections
+import com.imranmelikov.zipex.view.WebViewActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -270,8 +273,14 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
         }
 
         holder.binding.cartView.setOnClickListener {
-            val customToast = CustomToast(holder.itemView.context)
-            customToast.showToast("Sayta keçmək mümkün olmadı")
+            if (Patterns.WEB_URL.matcher(cartArraylist.url).matches()) {
+                val intent=Intent(holder.itemView.context,WebViewActivity::class.java)
+                intent.putExtra("keyCart",cartArraylist.url)
+                holder.itemView.context.startActivity(intent)
+            } else {
+                val customToast = CustomToast(holder.itemView.context)
+                customToast.showToast("Sayta keçmək mümkün olmadı")
+            }
         }
         holder.binding.balancebuttonpay.setOnClickListener {
             val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_pay_balance,null)

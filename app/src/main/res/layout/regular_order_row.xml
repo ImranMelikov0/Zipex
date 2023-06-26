@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_margin="5dp"
-    android:background="@drawable/shape_linearborder"
-    android:layout_height="wrap_content">
+    android:background="@drawable/shape_linearborder_regular_order"
+    android:layout_height="150dp">
         <ImageView
+            android:scaleType="fitCenter"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
