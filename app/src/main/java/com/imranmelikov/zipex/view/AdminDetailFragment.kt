@@ -85,6 +85,22 @@ class AdminDetailFragment @Inject constructor(
         binding.recyclerView.layoutManager=LinearLayoutManager(requireContext())
         binding.recyclerView.adapter=adminDetailAdapter
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.recyclerView.visibility=View.GONE
+            binding.cryptoErrorText.visibility=View.GONE
+            binding.cryptoProgressBar.visibility=View.VISIBLE
+            viewModel.getOrder1()
+            viewModel2.getOrder2()
+            viewModel3.getOrder3()
+            viewModel4.getOrder4()
+            viewModel5.getOrder5()
+            viewModel6.getOrder6()
+            viewModel7.getOrder7()
+            viewModel8.getOrder8()
+            viewModel9.getOrder9()
+            viewModelDebt.getDebtTotal()
+            binding.swipeRefreshLayout.isRefreshing=false
+        }
         viewModel.getOrder1()
         viewModel2.getOrder2()
         viewModel3.getOrder3()

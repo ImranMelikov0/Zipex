@@ -58,6 +58,15 @@ class DebtFragment @Inject constructor(
         binding.back.setOnClickListener {
             findNavController().navigate(DebtFragmentDirections.actionDebtFragmentToHomeFragment())
         }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.recyclerviewDebt.visibility=View.GONE
+            binding.cryptoErrorText.visibility=View.GONE
+            binding.cryptoProgressBar.visibility=View.VISIBLE
+            viewModel.getDebt()
+            viewModel.getDebtTotal()
+            balanceViewModel.getTotalBalanceAzn()
+            binding.swipeRefreshLayout.isRefreshing=false
+        }
         binding.recyclerviewDebt.layoutManager=LinearLayoutManager(requireContext())
         binding.recyclerviewDebt.adapter=debtAdapter
         viewModel.getDebt()

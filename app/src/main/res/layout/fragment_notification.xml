@@ -5,7 +5,10 @@
     android:layout_height="match_parent"
     android:background="#FBFBFB"
     tools:context=".view.NotificationFragment">
-
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -48,6 +51,7 @@
 
 
     </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
         android:textColor="@color/primary"

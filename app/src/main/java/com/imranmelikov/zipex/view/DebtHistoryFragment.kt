@@ -37,6 +37,13 @@ class DebtHistoryFragment @Inject constructor(
         binding.back.setOnClickListener {
             findNavController().navigate(DebtHistoryFragmentDirections.actionDebtHistoryFragmentToHomeFragment())
         }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.recyclerDebtazn.visibility=View.GONE
+            binding.cryptoErrorText.visibility=View.GONE
+            binding.cryptoProgressBar.visibility=View.VISIBLE
+            viewModel.getDebtHistory()
+            binding.swipeRefreshLayout.isRefreshing=false
+        }
         binding.recyclerDebtazn.layoutManager=LinearLayoutManager(requireContext())
         binding.recyclerDebtazn.adapter=debtHistoryAdapter
         viewModel.getDebtHistory()

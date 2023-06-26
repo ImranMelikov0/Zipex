@@ -8,6 +8,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.AdminDetailFragment">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_gravity="top"
@@ -286,4 +294,6 @@
         android:layout_gravity="center">
 
     </ProgressBar>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

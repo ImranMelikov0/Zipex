@@ -14,7 +14,6 @@ import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.adapter.DebtAdapter
-import com.imranmelikov.zipex.databinding.FragmentCartUpdateBinding
 import com.imranmelikov.zipex.databinding.FragmentPaymentAznBinding
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn

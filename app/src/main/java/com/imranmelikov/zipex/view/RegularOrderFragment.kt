@@ -30,6 +30,13 @@ private lateinit var binding:FragmentRegularOrderBinding
         binding.back.setOnClickListener {
             findNavController().navigate(RegularOrderFragmentDirections.actionRegularOrderFragmentToHomeFragment())
         }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.regularRecyclerview.visibility=View.GONE
+            binding.cryptoProgressBar.visibility=View.VISIBLE
+            binding.cryptoProgressBar.visibility=View.GONE
+            binding.regularRecyclerview.visibility=View.VISIBLE
+            binding.swipeRefreshLayout.isRefreshing=false
+        }
         binding.regularRecyclerview.adapter=regularOrderAdapter
         binding.regularRecyclerview.layoutManager=GridLayoutManager(requireContext(),2)
 

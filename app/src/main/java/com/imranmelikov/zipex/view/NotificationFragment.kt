@@ -119,6 +119,13 @@ class NotificationFragment @Inject constructor(
         binding.back.setOnClickListener {
             findNavController().navigate(NotificationFragmentDirections.actionNotificationFragmentToHomeFragment())
         }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.recyclerNotification.visibility=View.GONE
+            binding.cryptoErrorText.visibility=View.GONE
+            binding.cryptoProgressBar.visibility=View.VISIBLE
+            viewModel.getNotifications()
+            binding.swipeRefreshLayout.isRefreshing=false
+        }
         binding.recyclerNotification.adapter=notificationAdapter
         binding.recyclerNotification.layoutManager=LinearLayoutManager(requireContext())
 

@@ -153,13 +153,13 @@ private lateinit var viewModel:BalanceViewModel
                         "Cvv məlumatlarını düzgün daxil edin",
                         Toast.LENGTH_SHORT
                     ).show()
-                }  else if (binding.month.text.length > 2 || binding.month.text.toString() < "01" || binding.month.text.toString() > "12") {
+                }  else if (binding.month.text.length > 4 || binding.month.text.toString() < "0123"||binding.month.text.toString()>"1233" ) {
                     Toast.makeText(
                         requireContext(),
-                        "Ay məlumatlarını düzgün daxil edin",
+                        "Ay və İl məlumatlarını düzgün daxil edin",
                         Toast.LENGTH_SHORT
                     ).show()
-                } else if (binding.month.text.length < 2) {
+                } else if (binding.month.text.length < 4) {
                     Toast.makeText(
                         requireContext(),
                         "Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın",

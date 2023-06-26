@@ -49,6 +49,13 @@ class AdminFragment @Inject constructor(
         binding.buttonadminnotification.setOnClickListener {
             findNavController().navigate(AdminFragmentDirections.actionAdminFragmentToAdminNotificationFragment2())
         }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.recyclerviewAdmin.visibility=View.GONE
+            binding.cryptoErrorText.visibility=View.GONE
+            binding.cryptoProgressBar.visibility=View.VISIBLE
+            viewModel.getAdminLink()
+            binding.swipeRefreshLayout.isRefreshing=false
+        }
         binding.recyclerviewAdmin.adapter=adminAdapter
         binding.recyclerviewAdmin.layoutManager=LinearLayoutManager(requireContext())
        onItemClick()

@@ -46,7 +46,18 @@ class BalanceFragment @Inject constructor(
         binding.back.setOnClickListener {
             findNavController().navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
         }
-
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.balanceRecyclerview.visibility=View.GONE
+            binding.cryptoErrorText.visibility=View.GONE
+            binding.cryptoProgressBar.visibility=View.VISIBLE
+            viewModel.getBalanceTry()
+            viewModel.getBalanceAzn()
+            viewModel.getBalanceUsd()
+            viewModel.getTotalBalanceUsd()
+            viewModel.getTotalBalanceTry()
+            viewModel.getTotalBalanceAzn()
+            binding.swipeRefreshLayout.isRefreshing=false
+        }
 
         binding.balanceRecyclerview.adapter=balanceAdapter
         binding.balanceRecyclerview.layoutManager=LinearLayoutManager(requireContext())

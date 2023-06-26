@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
 import com.imranmelikov.zipex.R
-import com.imranmelikov.zipex.databinding.FragmentCartUpdateBinding
 import com.imranmelikov.zipex.databinding.FragmentNewsDetailBinding
 import com.imranmelikov.zipex.mvvm.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint

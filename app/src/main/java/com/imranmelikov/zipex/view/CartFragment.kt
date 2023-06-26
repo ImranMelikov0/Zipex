@@ -115,6 +115,16 @@ private fun onItemClick(){
                             binding.addrecyclerview.visibility=View.GONE
                             binding.textView.visibility=View.VISIBLE
                             binding.button.visibility=View.VISIBLE
+                        }else{
+                            binding.swipeRefreshLayout.setOnRefreshListener {
+                                binding.addrecyclerview.visibility=View.GONE
+                                binding.cryptoErrorText.visibility=View.GONE
+                                binding.cryptoProgressBar.visibility=View.VISIBLE
+                                viewModel.getCarts()
+                                balanceViewModel.getTotalBalanceTry()
+                                balanceViewModel.getTotalBalanceUsd()
+                                binding.swipeRefreshLayout.isRefreshing=false
+                            }
                         }
                         it.map {
                             val currentDate= LocalDateTime.now()

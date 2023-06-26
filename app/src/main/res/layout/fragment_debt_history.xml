@@ -6,7 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.DebtHistoryFragment">
 
-
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -169,7 +172,7 @@
             android:id="@+id/recycler_debtazn"/>
 
     </RelativeLayout>
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <TextView
         android:textColor="@color/primary"
         android:id="@+id/cryptoErrorText"

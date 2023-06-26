@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
-import com.imranmelikov.zipex.databinding.FragmentCartUpdateBinding
 import com.imranmelikov.zipex.databinding.FragmentCourierDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
