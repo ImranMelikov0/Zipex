@@ -45,7 +45,9 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
     var onItemClickCartUpdate:((Link)->Unit)?=null
     var onItemClickDelete:((Link)->Unit)?=null
     var onItemClickBalancePay:((Link)->Unit)?=null
+    var onItemClickBalancePayUsd:((Link)->Unit)?=null
     var onItemClickOnlinePay:((Link)->Unit)?=null
+    var onItemClickOnlinePayUsd:((Link)->Unit)?=null
     var onItemClickUpdateSigorta:((Link)->Unit)?=null
 
     private val diffUtil=object :DiffUtil.ItemCallback<Link>(){
@@ -198,6 +200,7 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
                     onItemClickCartUpdate?.let {
                         it(cart)
                     }
+                    Toast.makeText(holder.itemView.context,"Məlumat əlavə olundu",Toast.LENGTH_SHORT).show()
                     alertDialog.dismiss()
                 }
             }
@@ -219,6 +222,7 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
                 onItemClickDelete?.let {
                     it(cartArraylist)
                 }
+                Toast.makeText(holder.itemView.context,"Məlumat silindi",Toast.LENGTH_SHORT).show()
                 alertDialog.dismiss()
             }
             alertDialog.show()
@@ -274,8 +278,14 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
                 alertDialog.dismiss()
             }
             yes.setOnClickListener {
-                onItemClickBalancePay?.let {
-                    it(cartArraylist)
+                if (cartArraylist.country=="Amerika"){
+                    onItemClickBalancePayUsd?.let {
+                        it(cartArraylist)
+                    }
+                }else{
+                    onItemClickBalancePay?.let {
+                        it(cartArraylist)
+                    }
                 }
                 alertDialog.dismiss()
             }
@@ -283,9 +293,17 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
 
         }
         holder.binding.onlinePay.setOnClickListener {view->
-            Navigation.findNavController(view).navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(2F,2))
-            onItemClickOnlinePay?.let {
-                it(cartArraylist)
+            if (cartArraylist.country=="Amerika"){
+                Navigation.findNavController(view).navigate(CartFragmentDirections.actionCartFragmentToPaymentUsdFragment())
+                onItemClickOnlinePayUsd?.let {
+                    it(cartArraylist)
+                }
+            }else {
+                Navigation.findNavController(view)
+                    .navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(2F, 2))
+                onItemClickOnlinePay?.let {
+                    it(cartArraylist)
+                }
             }
         }
     }

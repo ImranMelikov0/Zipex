@@ -35,7 +35,7 @@ private lateinit var binding:FragmentRegularOrderBinding
 
         val regularOrder1=RegularOrder("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRODugclY3VcoiUgyAa6xsmXGQkwQJzBOZMKw&usqp=CAU","https://images.app.goo.gl/QByowVjxVzrNHy7P7",1)
         val regularOrder2=RegularOrder("https://images.app.goo.gl/QByowVjxVzrNHy7P7","https://images.app.goo.gl/QByowVjxVzrNHy7P7",2)
-        val regularOrderList= listOf<RegularOrder>(regularOrder1,regularOrder2)
+        val regularOrderList= listOf(regularOrder1,regularOrder2)
         regularOrderAdapter.regularOrderList=regularOrderList
         binding.cryptoProgressBar.visibility=View.GONE
         return binding.root

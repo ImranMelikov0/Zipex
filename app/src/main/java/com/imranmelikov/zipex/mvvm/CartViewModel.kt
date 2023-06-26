@@ -10,6 +10,12 @@ import com.imranmelikov.zipex.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.Duration
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,10 +27,6 @@ class CartViewModel @Inject constructor(
     val cartMsg:LiveData<Resource<List<Link>>>
         get() = cartMessage
 
-    private val cartId=MutableLiveData<Link>()
-    val cartid:LiveData<Link>
-        get() = cartId
-
     private val updateCart=MutableLiveData<Resource<Link>>()
     val updateLink:LiveData<Resource<Link>>
         get() = updateCart
@@ -32,6 +34,26 @@ class CartViewModel @Inject constructor(
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println("Error: ${throwable.localizedMessage}")
         cartMessage.value = Resource.error("Error", null)
+    }
+    fun refreshData(startDate:String,endDate:String,link: Link){
+
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
+
+        val startDate1 = dateFormat.parse(startDate)
+        val endDate1 = dateFormat.parse(endDate)
+
+        val diffInMillis = endDate1.time - startDate1.time
+
+        val diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillis)
+        val diffInHours = TimeUnit.MILLISECONDS.toHours(diffInMillis)
+        val diffInDays = TimeUnit.MILLISECONDS.toDays(diffInMillis)
+        println(diffInMinutes)
+        if (diffInDays.toInt()>=1 && link.payment!="Ödənilib"){
+            deleteCart(link)
+        }else{
+
+        }
+
     }
     fun getCarts(){
         cartMessage.value=Resource.loading(null)
@@ -50,12 +72,6 @@ class CartViewModel @Inject constructor(
         viewModelScope.launch {
             zipexRepo.updateLink(link)
             updateCart.value=Resource.success(link)
-        }
-    }
-    fun getCart(linkId:Int){
-        viewModelScope.launch {
-           val link= zipexRepo.getLink(linkId)
-            cartId.value=link
         }
     }
 }

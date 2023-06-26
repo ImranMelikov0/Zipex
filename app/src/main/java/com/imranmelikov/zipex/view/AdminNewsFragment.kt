@@ -193,7 +193,7 @@ class AdminNewsFragment : Fragment() {
 
                 }
                 Status.SUCCESS->{
-                    Toast.makeText(requireContext(),"Success",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Xəbər əlavə olundu", Toast.LENGTH_SHORT).show()
                     viewModel.resetErrorMessage()
                     selectedimage=null
                     findNavController().popBackStack()

@@ -33,7 +33,7 @@ class ZipexFragmentFactory @Inject constructor(
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
 
         return when(className){
-            HomeFragment::class.java.name->HomeFragment(newsAdapter,balanceAdapter)
+            HomeFragment::class.java.name->HomeFragment(newsAdapter)
             NewsDetailFragment::class.java.name->NewsDetailFragment(glide)
             NotificationFragment::class.java.name->NotificationFragment(notificationAdapter)
             RegularOrderFragment::class.java.name->RegularOrderFragment(regularOrderAdapter)

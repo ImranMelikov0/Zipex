@@ -21,18 +21,13 @@ import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
 import com.imranmelikov.zipex.model.BalanceTotalTry
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.BalanceUsd
 import com.imranmelikov.zipex.view.BalanceFragmentDirections
 import javax.inject.Inject
 
 class BalanceAdapter @Inject constructor():RecyclerView.Adapter<BalanceAdapter.BalanceViewHolder>() {
     class BalanceViewHolder(var binding:BalanceRowBinding):RecyclerView.ViewHolder(binding.root)
 
-//   var balanceList2=BalanceTotalTry(0.0)
-//    var balanceList3= BalanceTotalAzn(0.0)
-    var onItemClick:((String)->Unit)?=null
-//    var onItemClickToPayment:((Float)->Unit)?=null
-//    var onItemClickToPaymentAzn:((Float)->Unit)?=null
-    var onItemClick1:((String)->Unit)?=null
     var showFirst:Int=1
 
     private val diffUtil=object :DiffUtil.ItemCallback<BalanceTry>(){
@@ -65,6 +60,20 @@ class BalanceAdapter @Inject constructor():RecyclerView.Adapter<BalanceAdapter.B
         get() = recyclerDiffer1.currentList
         set(value) = recyclerDiffer1.submitList(value)
 
+    private val diffUtil2=object :DiffUtil.ItemCallback<BalanceUsd>(){
+        override fun areItemsTheSame(oldItem: BalanceUsd, newItem: BalanceUsd): Boolean {
+            return oldItem==newItem
+        }
+
+        override fun areContentsTheSame(oldItem: BalanceUsd, newItem: BalanceUsd): Boolean {
+            return oldItem==newItem
+        }
+    }
+    private val recyclerDiffer2=AsyncListDiffer(this,diffUtil2)
+    var balanceList2:List<BalanceUsd>
+        get() = recyclerDiffer2.currentList
+        set(value) = recyclerDiffer2.submitList(value)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BalanceViewHolder {
         val binding=BalanceRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return BalanceViewHolder(binding)
@@ -76,7 +85,7 @@ return if (showFirst==1){
 }else if (showFirst==2){
     balanceList1.size
 }else{
-    balanceList.size
+    balanceList2.size
 }
     }
 
@@ -151,7 +160,34 @@ return if (showFirst==1){
                 alertDialog.show()
             }
             }else{
+            val balanceList2Array = balanceList2.get(position)
 
+            holder.binding.balanceItemHistory.text = balanceList2Array.history
+            holder.binding.balanceItemPrice.text = balanceList2Array.amount.toString()
+            holder.binding.balanceItemBalance.text = balanceList2Array.balance.toString()
+
+
+            holder.binding.balanceItemView.setOnClickListener {
+                val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_balance_view,null)
+                val close=dialogView.findViewById<Button>(R.id.close)
+                val url=dialogView.findViewById<TextView>(R.id.url)
+                val price=dialogView.findViewById<TextView>(R.id.price)
+                val color=dialogView.findViewById<TextView>(R.id.count)
+
+                url.text=balanceList2Array.amount.toString()
+                price.text=balanceList2Array.balance.toString()
+                color.text=balanceList2Array.history
+
+                val alertDialogBuilder= AlertDialog.Builder(holder.itemView.context)
+                alertDialogBuilder.setView(dialogView)
+
+                val alertDialog=alertDialogBuilder.create()
+                close.setOnClickListener {
+                    alertDialog.dismiss()
+                }
+
+                alertDialog.show()
+            }
         }
 
     }

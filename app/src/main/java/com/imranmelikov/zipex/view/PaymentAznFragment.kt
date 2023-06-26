@@ -114,7 +114,7 @@ class PaymentAznFragment : Fragment() {
                     val formatDate=currentDate.format(formatter)
                     val balanceAzn= BalanceAzn(formatDate,roundedAmount1,roundedAmount)
                     viewModel.insertBalanceAzn(balanceAzn)
-                    Toast.makeText(requireContext(),"Ugurlu", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
                     findNavController().popBackStack()
                 }
 
@@ -198,7 +198,7 @@ class PaymentAznFragment : Fragment() {
 
                                 val insertBalanceAzn=BalanceAzn(formatDate,deleteDebt.amount,roundedAmount3)
                                 viewModel.insertBalanceAzn(insertBalanceAzn)
-
+                                Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
                                 findNavController().popBackStack()
                             }
                         }
@@ -274,7 +274,7 @@ class PaymentAznFragment : Fragment() {
                                 val roundedAmount3 = decimalFormat3.format(totalBalanceAzn).toDouble()
                                 val aznBalance=BalanceAzn(formatDate,totalDebt,roundedAmount3)
                                 viewModel.insertBalanceAzn(aznBalance)
-
+                                Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
                                 findNavController().popBackStack()
                             }
                         }

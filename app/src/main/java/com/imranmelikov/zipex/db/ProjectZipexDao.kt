@@ -59,8 +59,7 @@ interface ProjectZipexDao {
     suspend fun deleteLink(link: Link)
     @Update
     suspend fun updateLink(link: Link)
-    @Query("SELECT * FROM Link WHERE uuid=:LinkId")
-    suspend fun getLink(LinkId:Int): Link
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAdminLink(adminLink: AdminLink)
@@ -68,8 +67,8 @@ interface ProjectZipexDao {
     suspend fun getAdminLinks(): List<AdminLink>
     @Delete
     suspend fun deleteAdminLink(adminLink: AdminLink)
-    @Query("SELECT * FROM AdminLink WHERE uuid=:AdminLinkId")
-    suspend fun getAdminLink(AdminLinkId:Int): AdminLink
+    @Update
+    suspend fun updateAdminLink(adminLink: AdminLink)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder1(order1: Order1)
@@ -80,8 +79,7 @@ interface ProjectZipexDao {
 
     @Update
     suspend fun updateOrder1(order1: Order1)
-    @Query("SELECT * FROM Order1 WHERE uuid=:Order1Id")
-    suspend fun getOrder1(Order1Id:Int): Order1
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder2(order2: Order2)
@@ -91,8 +89,7 @@ interface ProjectZipexDao {
     suspend fun deleteOrder2(order2: Order2)
     @Update
     suspend fun updateOrder2(order2: Order2)
-    @Query("SELECT * FROM Order2 WHERE uuid=:Order2Id")
-    suspend fun getOrder2(Order2Id:Int): Order2
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder3(order3: Order3)
@@ -103,8 +100,7 @@ interface ProjectZipexDao {
 
     @Update
     suspend fun updateOrder3(order3: Order3)
-    @Query("SELECT * FROM Order3 WHERE uuid=:Order3Id")
-    suspend fun getOrder3(Order3Id:Int): Order3
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder4(order4: Order4)
@@ -112,8 +108,7 @@ interface ProjectZipexDao {
     suspend fun getOrder4s(): List<Order4>
     @Delete
     suspend fun deleteOrder4(order4: Order4)
-    @Query("SELECT * FROM Order4 WHERE uuid=:Order4Id")
-    suspend fun getOrder4(Order4Id:Int): Order4
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder5(order5: Order5)
@@ -121,8 +116,7 @@ interface ProjectZipexDao {
     suspend fun getOrder5s(): List<Order5>
     @Delete
     suspend fun deleteOrder5(order5: Order5)
-    @Query("SELECT * FROM Order5 WHERE uuid=:Order5Id")
-    suspend fun getOrder5(Order5Id:Int): Order5
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder6(order6: Order6)
@@ -130,8 +124,7 @@ interface ProjectZipexDao {
     suspend fun getOrder6s(): List<Order6>
     @Delete
     suspend fun deleteOrder6(order6: Order6)
-    @Query("SELECT * FROM Order6 WHERE uuid=:Order6Id")
-    suspend fun getOrder6(Order6Id:Int): Order6
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder7(order7: Order7)
@@ -139,8 +132,7 @@ interface ProjectZipexDao {
     suspend fun getOrder7s(): List<Order7>
     @Delete
     suspend fun deleteOrder7(order7: Order7)
-    @Query("SELECT * FROM Order7 WHERE uuid=:Order7Id")
-    suspend fun getOrder7(Order7Id:Int): Order7
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder8(order8: Order8)
@@ -148,17 +140,13 @@ interface ProjectZipexDao {
     suspend fun getOrder8s(): List<Order8>
     @Delete
     suspend fun deleteOrder8(order8: Order8)
-    @Query("SELECT * FROM Order8 WHERE uuid=:Order8Id")
-    suspend fun getOrder8(Order8Id:Int): Order8
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder9(order9: Order9)
     @Query("SELECT * FROM Order9")
     suspend fun getOrder9s(): List<Order9>
-    @Delete
-    suspend fun deleteOrder9(order9: Order9)
-    @Query("SELECT * FROM Order9 WHERE uuid=:Order9Id")
-    suspend fun getOrder9(Order9Id:Int): Order9
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBalanceTry(balanceTry: BalanceTry)
@@ -175,14 +163,14 @@ interface ProjectZipexDao {
     @Update
     suspend fun updateBalanceTotalTry(balanceTotalTry: BalanceTotalTry)
     @Query("SELECT * FROM BalanceTotalTry ")
-    suspend fun getBalanceTotalTry(): BalanceTotalTry
+    suspend fun getBalanceTotalTry(): BalanceTotalTry?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn)
     @Update
     suspend fun updateBalanceTotalAzn(balanceTotalAzn: BalanceTotalAzn)
     @Query("SELECT * FROM BalanceTotalAzn")
-    suspend fun getBalanceTotalAzn(): BalanceTotalAzn
+    suspend fun getBalanceTotalAzn(): BalanceTotalAzn?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBalanceUsd(balanceUsd: BalanceUsd)
@@ -194,7 +182,7 @@ interface ProjectZipexDao {
     @Update
     suspend fun updateBalanceTotalUsd(balanceTotalUsd: BalanceTotalUsd)
     @Query("SELECT * FROM BalanceTotalUsd ")
-    suspend fun getBalanceTotalUsd(): BalanceTotalUsd
+    suspend fun getBalanceTotalUsd(): BalanceTotalUsd?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDebt(debt: Debt)
@@ -215,7 +203,7 @@ interface ProjectZipexDao {
     @Update
     suspend fun updateDebtTotal(debtTotal: DebtTotal)
     @Query("SELECT * FROM DebtTotal")
-   suspend fun getDebtTotal(): DebtTotal
+   suspend fun getDebtTotal(): DebtTotal?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertZipexMoney(zipexMoneyDepot: ZipexMoneyDepot)

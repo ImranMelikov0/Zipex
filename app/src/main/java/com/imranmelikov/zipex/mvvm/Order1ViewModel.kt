@@ -26,7 +26,6 @@ class Order1ViewModel @Inject constructor(
         order1Message.value = Resource.error("Error", null)
     }
 
-    var onItemString="a"
     var order1:Order1=Order1("","",0,"","",0.0,"","","","","","","","")
     fun getOrder1(){
         order1Message.value=Resource.loading(null)

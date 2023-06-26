@@ -36,8 +36,6 @@ class BalanceFragment @Inject constructor(
 ) : Fragment() {
     private lateinit var binding:FragmentBalanceBinding
     private lateinit var viewModel:BalanceViewModel
-    private val amountTry=0.0
-    private val amountAzn=0.0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,13 +46,14 @@ class BalanceFragment @Inject constructor(
         binding.back.setOnClickListener {
             findNavController().navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
         }
-//            startInsert()
 
 
         binding.balanceRecyclerview.adapter=balanceAdapter
         binding.balanceRecyclerview.layoutManager=LinearLayoutManager(requireContext())
         viewModel.getBalanceTry()
         viewModel.getBalanceAzn()
+        viewModel.getBalanceUsd()
+        viewModel.getTotalBalanceUsd()
         viewModel.getTotalBalanceTry()
         viewModel.getTotalBalanceAzn()
         observeBalance()
@@ -69,14 +68,19 @@ class BalanceFragment @Inject constructor(
                     binding.balanceRecyclerview.visibility=View.VISIBLE
                     binding.cryptoErrorText.visibility=View.GONE
                     binding.cryptoProgressBar.visibility=View.GONE
-
+                    viewModel.balanceUsdLiveData.observe(viewLifecycleOwner, Observer {resourceBalanceUsd->
                             viewModel.balanceAznLiveData.observe(viewLifecycleOwner, Observer {resourceBalanceAzn->
                                     it.data?.let {balanceTry->
                                             resourceBalanceAzn.data?.let { balanceAzn->
+                                                resourceBalanceUsd.data?.let {
+                                                    balanceAdapter.balanceList2=it
                                                     balanceAdapter.balanceList=balanceTry
                                                     balanceAdapter.balanceList1= balanceAzn
+                                                }
+
                                             }
                                         }
+                            })
                         })
                 }
                 Status.LOADING->{
@@ -94,12 +98,29 @@ class BalanceFragment @Inject constructor(
 
     }
     private fun addBalance(){
+        binding.balanceItemService.setOnClickListener {view->
+            viewModel.onItemClick="b"
+            balanceAdapter.showFirst=2
+            Navigation.findNavController(view).navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
+        }
+        binding.balanceItemOrder.setOnClickListener {view->
+            viewModel.onItemClick="c"
+            balanceAdapter.showFirst=1
+            Navigation.findNavController(view).navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
+        }
+            binding.debtHistoryUsd.setOnClickListener {view->
+                viewModel.onItemClick="d"
+                balanceAdapter.showFirst=3
+                Navigation.findNavController(view).navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
+            }
         val myColor= ContextCompat.getColor(requireContext(), R.color.primary)
         if (balanceAdapter.showFirst==1){
             binding.balanceItemService.setBackgroundColor(Color.WHITE)
             binding.balanceItemService.setTextColor(myColor)
             binding.balanceItemOrder.setTextColor(Color.WHITE)
             binding.balanceItemOrder.setBackgroundColor(myColor)
+            binding.debtHistoryUsd.setBackgroundColor(Color.WHITE)
+            binding.debtHistoryUsd.setTextColor(myColor)
 
             binding.balanceItemAddbalancebutton.setOnClickListener {
                 if (binding.balanceItemAddbalance.text.toString().isEmpty()){
@@ -112,17 +133,15 @@ class BalanceFragment @Inject constructor(
                     binding.balanceItemAddbalance.text.clear()
                 }
             }
-           binding.balanceItemService.setOnClickListener {view->
-                balanceAdapter.showFirst=2
-                Navigation.findNavController(view).navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
-                viewModel.onItemClick="b"
-            }
+
           binding.balanceTitleBalance.text="Balans : ${viewModel.getBalanceTotalTry.balanceTotal} TL"
         }else if (balanceAdapter.showFirst==2){
             binding.balanceItemService.setBackgroundColor(myColor)
             binding.balanceItemService.setTextColor(Color.WHITE)
             binding.balanceItemOrder.setTextColor(myColor)
             binding.balanceItemOrder.setBackgroundColor(Color.WHITE)
+            binding.debtHistoryUsd.setBackgroundColor(Color.WHITE)
+            binding.debtHistoryUsd.setTextColor(myColor)
 
             binding.balanceItemAddbalancebutton.setOnClickListener {
                 if (binding.balanceItemAddbalance.text.toString().isEmpty()) {
@@ -138,30 +157,33 @@ class BalanceFragment @Inject constructor(
                     binding.balanceItemAddbalance.text.clear()
                 }
             }
-          binding.balanceItemOrder.setOnClickListener {view->
-                balanceAdapter.showFirst=1
-                Navigation.findNavController(view).navigate(BalanceFragmentDirections.actionBalanceFragmentToHomeFragment())
-                viewModel.onItemClick="c"
-            }
 
             binding.balanceTitleBalance.text="Balans : ${viewModel.getBalanceTotalAzn.balanceTotal} AZN"
         }else{
+            binding.debtHistoryUsd.setBackgroundColor(myColor)
+            binding.debtHistoryUsd.setTextColor(Color.WHITE)
+            binding.balanceItemService.setBackgroundColor(Color.WHITE)
+            binding.balanceItemService.setTextColor(myColor)
+            binding.balanceItemOrder.setTextColor(myColor)
+            binding.balanceItemOrder.setBackgroundColor(Color.WHITE)
 
+            binding.balanceItemAddbalancebutton.setOnClickListener {
+                if (binding.balanceItemAddbalance.text.toString().isEmpty()) {
+                    Toast.makeText(requireContext(), "Balansı qeyd edin", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    val amount = binding.balanceItemAddbalance.text.toString().toFloat()
+                    Navigation.findNavController(it).navigate(
+                        BalanceFragmentDirections.actionBalanceFragmentToPaymentUsdFragment()
+                    )
+                    viewModel.showFirst=true
+                    viewModel.getDouble=amount.toDouble()
+                    binding.balanceItemAddbalance.text.clear()
+                }
+            }
+
+            binding.balanceTitleBalance.text="Balans : ${viewModel.getBalanceTotalUsd.balanceTotal} USD"
         }
 
     }
-//    private fun startInsert(){
-//        val balanceTotalTry= BalanceTotalTry(amountTry)
-//        val balanceTotalAzn= BalanceTotalAzn(amountAzn)
-//        val currentDate= LocalDateTime.now()
-//        val formatter= DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
-//        val formatDate=currentDate.format(formatter)
-//        val balanceAzn= BalanceAzn(formatDate,0.0,amountAzn)
-//        val balanceTry= BalanceTry(formatDate,0.0,amountTry)
-//        viewModel.insertBalanceAzn(balanceAzn)
-//        viewModel.insertBalanceTry(balanceTry)
-//        viewModel.insertTotalBalanceAzn(balanceTotalAzn)
-//        viewModel.insertTotalBalanceTry(balanceTotalTry)
-//        viewModel.showFirst=false
-//    }
 }

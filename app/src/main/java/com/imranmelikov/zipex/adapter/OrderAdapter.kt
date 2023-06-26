@@ -284,7 +284,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order1ArrayList.url
-                price.text=order1ArrayList.price.toString()
+                if (order1ArrayList.country=="Amerika"){
+                    price.text="${order1ArrayList.price} USD"
+                }else{
+                    price.text="${order1ArrayList.price} TRY"
+                }
                 color.text=order1ArrayList.color
                 count.text=order1ArrayList.count.toString()
                 size.text=order1ArrayList.size
@@ -489,7 +493,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order2ArrayList.url
-                price.text=order2ArrayList.price.toString()
+                if (order2ArrayList.country=="Amerika"){
+                    price.text="${order2ArrayList.price} USD"
+                }else{
+                    price.text="${order2ArrayList.price} TRY"
+                }
                 color.text=order2ArrayList.color
                 count.text=order2ArrayList.count.toString()
                 size.text=order2ArrayList.size
@@ -691,7 +699,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order3ArrayList.url
-                price.text=order3ArrayList.price.toString()
+                if (order3ArrayList.country=="Amerika"){
+                    price.text="${order3ArrayList.price} USD"
+                }else{
+                    price.text="${order3ArrayList.price} TRY"
+                }
                 color.text=order3ArrayList.color
                 count.text=order3ArrayList.count.toString()
                 size.text=order3ArrayList.size
@@ -895,7 +907,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order4ArrayList.url
-                price.text=order4ArrayList.price.toString()
+                if (order4ArrayList.country=="Amerika"){
+                    price.text="${order4ArrayList.price} USD"
+                }else{
+                    price.text="${order4ArrayList.price} TRY"
+                }
                 color.text=order4ArrayList.color
                 count.text=order4ArrayList.count.toString()
                 size.text=order4ArrayList.size
@@ -1073,7 +1089,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order5ArrayList.url
-                price.text=order5ArrayList.price.toString()
+                if (order5ArrayList.country=="Amerika"){
+                    price.text="${order5ArrayList.price} USD"
+                }else{
+                    price.text="${order5ArrayList.price} TRY"
+                }
                 color.text=order5ArrayList.color
                 count.text=order5ArrayList.count.toString()
                 size.text=order5ArrayList.size
@@ -1250,7 +1270,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order6ArrayList.url
-                price.text=order6ArrayList.price.toString()
+                if (order6ArrayList.country=="Amerika"){
+                    price.text="${order6ArrayList.price} USD"
+                }else{
+                    price.text="${order6ArrayList.price} TRY"
+                }
                 color.text=order6ArrayList.color
                 count.text=order6ArrayList.count.toString()
                 size.text=order6ArrayList.size
@@ -1428,7 +1452,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order7ArrayList.url
-                price.text=order7ArrayList.price.toString()
+                if (order7ArrayList.country=="Amerika"){
+                    price.text="${order7ArrayList.price} USD"
+                }else{
+                    price.text="${order7ArrayList.price} TRY"
+                }
                 color.text=order7ArrayList.color
                 count.text=order7ArrayList.count.toString()
                 size.text=order7ArrayList.size
@@ -1607,7 +1635,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order8ArrayList.url
-                price.text=order8ArrayList.price.toString()
+                if (order8ArrayList.country=="Amerika"){
+                    price.text="${order8ArrayList.price} USD"
+                }else{
+                    price.text="${order8ArrayList.price} TRY"
+                }
                 color.text=order8ArrayList.color
                 count.text=order8ArrayList.count.toString()
                 size.text=order8ArrayList.size
@@ -1784,7 +1816,11 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                 val comment=dialogView.findViewById<TextView>(R.id.comment)
 
                 url.text=order9ArrayList.url
-                price.text=order9ArrayList.price.toString()
+                if (order9ArrayList.country=="Amerika"){
+                    price.text="${order9ArrayList.price} USD"
+                }else{
+                    price.text="${order9ArrayList.price} TRY"
+                }
                 color.text=order9ArrayList.color
                 count.text=order9ArrayList.count.toString()
                 size.text=order9ArrayList.size

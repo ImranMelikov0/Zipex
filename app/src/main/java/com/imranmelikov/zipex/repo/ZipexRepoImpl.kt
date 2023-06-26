@@ -25,7 +25,6 @@ import com.imranmelikov.zipex.model.Order7
 import com.imranmelikov.zipex.model.Order8
 import com.imranmelikov.zipex.model.Order9
 import com.imranmelikov.zipex.model.ZipexMoneyDepot
-import com.imranmelikov.zipex.util.Resource
 
 class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
     override suspend fun insertNews(news: News) {
@@ -76,9 +75,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
      zipexDao.updateLink(link)
     }
 
-    override suspend fun getLink(LinkId: Int): Link {
-       return zipexDao.getLink(LinkId)
-    }
+
 
     override suspend fun insertAdminLink(adminLink: AdminLink) {
         zipexDao.insertAdminLink(adminLink)
@@ -92,9 +89,10 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.deleteAdminLink(adminLink)
     }
 
-    override suspend fun getAdminLink(AdminLinkId: Int): AdminLink {
-        return zipexDao.getAdminLink(AdminLinkId)
+    override suspend fun updateAdminLink(adminLink: AdminLink) {
+        zipexDao.updateAdminLink(adminLink)
     }
+
 
     override suspend fun insertOrder1(order1: Order1) {
        zipexDao.insertOrder1(order1)
@@ -112,9 +110,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.updateOrder1(order1)
     }
 
-    override suspend fun getOrder1(Order1Id: Int): Order1 {
-        return zipexDao.getOrder1(Order1Id)
-    }
+
 
     override suspend fun insertOrder2(order2: Order2) {
         zipexDao.insertOrder2(order2)
@@ -132,9 +128,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.updateOrder2(order2)
     }
 
-    override suspend fun getOrder2(Order2Id: Int): Order2 {
-        return zipexDao.getOrder2(Order2Id)
-    }
+
 
     override suspend fun insertOrder3(order3: Order3) {
         zipexDao.insertOrder3(order3)
@@ -152,9 +146,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
        zipexDao.updateOrder3(order3)
     }
 
-    override suspend fun getOrder3(Order3Id: Int): Order3 {
-        return zipexDao.getOrder3(Order3Id)
-    }
+
 
     override suspend fun insertOrder4(order4: Order4) {
         zipexDao.insertOrder4(order4)
@@ -168,9 +160,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.deleteOrder4(order4)
     }
 
-    override suspend fun getOrder4(Order4Id: Int): Order4 {
-       return zipexDao.getOrder4(Order4Id)
-    }
+
 
     override suspend fun insertOrder5(order5: Order5) {
         zipexDao.insertOrder5(order5)
@@ -184,9 +174,6 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.deleteOrder5(order5)
     }
 
-    override suspend fun getOrder5(Order5Id: Int): Order5 {
-        return zipexDao.getOrder5(Order5Id)
-    }
 
     override suspend fun insertOrder6(order6: Order6) {
         zipexDao.insertOrder6(order6)
@@ -200,9 +187,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.deleteOrder6(order6)
     }
 
-    override suspend fun getOrder6(Order6Id: Int): Order6 {
-        return zipexDao.getOrder6(Order6Id)
-    }
+
 
     override suspend fun insertOrder7(order7: Order7) {
         zipexDao.insertOrder7(order7)
@@ -216,9 +201,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.deleteOrder7(order7)
     }
 
-    override suspend fun getOrder7(Order7Id: Int): Order7 {
-        return zipexDao.getOrder7(Order7Id)
-    }
+
 
     override suspend fun insertOrder8(order8: Order8) {
         zipexDao.insertOrder8(order8)
@@ -232,9 +215,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.deleteOrder8(order8)
     }
 
-    override suspend fun getOrder8(Order8Id: Int): Order8 {
-       return zipexDao.getOrder8(Order8Id)
-    }
+
 
     override suspend fun insertOrder9(order9: Order9) {
         zipexDao.insertOrder9(order9)
@@ -244,13 +225,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
        return zipexDao.getOrder9s()
     }
 
-    override suspend fun deleteOrder9(order9: Order9) {
-        zipexDao.deleteOrder9(order9)
-    }
 
-    override suspend fun getOrder9(Order9Id: Int): Order9 {
-       return zipexDao.getOrder9(Order9Id)
-    }
 
     override suspend fun insertBalanceTry(balanceTry: BalanceTry) {
        zipexDao.insertBalanceTry(balanceTry)
@@ -276,7 +251,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.updateBalanceTotalTry(balanceTotalTry)
     }
 
-    override suspend fun getBalanceTotalTry(): BalanceTotalTry{
+    override suspend fun getBalanceTotalTry(): BalanceTotalTry?{
         return zipexDao.getBalanceTotalTry()
     }
 
@@ -288,7 +263,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.updateBalanceTotalAzn(balanceTotalAzn)
     }
 
-    override suspend fun getBalanceTotalAzn(): BalanceTotalAzn {
+    override suspend fun getBalanceTotalAzn(): BalanceTotalAzn? {
         return zipexDao.getBalanceTotalAzn()
     }
 
@@ -308,7 +283,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
         zipexDao.updateBalanceTotalUsd(balanceTotalUsd)
     }
 
-    override suspend fun getBalanceTotalUsd(): BalanceTotalUsd {
+    override suspend fun getBalanceTotalUsd(): BalanceTotalUsd? {
        return zipexDao.getBalanceTotalUsd()
     }
 
@@ -344,7 +319,7 @@ class ZipexRepoImpl(private val zipexDao: ProjectZipexDao):ZipexRepo {
        zipexDao.updateDebtTotal(debtTotal)
     }
 
-    override suspend fun getDebtTotal(): DebtTotal{
+    override suspend fun getDebtTotal(): DebtTotal?{
         return zipexDao.getDebtTotal()
     }
 

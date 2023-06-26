@@ -51,7 +51,13 @@ class AdminFragment @Inject constructor(
         }
         binding.recyclerviewAdmin.adapter=adminAdapter
         binding.recyclerviewAdmin.layoutManager=LinearLayoutManager(requireContext())
+       onItemClick()
+        viewModel.getAdminLink()
+        observeAdminLink()
+        return binding.root
+    }
 
+    private fun onItemClick(){
         adminAdapter.onItemClickConfirm={
             viewModel.insertOrder1(it)
         }
@@ -67,9 +73,6 @@ class AdminFragment @Inject constructor(
             cartViewModel.deleteCart(link)
             viewModel.deleteAdminLink(it)
         }
-        viewModel.getAdminLink()
-        observeAdminLink()
-        return binding.root
     }
 
     private fun observeAdminLink(){

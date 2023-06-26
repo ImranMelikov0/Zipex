@@ -40,9 +40,4 @@ class Order9ViewModel @Inject constructor(
         }
     }
 
-    fun deleteOrder9(order9: Order9){
-        viewModelScope.launch {
-            zipexRepo.deleteOrder9(order9)
-        }
-    }
 }

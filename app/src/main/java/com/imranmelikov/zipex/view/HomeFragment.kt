@@ -36,8 +36,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment @Inject constructor(
-    private val newsAdapter: newsAdapter,
-    private val balanceAdapter: BalanceAdapter
+    private val newsAdapter: newsAdapter
 ) : Fragment() {
     private lateinit var binding:FragmentHomeBinding
     private lateinit var newsViewModel:NewsViewModel
@@ -97,14 +96,20 @@ class HomeFragment @Inject constructor(
 
         binding.homeRecyclerView.layoutManager=LinearLayoutManager(requireContext())
         newsViewModel.getNews()
+        debtViewModel.getInsertTotalDebt()
         debtViewModel.getDebtTotal()
+        balanceViewModel.getInsertTotalBalanceAzn()
         balanceViewModel.getTotalBalanceAzn()
+        balanceViewModel.getInsertTotalBalanceTry()
         balanceViewModel.getTotalBalanceTry()
+        balanceViewModel.getInsertTotalBalanceUsd()
+        balanceViewModel.getTotalBalanceUsd()
 
         observeNews()
         observeDebtTotal()
         observeBalanceTotalTry()
         observeBalanceTotalAzn()
+        observeBalanceTotalUsd()
 
       if ( balanceViewModel.onItemClick=="b"){
           findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBalanceFragment())
@@ -119,7 +124,10 @@ class HomeFragment @Inject constructor(
         }else{
 
        }
-
+        if (balanceViewModel.onItemClick=="d"){
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBalanceFragment())
+            balanceViewModel.onItemClick="a"
+        }
     }
 
     private fun observeNews(){
@@ -171,5 +179,13 @@ class HomeFragment @Inject constructor(
             }
         })
     }
+    private fun observeBalanceTotalUsd(){
+        balanceViewModel.balanceTotalUsdLiveData.observe(viewLifecycleOwner, Observer {
+            it.data?.let {
+                balanceViewModel.getBalanceTotalUsd=it
+            }
+        })
+    }
+
 
 }

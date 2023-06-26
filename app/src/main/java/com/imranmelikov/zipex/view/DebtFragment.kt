@@ -60,8 +60,6 @@ class DebtFragment @Inject constructor(
         }
         binding.recyclerviewDebt.layoutManager=LinearLayoutManager(requireContext())
         binding.recyclerviewDebt.adapter=debtAdapter
-//        val debtt=DebtTotal(0.0)
-//        viewModel.insertDebtTotal(debtt)
         viewModel.getDebt()
         viewModel.getDebtTotal()
         balanceViewModel.getTotalBalanceAzn()
@@ -130,7 +128,6 @@ class DebtFragment @Inject constructor(
                     binding.recyclerviewDebt.visibility=View.VISIBLE
                     binding.cryptoProgressBar.visibility=View.GONE
                     it.data?.let {
-//                            debtAdapter.debtAznTotal=it
                         getDebtTotal=it
                     }
                 }
@@ -187,6 +184,7 @@ class DebtFragment @Inject constructor(
 
                     val insertAzn=BalanceAzn(formatDate,getDebtTotal.debtTotal,roundedAmount2)
                     balanceViewModel.insertBalanceAzn(insertAzn)
+                    Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(DebtFragmentDirections.actionDebtFragmentToAdminNewsFragment("debt"))
                 }
 
@@ -238,7 +236,7 @@ class DebtFragment @Inject constructor(
 
                 val insertAzn=BalanceAzn(formatDate,it.amount,roundedAmount2)
                 balanceViewModel.insertBalanceAzn(insertAzn)
-
+                Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(DebtFragmentDirections.actionDebtFragmentToAdminNewsFragment("debt"))
             }
 

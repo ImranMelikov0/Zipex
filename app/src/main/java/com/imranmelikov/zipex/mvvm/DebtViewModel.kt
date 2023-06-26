@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.imranmelikov.zipex.model.BalanceTotalAzn
+import com.imranmelikov.zipex.model.BalanceTotalTry
 import com.imranmelikov.zipex.model.Debt
 import com.imranmelikov.zipex.model.DebtHistory
 import com.imranmelikov.zipex.model.DebtTotal
@@ -68,6 +69,18 @@ class DebtViewModel @Inject constructor(
     fun deleteDebt(debt: Debt){
         viewModelScope.launch {
             zipexRepo.deleteDebt(debt)
+        }
+    }
+    fun getInsertTotalDebt() {
+        viewModelScope.launch {
+            val response = zipexRepo.getDebtTotal()
+            if (response == null) {
+                val totalDebt = 0.0
+                val debtTotal = DebtTotal(totalDebt)
+                insertDebtTotal(debtTotal)
+            } else {
+                println("success")
+            }
         }
     }
     fun insertDebtTotal(debtTotal: DebtTotal){

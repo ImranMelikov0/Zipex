@@ -1,12 +1,16 @@
 package com.imranmelikov.zipex.adapter
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.AdminrecyclerRowBinding
 import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.Link
@@ -74,7 +78,7 @@ class AdminAdapter @Inject constructor():RecyclerView.Adapter<AdminAdapter.Admin
                     it(adminList)
                 }
                 Navigation.findNavController(it).navigate(AdminFragmentDirections.actionAdminFragmentToAdminNewsFragment("string"))
-
+                Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
             }
         }
         holder.binding.buttonreject.setOnClickListener {
@@ -82,7 +86,7 @@ class AdminAdapter @Inject constructor():RecyclerView.Adapter<AdminAdapter.Admin
                 it(adminList)
             }
             Navigation.findNavController(it).navigate(AdminFragmentDirections.actionAdminFragmentToAdminNewsFragment("string"))
-
+            Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
         }
 
     }

@@ -47,7 +47,7 @@ class AdminNotificationFragment : Fragment() {
 
                 }
                 Status.SUCCESS->{
-                    Toast.makeText(requireContext(),"Success",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Bildiriş əlavə olundu",Toast.LENGTH_SHORT).show()
                     viewModel.resetNotificationErrorMessage()
                     findNavController().popBackStack()
                 }

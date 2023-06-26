@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -28,11 +29,8 @@ import javax.inject.Inject
 class DebtAdapter @Inject constructor():RecyclerView.Adapter<DebtAdapter.DebtViewHolder>() {
     class DebtViewHolder(var binding:DebtRowBinding):RecyclerView.ViewHolder(binding.root)
 
-//    var debtAznTotal=DebtTotal(0.0)
     var onItemClickPay:((Debt)->Unit)?=null
-//    var onItemClickPayAll:((DebtTotal)->Unit)?=null
     var onItemClickOnlinePay:((Debt)->Unit)?=null
-//    var onItemClickOnlinePayAll:((DebtTotal)->Unit)?=null
     private val diffUtil=object : DiffUtil.ItemCallback<Debt>(){
         override fun areItemsTheSame(oldItem: Debt, newItem: Debt): Boolean {
             return oldItem==newItem

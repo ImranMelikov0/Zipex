@@ -31,6 +31,11 @@ class AdminViewModel @Inject constructor(
             zipexRepo.insertOrder1(order1)
         }
     }
+    fun updateAdminLink(adminLink: AdminLink){
+        viewModelScope.launch {
+            zipexRepo.updateAdminLink(adminLink)
+        }
+    }
 
     fun getAdminLink(){
         adminLinkMessage.value=Resource.loading(null)

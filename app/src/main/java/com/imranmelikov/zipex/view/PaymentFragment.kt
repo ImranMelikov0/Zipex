@@ -144,11 +144,7 @@ class PaymentFragment @Inject constructor(
                                         adminLink.uuid=updateCart.uuid
                                         adminViewModel.insertAdminLink(adminLink)
 
-                                        Toast.makeText(
-                                                requireContext(),
-                                                "success",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                        Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
                                             findNavController().popBackStack()
                                     }
                                 }
@@ -232,7 +228,7 @@ class PaymentFragment @Inject constructor(
                     val balanceTry = BalanceTry(formatDate, roundedAmount1, roundedAmount)
                     viewModel.insertBalanceTry(balanceTry)
 
-                Toast.makeText(requireContext(), "Ugurlu", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
                 findNavController().popBackStack()
             }
         }

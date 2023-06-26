@@ -17,7 +17,9 @@ import com.imranmelikov.zipex.adapter.CartAdapter
 import com.imranmelikov.zipex.databinding.FragmentCartBinding
 import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceTotalTry
+import com.imranmelikov.zipex.model.BalanceTotalUsd
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.BalanceUsd
 import com.imranmelikov.zipex.model.Link
 import com.imranmelikov.zipex.mvvm.AdminViewModel
 import com.imranmelikov.zipex.mvvm.BalanceViewModel
@@ -63,29 +65,41 @@ class CartFragment @Inject constructor(
         binding.addrecyclerview.adapter=cartAdapter
         viewModel.getCarts()
         observeCart()
-        cartAdapter.onItemClickCartUpdate={
-            viewModel.updateCart(it)
-            updateCart()
-            findNavController().navigate(CartFragmentDirections.actionCartFragmentToLinkFragment("String"))
-        }
-        cartAdapter.onItemClickDelete={
-            viewModel.deleteCart(it)
-            findNavController().navigate(CartFragmentDirections.actionCartFragmentToLinkFragment("String"))
-        }
-        cartAdapter.onItemClickOnlinePay={
-            balanceViewModel.showFirst=false
-            balanceViewModel.getDouble=it.price
-            balanceViewModel.getLink=it
-        }
+        onItemClick()
         balanceViewModel.getTotalBalanceTry()
+        balanceViewModel.getTotalBalanceUsd()
         observeBalance()
+        observeBalanceUsd()
 
         cartAdapter.onItemClickUpdateSigorta={
             viewModel.updateCart(it)
+            val adminLink=AdminLink(it.url,it.category,it.count,it.color,it.size,it.price,it.comment,it.history,it.country,it.sigorta,it.payment)
+            adminLink.uuid=it.uuid
+            adminViewModel.updateAdminLink(adminLink)
             findNavController().navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(9F))
         }
     }
-
+private fun onItemClick(){
+    cartAdapter.onItemClickCartUpdate={
+        viewModel.updateCart(it)
+        updateCart()
+        findNavController().navigate(CartFragmentDirections.actionCartFragmentToLinkFragment("String"))
+    }
+    cartAdapter.onItemClickDelete={
+        viewModel.deleteCart(it)
+        findNavController().navigate(CartFragmentDirections.actionCartFragmentToLinkFragment("String"))
+    }
+    cartAdapter.onItemClickOnlinePay={
+        balanceViewModel.showFirst=false
+        balanceViewModel.getDouble=it.price
+        balanceViewModel.getLink=it
+    }
+    cartAdapter.onItemClickOnlinePayUsd={
+        balanceViewModel.showFirst=false
+        balanceViewModel.getDouble=it.price
+        balanceViewModel.getLink=it
+    }
+}
     private fun observeCart(){
         viewModel.cartMsg.observe(viewLifecycleOwner, Observer {
             when(it.status){
@@ -97,6 +111,17 @@ class CartFragment @Inject constructor(
                     binding.button.visibility=View.GONE
                     it.data?.let {
                         cartAdapter.cartList=it
+                        if (it.isEmpty()){
+                            binding.addrecyclerview.visibility=View.GONE
+                            binding.textView.visibility=View.VISIBLE
+                            binding.button.visibility=View.VISIBLE
+                        }
+                        it.map {
+                            val currentDate= LocalDateTime.now()
+                            val formatter= DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
+                            val formatDate=currentDate.format(formatter)
+                           viewModel.refreshData(it.history,formatDate,it)
+                        }
                     }
                 }
                 Status.LOADING->{
@@ -169,11 +194,48 @@ class CartFragment @Inject constructor(
                                                        adminLink.uuid=updateCart.uuid
                                                         adminViewModel.insertAdminLink(adminLink)
 
-                                                        Toast.makeText(requireContext(),"success",Toast.LENGTH_SHORT).show()
+                                                        Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
                                                         findNavController().navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(4F))
                                                     }
                                                 }
                                     }
                     })
+    }
+    private fun observeBalanceUsd(){
+        balanceViewModel.balanceTotalUsdLiveData.observe(viewLifecycleOwner, Observer {resourceBalanceTotalUsd->
+            resourceBalanceTotalUsd.data?.let {balanceTotalUsd->
+                cartAdapter.onItemClickBalancePayUsd={
+                    if ( balanceTotalUsd.balanceTotal<it.price){
+                        Toast.makeText(requireContext(),"Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın",Toast.LENGTH_SHORT).show()
+                    }else{
+                        val payment= balanceTotalUsd.balanceTotal-it.price
+                        val decimalFormat = DecimalFormat("#.##")
+                        decimalFormat.roundingMode = RoundingMode.HALF_UP
+                        val roundedAmount = decimalFormat.format(payment).toDouble()
+                        val updateTotalUsd= BalanceTotalUsd(roundedAmount)
+                        updateTotalUsd.uuid=balanceTotalUsd.uuid
+                        balanceViewModel.updateBalanceTotalUsd(updateTotalUsd)
+                        balanceViewModel.getBalanceTotalUsd=updateTotalUsd
+                        val currentDate= LocalDateTime.now()
+                        val formatter= DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
+                        val formatDate=currentDate.format(formatter)
+                        val insertBalanceUsd= BalanceUsd(formatDate,it.price,roundedAmount)
+                        balanceViewModel.insertBalanceUsd(insertBalanceUsd)
+
+                        val updateCart=Link(it.url,it.category,it.count,it.color,it.size,it.price,it.comment,it.history,it.country,it.sigorta,"Ödənilib")
+                        updateCart.uuid=it.uuid
+                        viewModel.updateCart(updateCart)
+
+                        val adminLink=AdminLink(updateCart.url,updateCart.category,updateCart.count,updateCart.color,
+                            updateCart.size,updateCart.price,updateCart.comment,updateCart.history,updateCart.country,updateCart.sigorta,updateCart.payment)
+                        adminLink.uuid=updateCart.uuid
+                        adminViewModel.insertAdminLink(adminLink)
+
+                        Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(4F))
+                    }
+                }
+            }
+        })
     }
 }

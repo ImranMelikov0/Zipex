@@ -53,6 +53,7 @@ class NotificationFragment @Inject constructor(
             val layoutPosition=viewHolder.layoutPosition
             val selectedNotification=notificationAdapter.notificationList[layoutPosition]
             viewModel.deleteNotification(selectedNotification)
+            Toast.makeText(requireContext(),"Bildiriş uğurla silindi", Toast.LENGTH_SHORT).show()
             findNavController().navigate(NotificationFragmentDirections.actionNotificationFragmentToAdminNewsFragment("notification"))
         }
         override fun onChildDraw(

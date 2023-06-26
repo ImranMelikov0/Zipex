@@ -48,9 +48,4 @@ fun injectDatabase(@ApplicationContext context:Context)=Room.databaseBuilder(
             .error(progressBarDrawable)
       return  Glide.with(context).setDefaultRequestOptions(requestOptions)
     }
-    @Singleton
-    @Provides
-    fun injectSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-    }
     }
