@@ -20,6 +20,7 @@ import com.imranmelikov.zipex.model.BalanceTotalTry
 import com.imranmelikov.zipex.model.BalanceTotalUsd
 import com.imranmelikov.zipex.model.BalanceTry
 import com.imranmelikov.zipex.model.BalanceUsd
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.Link
 import com.imranmelikov.zipex.mvvm.AdminViewModel
 import com.imranmelikov.zipex.mvvm.BalanceViewModel
@@ -164,7 +165,8 @@ private fun onItemClick(){
                     binding.button.visibility=View.GONE
                 }
                 Status.SUCCESS->{
-                    Toast.makeText(requireContext(),"Məlumat əlavə olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Məlumat əlavə olundu")
                     binding.addrecyclerview.visibility=View.VISIBLE
                     binding.cryptoErrorText.visibility=View.GONE
                     binding.cryptoProgressBar.visibility=View.GONE
@@ -179,7 +181,8 @@ private fun onItemClick(){
                                     resourceBalanceTotalTry.data?.let {balanceTotalTry->
                                                 cartAdapter.onItemClickBalancePay={
                                                     if ( balanceTotalTry.balanceTotal<it.price){
-                                                        Toast.makeText(requireContext(),"Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın",Toast.LENGTH_SHORT).show()
+                                                        val customToast = CustomToast(requireContext())
+                                                        customToast.showToast("Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın")
                                                     }else{
                                                         val payment= balanceTotalTry.balanceTotal-it.price
                                                         val decimalFormat = DecimalFormat("#.##")
@@ -204,7 +207,8 @@ private fun onItemClick(){
                                                        adminLink.uuid=updateCart.uuid
                                                         adminViewModel.insertAdminLink(adminLink)
 
-                                                        Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
+                                                        val customToast = CustomToast(requireContext())
+                                                        customToast.showToast("Əməliyyat uğurla yerinə yetirildi")
                                                         findNavController().navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(4F))
                                                     }
                                                 }
@@ -216,7 +220,8 @@ private fun onItemClick(){
             resourceBalanceTotalUsd.data?.let {balanceTotalUsd->
                 cartAdapter.onItemClickBalancePayUsd={
                     if ( balanceTotalUsd.balanceTotal<it.price){
-                        Toast.makeText(requireContext(),"Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın",Toast.LENGTH_SHORT).show()
+                        val customToast = CustomToast(requireContext())
+                        customToast.showToast("Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın")
                     }else{
                         val payment= balanceTotalUsd.balanceTotal-it.price
                         val decimalFormat = DecimalFormat("#.##")
@@ -241,7 +246,8 @@ private fun onItemClick(){
                         adminLink.uuid=updateCart.uuid
                         adminViewModel.insertAdminLink(adminLink)
 
-                        Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
+                        val customToast = CustomToast(requireContext())
+                        customToast.showToast("Əməliyyat uğurla yerinə yetirildi")
                         findNavController().navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment(4F))
                     }
                 }

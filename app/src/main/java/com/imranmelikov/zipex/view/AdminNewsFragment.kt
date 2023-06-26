@@ -23,6 +23,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentAdminNewsBinding
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.mvvm.NewsViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -179,7 +180,8 @@ class AdminNewsFragment : Fragment() {
                     var intentToGallery=Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                     activityResultLauncher.launch(intentToGallery)
                 }else{
-                    Toast.makeText(requireContext(),"Permission needed", Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Permission needed")
                 }
             }
     }
@@ -187,13 +189,15 @@ class AdminNewsFragment : Fragment() {
         viewModel.errorMsg.observe(viewLifecycleOwner, Observer {
             when(it.status){
                 Status.ERROR->{
-                    Toast.makeText(requireContext(),it.message?:"Enter Values",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast(it.message?:"Enter Values")
                 }
                 Status.LOADING->{
 
                 }
                 Status.SUCCESS->{
-                    Toast.makeText(requireContext(),"Xəbər əlavə olundu", Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Xəbər əlavə olundu")
                     viewModel.resetErrorMessage()
                     selectedimage=null
                     findNavController().popBackStack()

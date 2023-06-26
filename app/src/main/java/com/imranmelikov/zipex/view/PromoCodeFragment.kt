@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentPromoCodeBinding
 import com.imranmelikov.zipex.databinding.FragmentTrendyolConfirmBinding
+import com.imranmelikov.zipex.model.CustomToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +26,8 @@ class PromoCodeFragment : Fragment() {
             findNavController().navigate(PromoCodeFragmentDirections.actionPromoCodeFragmentToHomeFragment())
         }
         binding.promoButton.setOnClickListener {
-            Toast.makeText(context,"Promo kodunuz yoxdur",Toast.LENGTH_SHORT).show()
+            val customToast = CustomToast(requireContext())
+            customToast.showToast("Promo kodunuz yoxdur")
         }
         return binding.root
     }

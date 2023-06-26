@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentCleverDeclarationBinding
 import com.imranmelikov.zipex.databinding.FragmentDebtHistoryBinding
+import com.imranmelikov.zipex.model.CustomToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +26,8 @@ class CleverDeclarationFragment : Fragment() {
             findNavController().navigate(CleverDeclarationFragmentDirections.actionCleverDeclarationFragmentToHomeFragment())
         }
         binding.cleveraddbutton.setOnClickListener {
-            Toast.makeText(context,"Ağıllı Bəyan mövcud deyil",Toast.LENGTH_SHORT).show()
+            val customToast = CustomToast(requireContext())
+            customToast.showToast("Ağıllı Bəyan mövcud deyil")
         }
         return binding.root
     }

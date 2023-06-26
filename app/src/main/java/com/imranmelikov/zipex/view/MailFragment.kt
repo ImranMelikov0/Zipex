@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentMailBinding
 import com.imranmelikov.zipex.databinding.FragmentPromoCodeBinding
+import com.imranmelikov.zipex.model.CustomToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +29,8 @@ class MailFragment : Fragment() {
         }
         val myColor=ContextCompat.getColor(requireContext(),R.color.primary)
         binding.button.setOnClickListener {
-            Toast.makeText(context,"Poçt xidməti mövcud deyil",Toast.LENGTH_SHORT).show()
+            val customToast = CustomToast(requireContext())
+            customToast.showToast("Poçt xidməti mövcud deyil")
         }
         binding.buttonsifaris.setOnClickListener {
             binding.buttonpoct.setBackgroundColor(Color.WHITE)

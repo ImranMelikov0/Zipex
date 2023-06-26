@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentAdminNewsBinding
 import com.imranmelikov.zipex.databinding.FragmentAdminNotificationBinding
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.mvvm.NotificationViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,13 +42,15 @@ class AdminNotificationFragment : Fragment() {
         viewModel.notificationErrorMsg.observe(viewLifecycleOwner, Observer {
             when(it.status){
                 Status.ERROR->{
-                    Toast.makeText(requireContext(),it.message?:"Enter Values",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast(it.message?:"Enter Values")
                 }
                 Status.LOADING->{
 
                 }
                 Status.SUCCESS->{
-                    Toast.makeText(requireContext(),"Bildiriş əlavə olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Bildiriş əlavə olundu")
                     viewModel.resetNotificationErrorMessage()
                     findNavController().popBackStack()
                 }

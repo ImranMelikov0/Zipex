@@ -7,4 +7,5 @@
     <color name="red">#FA0303</color>
     <color name="red2">#FB4128</color>
     <color name="green">#11AE19</color>
+    <color name="toast">#80000000</color>
 </resources>

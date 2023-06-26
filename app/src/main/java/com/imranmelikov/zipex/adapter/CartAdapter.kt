@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.CartRowBinding
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.Link
 import com.imranmelikov.zipex.view.CartFragmentDirections
 import kotlinx.coroutines.CoroutineScope
@@ -187,7 +188,8 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
 
             button.setOnClickListener {
                 if (editLink.text.toString().isEmpty()||editPrice.text.toString().isEmpty()||editQuantity.text.toString().isEmpty()){
-                    Toast.makeText(holder.itemView.context,"Məlumatları daxil edin",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Məlumatları daxil edin")
                 }else{
                    val price= editPrice.text.toString().toDouble()
                     val decimalFormat = DecimalFormat("#.##")
@@ -200,7 +202,8 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
                     onItemClickCartUpdate?.let {
                         it(cart)
                     }
-                    Toast.makeText(holder.itemView.context,"Məlumat əlavə olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Məlumat əlavə olundu")
                     alertDialog.dismiss()
                 }
             }
@@ -222,7 +225,9 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
                 onItemClickDelete?.let {
                     it(cartArraylist)
                 }
-                Toast.makeText(holder.itemView.context,"Məlumat silindi",Toast.LENGTH_SHORT).show()
+                val customToast = CustomToast(holder.itemView.context)
+                customToast.showToast("Məlumat silindi")
+
                 alertDialog.dismiss()
             }
             alertDialog.show()
@@ -231,7 +236,8 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
             val clipboard=holder.itemView.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip=ClipData.newPlainText("label",cartArraylist.url)
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(holder.itemView.context,"Link kopyalandı",Toast.LENGTH_SHORT).show()
+            val customToast = CustomToast(holder.itemView.context)
+            customToast.showToast("Link kopyalandı")
         }
 
         holder.binding.cartSigorta.setOnClickListener {
@@ -252,7 +258,8 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
                 onItemClickUpdateSigorta?.let {
                     it(cartUpdateSigorta)
                 }
-                Toast.makeText(holder.itemView.context,"Sifariş uğurla sığortalandı!",Toast.LENGTH_SHORT).show()
+                val customToast = CustomToast(holder.itemView.context)
+                customToast.showToast("Sifariş uğurla sığortalandı!")
                 holder.binding.SigortaText.text=cartArraylist.sigorta
                 val color=ContextCompat.getColor(holder.itemView.context,R.color.green)
                 holder.binding.SigortaText.setTextColor(color)
@@ -263,7 +270,8 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
         }
 
         holder.binding.cartView.setOnClickListener {
-            Toast.makeText(holder.itemView.context,"Sayta keçmək mümkün olmadı",Toast.LENGTH_SHORT).show()
+            val customToast = CustomToast(holder.itemView.context)
+            customToast.showToast("Sayta keçmək mümkün olmadı")
         }
         holder.binding.balancebuttonpay.setOnClickListener {
             val dialogView=LayoutInflater.from(holder.itemView.context).inflate(R.layout.alert_dialog_pay_balance,null)

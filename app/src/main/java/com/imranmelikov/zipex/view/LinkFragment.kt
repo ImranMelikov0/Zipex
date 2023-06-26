@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentLinkBinding
 import com.imranmelikov.zipex.databinding.FragmentTariffBinding
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.mvvm.LinkViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,10 +58,12 @@ private lateinit var viewModel:LinkViewModel
         viewModel.linkMsg.observe(viewLifecycleOwner, Observer {
             when(it.status){
                 Status.ERROR->{
-                    Toast.makeText(requireContext(),it.message?:"Məlumatları daxil edin",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast(it.message?:"Məlumatları daxil edin")
                 }
                 Status.SUCCESS->{
-                    Toast.makeText(requireContext(),"Məlumat əlavə olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Məlumat əlavə olundu")
                     findNavController().navigate(LinkFragmentDirections.actionLinkFragmentToPaymentFragment(5F))
                     viewModel.resetLinkMessage()
                 }

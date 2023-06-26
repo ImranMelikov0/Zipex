@@ -21,6 +21,7 @@ import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.AdmindetailRowBinding
 import com.imranmelikov.zipex.databinding.OrderItemRowBinding
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.Order1
 import com.imranmelikov.zipex.model.Order2
 import com.imranmelikov.zipex.model.Order3
@@ -320,7 +321,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                    onItemClickOrder1?.let {
                        it(order1ArrayList)
                    }
-                    Toast.makeText(holder.itemView.context,"Sifariş uğurla sığortalandı!",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Sifariş uğurla sığortalandı!")
                     holder.binding.sigorta.text=order1ArrayList.sigorta
                     val color=ContextCompat.getColor(holder.itemView.context,R.color.green)
                     holder.binding.sigorta.setTextColor(color)
@@ -528,7 +530,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                     onItemClickOrder2?.let {
                         it(order2ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Sifariş uğurla sığortalandı!",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Sifariş uğurla sığortalandı!")
                     holder.binding.sigorta.text=order2ArrayList.sigorta
                     val color=ContextCompat.getColor(holder.itemView.context,R.color.green)
                     holder.binding.sigorta.setTextColor(color)
@@ -735,7 +738,8 @@ class OrderAdapter @Inject constructor():RecyclerView.Adapter<OrderAdapter.Order
                     onItemClickOrder3?.let {
                         it(order3ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Sifariş uğurla sığortalandı!",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Sifariş uğurla sığortalandı!")
                     holder.binding.sigorta.text=order3ArrayList.sigorta
                     val color=ContextCompat.getColor(holder.itemView.context,R.color.green)
                     holder.binding.sigorta.setTextColor(color)

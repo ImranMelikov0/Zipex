@@ -17,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.FragmentBonusBinding
 import com.imranmelikov.zipex.databinding.FragmentCourierBinding
+import com.imranmelikov.zipex.model.CustomToast
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDateTime
 import java.util.Date
@@ -34,7 +35,8 @@ class BonusFragment : Fragment() {
             findNavController().navigate(BonusFragmentDirections.actionBonusFragmentToHomeFragment())
         }
         binding.bonusShare.setOnClickListener {
-            Toast.makeText(context,"Paylaşmaq qadağandır!!!",Toast.LENGTH_SHORT).show()
+            val customToast = CustomToast(requireContext())
+            customToast.showToast("Paylaşmaq qadağandır!!!")
         }
         val text="Balans (Bonuslar): 0"
         val spannableString=SpannableString(text)

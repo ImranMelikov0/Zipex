@@ -20,6 +20,7 @@ import com.imranmelikov.zipex.databinding.FragmentPaymentBinding
 import com.imranmelikov.zipex.model.AdminLink
 import com.imranmelikov.zipex.model.BalanceTotalTry
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.Link
 import com.imranmelikov.zipex.mvvm.AdminViewModel
 import com.imranmelikov.zipex.mvvm.BalanceViewModel
@@ -76,46 +77,25 @@ class PaymentFragment @Inject constructor(
                 getAmount=balanceTotalTry
                             if (viewModel.showFirst == false){
                                 binding.paybutton.setOnClickListener {
-                                    if (binding.addcartnumber.text.toString()
-                                            .isEmpty() || binding.month.text.toString()
-                                            .isEmpty() || binding.year.text.toString().isEmpty() ||
-                                        binding.cvv.text.toString().isEmpty()
-                                    ) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Məlumatları daxil edin",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    } else if (binding.cvv.text.length < 3 || binding.cvv.text.length > 4) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Cvv məlumatlarını düzgün daxil edin",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    } else if (binding.year.text.length < 2 || binding.year.text.length > 2 || binding.year.text.toString() < "23" || binding.year.text.toString() > "33") {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "İl məlumatlarını düzgün daxil edin",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    } else if (binding.month.text.length > 2 || binding.month.text.toString() < "01" || binding.month.text.toString() > "12") {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Ay məlumatlarını düzgün daxil edin",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    } else if (binding.month.text.length < 2) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın",
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                    } else if (binding.addcartnumber.text.length > 16 || binding.addcartnumber.text.length < 16) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "Kart məlumatlarını düzgün daxil edin",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                    if (binding.addcartnumber.text.toString().isEmpty()||binding.month.text.toString().isEmpty()||binding.year.text.toString().isEmpty()||
+                                        binding.cvv.text.toString().isEmpty()){
+                                        val customToast = CustomToast(requireContext())
+                                        customToast.showToast("Məlumatları daxil edin")
+                                    }else if(binding.cvv.text.length<3||binding.cvv.text.length>4){
+                                        val customToast = CustomToast(requireContext())
+                                        customToast.showToast("Cvv məlumatlarını düzgün daxil edin")
+                                    }else if(binding.year.text.length<2||binding.year.text.length>2||binding.year.text.toString()<"23"||binding.year.text.toString()>"33"){
+                                        val customToast = CustomToast(requireContext())
+                                        customToast.showToast("İl məlumatlarını düzgün daxil edin")
+                                    }else if(binding.month.text.length>2||binding.month.text.toString()<"01"||binding.month.text.toString()>"12"){
+                                        val customToast = CustomToast(requireContext())
+                                        customToast.showToast("Ay məlumatlarını düzgün daxil edin")
+                                    }else if(binding.month.text.length<2){
+                                        val customToast = CustomToast(requireContext())
+                                        customToast.showToast("Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın")
+                                    }else if(binding.addcartnumber.text.length>16||binding.addcartnumber.text.length<16){
+                                        val customToast = CustomToast(requireContext())
+                                        customToast.showToast("Kart məlumatlarını düzgün daxil edin")
                                     } else {
                                         val price=viewModel.getDouble
                                         val totalTryPlus=balanceTotalTry.balanceTotal+price
@@ -144,7 +124,8 @@ class PaymentFragment @Inject constructor(
                                         adminLink.uuid=updateCart.uuid
                                         adminViewModel.insertAdminLink(adminLink)
 
-                                        Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
+                                        val customToast = CustomToast(requireContext())
+                                        customToast.showToast("Əməliyyat uğurla yerinə yetirildi")
                                             findNavController().popBackStack()
                                     }
                                 }
@@ -157,7 +138,8 @@ class PaymentFragment @Inject constructor(
 
                 }
                 Status.ERROR->{
-                    Toast.makeText(requireContext(),"Xəta baş verdi", Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Xəta baş verdi")
                 }
                 Status.LOADING->{
 
@@ -168,42 +150,25 @@ class PaymentFragment @Inject constructor(
     private fun payFromBalance() {
         if (viewModel.showFirst == true) {
         binding.paybutton.setOnClickListener {
-            if (binding.addcartnumber.text.toString().isEmpty() || binding.month.text.toString()
-                    .isEmpty() || binding.year.text.toString().isEmpty() ||
-                binding.cvv.text.toString().isEmpty()
-            ) {
-                Toast.makeText(requireContext(), "Məlumatları daxil edin", Toast.LENGTH_SHORT)
-                    .show()
-            } else if (binding.cvv.text.length < 3 || binding.cvv.text.length > 4) {
-                Toast.makeText(
-                    requireContext(),
-                    "Cvv məlumatlarını düzgün daxil edin",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else if (binding.year.text.length < 2 || binding.year.text.length > 2 || binding.year.text.toString() < "23" || binding.year.text.toString() > "33") {
-                Toast.makeText(
-                    requireContext(),
-                    "İl məlumatlarını düzgün daxil edin",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else if (binding.month.text.length > 2 || binding.month.text.toString() < "01" || binding.month.text.toString() > "12") {
-                Toast.makeText(
-                    requireContext(),
-                    "Ay məlumatlarını düzgün daxil edin",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else if (binding.month.text.length < 2) {
-                Toast.makeText(
-                    requireContext(),
-                    "Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else if (binding.addcartnumber.text.length > 16 || binding.addcartnumber.text.length < 16) {
-                Toast.makeText(
-                    requireContext(),
-                    "Kart məlumatlarını düzgün daxil edin",
-                    Toast.LENGTH_SHORT
-                ).show()
+            if (binding.addcartnumber.text.toString().isEmpty()||binding.month.text.toString().isEmpty()||binding.year.text.toString().isEmpty()||
+                binding.cvv.text.toString().isEmpty()){
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("Məlumatları daxil edin")
+            }else if(binding.cvv.text.length<3||binding.cvv.text.length>4){
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("Cvv məlumatlarını düzgün daxil edin")
+            }else if(binding.year.text.length<2||binding.year.text.length>2||binding.year.text.toString()<"23"||binding.year.text.toString()>"33"){
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("İl məlumatlarını düzgün daxil edin")
+            }else if(binding.month.text.length>2||binding.month.text.toString()<"01"||binding.month.text.toString()>"12"){
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("Ay məlumatlarını düzgün daxil edin")
+            }else if(binding.month.text.length<2){
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın")
+            }else if(binding.addcartnumber.text.length>16||binding.addcartnumber.text.length<16){
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("Kart məlumatlarını düzgün daxil edin")
             } else {
                     val balanceTotalTryFromBalance =
                         viewModel.getDouble
@@ -228,7 +193,8 @@ class PaymentFragment @Inject constructor(
                     val balanceTry = BalanceTry(formatDate, roundedAmount1, roundedAmount)
                     viewModel.insertBalanceTry(balanceTry)
 
-                Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("Əməliyyat uğurla yerinə yetirildi")
                 findNavController().popBackStack()
             }
         }

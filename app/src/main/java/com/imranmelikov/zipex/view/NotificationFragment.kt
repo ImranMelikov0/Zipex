@@ -27,6 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.adapter.NotificationAdapter
 import com.imranmelikov.zipex.databinding.FragmentNotificationBinding
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.Notification
 import com.imranmelikov.zipex.mvvm.NotificationViewModel
 import com.imranmelikov.zipex.util.Status
@@ -53,7 +54,8 @@ class NotificationFragment @Inject constructor(
             val layoutPosition=viewHolder.layoutPosition
             val selectedNotification=notificationAdapter.notificationList[layoutPosition]
             viewModel.deleteNotification(selectedNotification)
-            Toast.makeText(requireContext(),"Bildiriş uğurla silindi", Toast.LENGTH_SHORT).show()
+            val customToast = CustomToast(requireContext())
+            customToast.showToast("Bildiriş uğurla silindi")
             findNavController().navigate(NotificationFragmentDirections.actionNotificationFragmentToAdminNewsFragment("notification"))
         }
         override fun onChildDraw(
@@ -165,7 +167,8 @@ class NotificationFragment @Inject constructor(
                     binding.recyclerNotification.visibility=View.GONE
                     binding.cryptoProgressBar.visibility=View.GONE
                     binding.cryptoErrorText.visibility=View.VISIBLE
-                    Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast(it.message!!)
                 }
             }
         })

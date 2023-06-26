@@ -21,6 +21,7 @@ import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
 import com.imranmelikov.zipex.model.BalanceTotalTry
 import com.imranmelikov.zipex.model.BalanceTry
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.mvvm.BalanceViewModel
 import com.imranmelikov.zipex.util.Status
 import dagger.hilt.android.AndroidEntryPoint
@@ -135,7 +136,8 @@ class BalanceFragment @Inject constructor(
 
             binding.balanceItemAddbalancebutton.setOnClickListener {
                 if (binding.balanceItemAddbalance.text.toString().isEmpty()){
-                    Toast.makeText(requireContext(),"Balansı qeyd edin",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Balansı qeyd edin")
                 }else{
                     val amount=binding.balanceItemAddbalance.text.toString().toFloat()
                     Navigation.findNavController(it).navigate(BalanceFragmentDirections.actionBalanceFragmentToPaymentFragment())
@@ -156,8 +158,8 @@ class BalanceFragment @Inject constructor(
 
             binding.balanceItemAddbalancebutton.setOnClickListener {
                 if (binding.balanceItemAddbalance.text.toString().isEmpty()) {
-                    Toast.makeText(requireContext(), "Balansı qeyd edin", Toast.LENGTH_SHORT)
-                        .show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Balansı qeyd edin")
                 } else {
                     val amount = binding.balanceItemAddbalance.text.toString().toFloat()
                     Navigation.findNavController(it).navigate(
@@ -180,8 +182,8 @@ class BalanceFragment @Inject constructor(
 
             binding.balanceItemAddbalancebutton.setOnClickListener {
                 if (binding.balanceItemAddbalance.text.toString().isEmpty()) {
-                    Toast.makeText(requireContext(), "Balansı qeyd edin", Toast.LENGTH_SHORT)
-                        .show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Balansı qeyd edin")
                 } else {
                     val amount = binding.balanceItemAddbalance.text.toString().toFloat()
                     Navigation.findNavController(it).navigate(

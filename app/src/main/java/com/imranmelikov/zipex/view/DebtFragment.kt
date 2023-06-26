@@ -26,6 +26,7 @@ import com.imranmelikov.zipex.databinding.FragmentDebtBinding
 import com.imranmelikov.zipex.databinding.FragmentDebtHistoryBinding
 import com.imranmelikov.zipex.model.BalanceAzn
 import com.imranmelikov.zipex.model.BalanceTotalAzn
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.DebtHistory
 import com.imranmelikov.zipex.model.DebtTotal
 import com.imranmelikov.zipex.mvvm.BalanceViewModel
@@ -163,7 +164,8 @@ class DebtFragment @Inject constructor(
             val alertDialog=alertDialogBuilder.create()
             no.setOnClickListener {
                 if (getTotalAzn.balanceTotal<getDebtTotal.debtTotal){
-                    Toast.makeText(requireContext(),"Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın")
                 }else{
                     val currentDate = LocalDateTime.now()
                     val formatter =DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
@@ -193,7 +195,8 @@ class DebtFragment @Inject constructor(
 
                     val insertAzn=BalanceAzn(formatDate,getDebtTotal.debtTotal,roundedAmount2)
                     balanceViewModel.insertBalanceAzn(insertAzn)
-                    Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(requireContext())
+                    customToast.showToast("Əməliyyat uğurla yerinə yetirildi")
                     findNavController().navigate(DebtFragmentDirections.actionDebtFragmentToAdminNewsFragment("debt"))
                 }
 
@@ -213,7 +216,8 @@ class DebtFragment @Inject constructor(
     private fun paySingle(){
         debtAdapter.onItemClickPay={
             if (getTotalAzn.balanceTotal<it.amount){
-                Toast.makeText(requireContext(),"Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın",Toast.LENGTH_SHORT).show()
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("Xəta baş verdi! Zəhmət olmasa, balansınızı yoxlayın")
             }else{
                 val debtHistory=DebtHistory(it.history,it.amount)
                 viewModel.insertDebtHistory(debtHistory)
@@ -245,7 +249,8 @@ class DebtFragment @Inject constructor(
 
                 val insertAzn=BalanceAzn(formatDate,it.amount,roundedAmount2)
                 balanceViewModel.insertBalanceAzn(insertAzn)
-                Toast.makeText(requireContext(),"Əməliyyat uğurla yerinə yetirildi", Toast.LENGTH_SHORT).show()
+                val customToast = CustomToast(requireContext())
+                customToast.showToast("Əməliyyat uğurla yerinə yetirildi")
                 findNavController().navigate(DebtFragmentDirections.actionDebtFragmentToAdminNewsFragment("debt"))
             }
 

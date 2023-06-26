@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:textColor="@color/black"
-        android:text="Sifariş balansı : 3.95 TRY"
+        android:text="Sifariş balansı : 0.0 TRY"
         android:textStyle="bold" />
 
 
@@ -45,7 +45,7 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sifariş balansı : 3.95 TRY"
+        android:text="Servis balansı : 0.0 AZN"
         android:textColor="@color/black" />
     <TextView
         android:id="@+id/textview3"
@@ -55,7 +55,7 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USD balansı : 3.95 USD"
+        android:text="USD balansı : 0.0 USD"
         android:textColor="@color/black" />
 
     <View

@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.AdmindetailRowBinding
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.Order1
 import com.imranmelikov.zipex.model.Order2
 import com.imranmelikov.zipex.model.Order3
@@ -258,7 +259,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                    onItemClickOrder2Add?.let {
                        it(order1ArrayList)
                    }
-                    Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama təsdiq olundu")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -280,7 +282,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrderDelete?.let {
                         it(order1ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama silindi")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -424,7 +427,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                 }
                 yes.setOnClickListener {
                     if (holder.binding.catdirilma.text.toString().isEmpty()||holder.binding.ceki.text.toString().isEmpty()){
-                        Toast.makeText(holder.itemView.context,"Məlumatları daxil edin",Toast.LENGTH_SHORT).show()
+                        val customToast = CustomToast(holder.itemView.context)
+                        customToast.showToast("Məlumatları daxil edin")
                     }else{
                         val currentDate = LocalDateTime.now()
                         val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss")
@@ -437,7 +441,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                         onItemClickOrder3AddDelete?.let {
                             it(order2ArrayList)
                         }
-                        Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                        val customToast = CustomToast(holder.itemView.context)
+                        customToast.showToast("Bağlama təsdiq olundu")
                         alertDialog.dismiss()
                     }
                 }
@@ -460,7 +465,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder2Delete?.let {
                         it(order2ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama silindi")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -611,7 +617,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder4Add?.let {
                         it(order3ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama təsdiq olundu")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -633,7 +640,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder3Delete?.let {
                         it(order3ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama silindi")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -785,7 +793,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder5Add?.let {
                         it(order4ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama təsdiq olundu")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -807,7 +816,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder4Delete?.let {
                         it(order4ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama silindi")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -959,7 +969,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder6Add?.let {
                         it(order5ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama təsdiq olundu")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -981,7 +992,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder5Delete?.let {
                         it(order5ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama silindi")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -1133,7 +1145,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder7Add?.let {
                         it(order6ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama təsdiq olundu")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -1155,7 +1168,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder6Delete?.let {
                         it(order6ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama silindi")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -1307,7 +1321,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder8Add?.let {
                         it(order7ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama təsdiq olundu")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -1329,7 +1344,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder7Delete?.let {
                         it(order7ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama silindi")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -1480,7 +1496,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder9Add?.let {
                         it(order8ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama təsdiq olundu")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()
@@ -1502,7 +1519,8 @@ class AdminDetailAdapter @Inject constructor():RecyclerView.Adapter<AdminDetailA
                     onItemClickOrder8Delete?.let {
                         it(order8ArrayList)
                     }
-                    Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+                    val customToast = CustomToast(holder.itemView.context)
+                    customToast.showToast("Bağlama silindi")
                     alertDialog.dismiss()
                 }
                 alertDialog.show()

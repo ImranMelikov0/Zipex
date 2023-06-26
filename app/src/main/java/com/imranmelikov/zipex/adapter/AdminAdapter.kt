@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.imranmelikov.zipex.R
 import com.imranmelikov.zipex.databinding.AdminrecyclerRowBinding
 import com.imranmelikov.zipex.model.AdminLink
+import com.imranmelikov.zipex.model.CustomToast
 import com.imranmelikov.zipex.model.Link
 import com.imranmelikov.zipex.model.Order1
 import com.imranmelikov.zipex.view.AdminFragmentDirections
@@ -63,7 +64,8 @@ class AdminAdapter @Inject constructor():RecyclerView.Adapter<AdminAdapter.Admin
 
         holder.binding.buttonconfirm.setOnClickListener {
             if (holder.binding.magazaname.text.toString().isEmpty()||holder.binding.magazacode.text.toString().isEmpty()){
-                Toast.makeText(holder.itemView.context, "Məlumatları qeyd edin", Toast.LENGTH_SHORT).show()
+                val customToast = CustomToast(holder.itemView.context)
+                customToast.showToast("Məlumatları qeyd edin")
             }else{
                 val currentDate = LocalDateTime.now()
                 val formatter =
@@ -78,7 +80,8 @@ class AdminAdapter @Inject constructor():RecyclerView.Adapter<AdminAdapter.Admin
                     it(adminList)
                 }
                 Navigation.findNavController(it).navigate(AdminFragmentDirections.actionAdminFragmentToAdminNewsFragment("string"))
-                Toast.makeText(holder.itemView.context,"Bağlama təsdiq olundu",Toast.LENGTH_SHORT).show()
+                val customToast = CustomToast(holder.itemView.context)
+                customToast.showToast("Bağlama təsdiq olundu")
             }
         }
         holder.binding.buttonreject.setOnClickListener {
@@ -86,7 +89,8 @@ class AdminAdapter @Inject constructor():RecyclerView.Adapter<AdminAdapter.Admin
                 it(adminList)
             }
             Navigation.findNavController(it).navigate(AdminFragmentDirections.actionAdminFragmentToAdminNewsFragment("string"))
-            Toast.makeText(holder.itemView.context,"Bağlama silindi",Toast.LENGTH_SHORT).show()
+            val customToast = CustomToast(holder.itemView.context)
+            customToast.showToast("Bağlama silindi")
         }
 
     }
