@@ -69,7 +69,7 @@ class AdminNotificationFragment : Fragment() {
                         val notificationId = it.uuid
                         val contentTitle = it.title
                         val contentText = it.post
-                        val notificationIcon = R.drawable.vipwx
+                        val notificationIcon = R.drawable.zipex_img
 
                         val notificationBuilder =
                             NotificationCompat.Builder(requireContext(), channelId)
