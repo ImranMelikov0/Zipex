@@ -1,6 +1,8 @@
 package com.imranmelikov.zipex.view
 
+import android.content.Intent
 import android.graphics.Rect
+import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -110,6 +112,15 @@ class HomeFragment @Inject constructor(
         observeBalanceTotalTry()
         observeBalanceTotalAzn()
         observeBalanceTotalUsd()
+
+        binding.whatsapp.setOnClickListener {
+            val phoneNumber = "0708989158"
+
+            val whatsappIntent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber")
+            }
+            startActivity(whatsappIntent)
+        }
 
       if ( balanceViewModel.onItemClick=="b"){
           findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBalanceFragment())

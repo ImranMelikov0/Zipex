@@ -64,7 +64,14 @@ private lateinit var viewModel:LinkViewModel
                 Status.SUCCESS->{
                     val customToast = CustomToast(requireContext())
                     customToast.showToast("Məlumat əlavə olundu")
-                    findNavController().navigate(LinkFragmentDirections.actionLinkFragmentToPaymentFragment(5F))
+                    binding.editLink.text.clear()
+                    binding.editCategory.text.clear()
+                    binding.editquantity.text.clear()
+                    binding.editcolor.text.clear()
+                    binding.editsize.text.clear()
+                    binding.editprice.text.clear()
+                    binding.editcomment.text.clear()
+                    binding.editCountry.text.clear()
                     viewModel.resetLinkMessage()
                 }
                 Status.LOADING->{

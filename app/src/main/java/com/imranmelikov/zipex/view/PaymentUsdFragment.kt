@@ -1,6 +1,9 @@
 package com.imranmelikov.zipex.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.InputFilter
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,8 +31,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class PaymentUsdFragment : Fragment() {
- private lateinit var binding:FragmentPaymentUsdBinding
-private lateinit var viewModel:BalanceViewModel
+    private lateinit var binding: FragmentPaymentUsdBinding
+    private lateinit var viewModel: BalanceViewModel
     private lateinit var cartViewModel: CartViewModel
     private lateinit var adminViewModel: AdminViewModel
     private lateinit var getAmount: BalanceTotalUsd
@@ -37,18 +40,157 @@ private lateinit var viewModel:BalanceViewModel
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentPaymentUsdBinding.inflate(inflater,container,false)
-        viewModel=ViewModelProvider(requireActivity())[BalanceViewModel::class.java]
-        cartViewModel=ViewModelProvider(requireActivity()).get(CartViewModel::class.java)
-        adminViewModel=ViewModelProvider(requireActivity())[AdminViewModel::class.java]
+        binding = FragmentPaymentUsdBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(requireActivity())[BalanceViewModel::class.java]
+        cartViewModel = ViewModelProvider(requireActivity()).get(CartViewModel::class.java)
+        adminViewModel = ViewModelProvider(requireActivity())[AdminViewModel::class.java]
 
         binding.back.setOnClickListener {
             findNavController().navigate(PaymentUsdFragmentDirections.actionPaymentUsdFragmentToHomeFragment())
         }
+        val ccEditText = binding.addcartnumber
+        val maxLength = 19
+        val inputFilter = InputFilter.LengthFilter(maxLength)
+        ccEditText.filters = arrayOf(inputFilter)
+
+        ccEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val input = s.toString()
+                val formattedInput = formatCreditCardNumber(input)
+
+                if (formattedInput != input) {
+                    ccEditText.setText(formattedInput)
+                    ccEditText.setSelection(formattedInput.length)
+                }
+            }
+        })
+
+        val ccEditTextMY = binding.month
+        val maxLengthMY = 5
+        val inputFilterMY = InputFilter.LengthFilter(maxLengthMY)
+        ccEditTextMY.filters = arrayOf(inputFilterMY)
+
+        ccEditTextMY.addTextChangedListener(object : TextWatcher {
+            var count = 0
+            var isDeleting = false
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                isDeleting = count > after
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                val input = ccEditTextMY.text.toString()
+                if (!isDeleting) {
+                    val inputLength = input.length
+
+                    if ((count <= inputLength) && (inputLength == 2)) {
+                        if (input.substring(0, 2).toInt() > 12) {
+                            val customToast = CustomToast(requireContext())
+                            customToast.showToast("Ay və İl məlumatlarını düzgün daxil edin")
+                            ccEditTextMY.setText("")
+                        } else {
+                            ccEditTextMY.setText(input + "/")
+                        }
+
+                        val pos = ccEditTextMY.text.length
+                        ccEditTextMY.setSelection(pos)
+                    } else if ((count >= inputLength) && (inputLength == 2)) {
+                        if (input.substring(0, 2).toInt() > 12) {
+                            val customToast = CustomToast(requireContext())
+                            customToast.showToast("Ay və İl məlumatlarını düzgün daxil edin")
+                            ccEditTextMY.setText("")
+                        } else {
+                            ccEditTextMY.setText(input.substring(0, input.length - 1))
+                        }
+
+                        val pos = ccEditTextMY.text.length
+                        ccEditTextMY.setSelection(pos)
+                    }
+
+                    if (inputLength == 5) {
+                        val month = input.substring(0, 2).toInt()
+                        val year = input.substring(3, 5).toInt()
+
+                        if (month > 12) {
+                            val customToast = CustomToast(requireContext())
+                            customToast.showToast("İldə 12 ay vardır")
+                            ccEditTextMY.setText(input.substring(0, 2) + "/")
+                            val pos = ccEditTextMY.text.length
+                            ccEditTextMY.setSelection(pos)
+                        }  else if (input[0] == '0' && input[1] == '0') {
+                            val customToast = CustomToast(requireContext())
+                            customToast.showToast("Ay yuvarlaq ola bilər ancaq sıfır ola bilməz")
+                            ccEditTextMY.setText("")
+                            val pos = ccEditTextMY.text.length
+                            ccEditTextMY.setSelection(pos)
+                        } else if (year < 23) {
+                            val customToast = CustomToast(requireContext())
+                            customToast.showToast("İl 23dən az ola bilməz")
+                            ccEditTextMY.setText(input.substring(0, 2) + "/")
+                            val pos = ccEditTextMY.text.length
+                            ccEditTextMY.setSelection(pos)
+                        }else if(year>33){
+                            val customToast = CustomToast(requireContext())
+                            customToast.showToast("İl 33dən cox ola bilməz")
+                            ccEditTextMY.setText(input.substring(0, 2) + "/")
+                            val pos = ccEditTextMY.text.length
+                            ccEditTextMY.setSelection(pos)
+                        } else if (input[2] != '/') {
+                            ccEditTextMY.setText(input.substring(0, 2) + "/" + input.substring(3, 5))
+                            val pos = ccEditTextMY.text.length
+                            ccEditTextMY.setSelection(pos)
+                        }
+                    }
+                }
+
+                count = ccEditTextMY.text.toString().length
+            }
+             })
+
+            val maxLength3 = 4
+        val inputFilter3 = InputFilter.LengthFilter(maxLength3)
+        binding.cvv.filters = arrayOf(inputFilter3)
         viewModel.getTotalBalanceUsd()
         observeBalance()
         payFromBalance()
         return binding.root
+    }
+    private fun formatCreditCardNumber(input: String): String {
+        val digitsOnly = input.replace("\\D".toRegex(), "")
+        val formatted = StringBuilder()
+
+        var segmentLengths = intArrayOf(4, 4, 4, 4) // Adjust segment lengths if needed
+
+        var segmentIndex = 0
+        var currentIndex = 0
+
+        while (currentIndex < digitsOnly.length) {
+            val segmentLength = segmentLengths[segmentIndex]
+            val endIndex = currentIndex + segmentLength
+
+            if (endIndex <= digitsOnly.length) {
+                formatted.append(digitsOnly.substring(currentIndex, endIndex))
+                currentIndex = endIndex
+
+                if (currentIndex < digitsOnly.length) {
+                    formatted.append(" ")
+                }
+
+                segmentIndex++
+            } else {
+                formatted.append(digitsOnly.substring(currentIndex))
+                break
+            }
+        }
+
+        return formatted.toString()
     }
 
     private fun observeBalance(){
@@ -64,15 +206,15 @@ private lateinit var viewModel:BalanceViewModel
                         }else if(binding.cvv.text.length<3||binding.cvv.text.length>4){
                             val customToast = CustomToast(requireContext())
                             customToast.showToast("Cvv məlumatlarını düzgün daxil edin")
-                        }else if(binding.month.text.length>4||binding.month.text.toString()<"0123"||binding.month.text.toString()>"1233"){
+                        }else if(binding.month.text.length>5){
                             val customToast = CustomToast(requireContext())
                             customToast.showToast("Ay və İl məlumatlarını düzgün daxil edin")
-                        }else if(binding.month.text.length<4){
+                        }else if(binding.month.text.length<5){
                             val customToast = CustomToast(requireContext())
-                            customToast.showToast("Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın")
-                        }else if(binding.addcartnumber.text.length>16||binding.addcartnumber.text.length<16){
+                            customToast.showToast("/-i silmisinizsə ay və ili yenidən qeyd edin")
+                        }else if(binding.addcartnumber.text.length>19||binding.addcartnumber.text.length<19){
                             val customToast = CustomToast(requireContext())
-                            customToast.showToast("Kart məlumatlarını düzgün daxil edin")
+                            customToast.showToast("Kart məlumatlarını düzgün daxil edin boşluqları silmisinizsə əlavə edin vəya kart nömrəsini yenidən yazın")
                         } else {
                             val price=viewModel.getDouble
                             val totalUsdPlus=balanceTotalUsd.balanceTotal+price
@@ -134,13 +276,13 @@ private lateinit var viewModel:BalanceViewModel
                 }else if(binding.cvv.text.length<3||binding.cvv.text.length>4){
                     val customToast = CustomToast(requireContext())
                     customToast.showToast("Cvv məlumatlarını düzgün daxil edin")
-                }else if(binding.month.text.length>4||binding.month.text.toString()<"0123"||binding.month.text.toString()>"1233"){
+                }else if(binding.month.text.length>5){
                     val customToast = CustomToast(requireContext())
                     customToast.showToast("Ay və İl məlumatlarını düzgün daxil edin")
-                }else if(binding.month.text.length<4){
+                }else if(binding.month.text.length<5){
                     val customToast = CustomToast(requireContext())
-                    customToast.showToast("Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın")
-                }else if(binding.addcartnumber.text.length>16||binding.addcartnumber.text.length<16){
+                    customToast.showToast("/-i silmisinizsə ay və ili yenidən qeyd edin")
+                }else if(binding.addcartnumber.text.length>19||binding.addcartnumber.text.length<19){
                     val customToast = CustomToast(requireContext())
                     customToast.showToast("Kart məlumatlarını düzgün daxil edin")
                 } else {

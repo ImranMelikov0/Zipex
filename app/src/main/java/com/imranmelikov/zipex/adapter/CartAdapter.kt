@@ -190,11 +190,11 @@ class CartAdapter @Inject constructor():RecyclerView.Adapter<CartAdapter.CartVie
             val alertDialog=alertDialogBuilder.create()
 
             button.setOnClickListener {
-                if (editLink.text.toString().isEmpty()||editPrice.text.toString().isEmpty()||editQuantity.text.toString().isEmpty()){
+                if (editLink.text.toString().isEmpty()||editPrice.text.toString().toDoubleOrNull()==null||editQuantity.text.toString().isEmpty()||editPrice.text.toString().toDouble()==0.0){
                     val customToast = CustomToast(holder.itemView.context)
                     customToast.showToast("Məlumatları daxil edin")
                 }else{
-                   val price= editPrice.text.toString().toDouble()
+                    val price= editPrice.text.toString().toDouble()
                     val decimalFormat = DecimalFormat("#.##")
                     decimalFormat.roundingMode = RoundingMode.HALF_UP
                     val roundedAmount = decimalFormat.format(price).toDouble()

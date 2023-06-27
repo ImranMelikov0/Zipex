@@ -135,7 +135,7 @@ class BalanceFragment @Inject constructor(
             binding.debtHistoryUsd.setTextColor(myColor)
 
             binding.balanceItemAddbalancebutton.setOnClickListener {
-                if (binding.balanceItemAddbalance.text.toString().isEmpty()){
+                if (binding.balanceItemAddbalance.text.toString().toDoubleOrNull()==null||binding.balanceItemAddbalance.text.toString().toDouble()==0.0){
                     val customToast = CustomToast(requireContext())
                     customToast.showToast("Balansı qeyd edin")
                 }else{
@@ -157,7 +157,7 @@ class BalanceFragment @Inject constructor(
             binding.debtHistoryUsd.setTextColor(myColor)
 
             binding.balanceItemAddbalancebutton.setOnClickListener {
-                if (binding.balanceItemAddbalance.text.toString().isEmpty()) {
+                if (binding.balanceItemAddbalance.text.toString().toDoubleOrNull()==null||binding.balanceItemAddbalance.text.toString().toDouble()==0.0) {
                     val customToast = CustomToast(requireContext())
                     customToast.showToast("Balansı qeyd edin")
                 } else {
@@ -181,7 +181,7 @@ class BalanceFragment @Inject constructor(
             binding.balanceItemOrder.setBackgroundColor(Color.WHITE)
 
             binding.balanceItemAddbalancebutton.setOnClickListener {
-                if (binding.balanceItemAddbalance.text.toString().isEmpty()) {
+                if (binding.balanceItemAddbalance.text.toString().toDoubleOrNull()==null||binding.balanceItemAddbalance.text.toString().toDouble()==0.0) {
                     val customToast = CustomToast(requireContext())
                     customToast.showToast("Balansı qeyd edin")
                 } else {

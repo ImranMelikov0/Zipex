@@ -2,6 +2,7 @@ package com.imranmelikov.zipex.view
 
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
@@ -53,6 +54,37 @@ class PaymentFragment @Inject constructor(
         binding.back.setOnClickListener {
             findNavController().navigate(PaymentFragmentDirections.actionPaymentFragmentToHomeFragment())
         }
+        val ccEditText=binding.addcartnumber
+        val maxLength = 19
+        val inputFilter = InputFilter.LengthFilter(maxLength)
+        ccEditText.filters = arrayOf(inputFilter)
+
+        ccEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val input = s.toString()
+                val formattedInput = formatCreditCardNumber(input)
+
+                if (formattedInput != input) {
+                    ccEditText.setText(formattedInput)
+                    ccEditText.setSelection(formattedInput.length)
+                }
+            }
+        })
+
+
+        val maxLength1 = 2
+        val inputFilter1 = InputFilter.LengthFilter(maxLength1)
+        binding.month.filters = arrayOf(inputFilter1)
+        val maxLength2 = 2
+        val inputFilter2 = InputFilter.LengthFilter(maxLength2)
+        binding.year.filters = arrayOf(inputFilter2)
+        val maxLength3 = 4
+        val inputFilter3 = InputFilter.LengthFilter(maxLength3)
+        binding.cvv.filters = arrayOf(inputFilter3)
         viewModel.getTotalBalanceTry()
         observeBalance()
         payFromBalance()
@@ -60,8 +92,6 @@ class PaymentFragment @Inject constructor(
         arguments?.let {
             if (PaymentFragmentArgs.fromBundle(it).balanceAmountTry==4F){
                 findNavController().popBackStack()
-            }else if(PaymentFragmentArgs.fromBundle(it).balanceAmountTry==5F){
-                findNavController().navigate(PaymentFragmentDirections.actionPaymentFragmentToCartFragment2())
             }else if (PaymentFragmentArgs.fromBundle(it).balanceAmountTry==9F){
                 findNavController().navigate(PaymentFragmentDirections.actionPaymentFragmentToCartFragment2())
             }else{
@@ -70,6 +100,36 @@ class PaymentFragment @Inject constructor(
         }
 
         return binding.root
+    }
+    private fun formatCreditCardNumber(input: String): String {
+        val digitsOnly = input.replace("\\D".toRegex(), "")
+        val formatted = StringBuilder()
+
+        var segmentLengths = intArrayOf(4, 4, 4, 4) // Adjust segment lengths if needed
+
+        var segmentIndex = 0
+        var currentIndex = 0
+
+        while (currentIndex < digitsOnly.length) {
+            val segmentLength = segmentLengths[segmentIndex]
+            val endIndex = currentIndex + segmentLength
+
+            if (endIndex <= digitsOnly.length) {
+                formatted.append(digitsOnly.substring(currentIndex, endIndex))
+                currentIndex = endIndex
+
+                if (currentIndex < digitsOnly.length) {
+                    formatted.append("-")
+                }
+
+                segmentIndex++
+            } else {
+                formatted.append(digitsOnly.substring(currentIndex))
+                break
+            }
+        }
+
+        return formatted.toString()
     }
     private fun observeBalance(){
         viewModel.balanceTotalTryLiveData.observe(viewLifecycleOwner, Observer {
@@ -93,7 +153,7 @@ class PaymentFragment @Inject constructor(
                                     }else if(binding.month.text.length<2){
                                         val customToast = CustomToast(requireContext())
                                         customToast.showToast("Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın")
-                                    }else if(binding.addcartnumber.text.length>16||binding.addcartnumber.text.length<16){
+                                    }else if(binding.addcartnumber.text.length>19||binding.addcartnumber.text.length<19){
                                         val customToast = CustomToast(requireContext())
                                         customToast.showToast("Kart məlumatlarını düzgün daxil edin")
                                     } else {
@@ -166,7 +226,7 @@ class PaymentFragment @Inject constructor(
             }else if(binding.month.text.length<2){
                 val customToast = CustomToast(requireContext())
                 customToast.showToast("Kartınızın ay müddəti 10dan kiçikdirsə rəqəmin öncəsinə 0 artırın")
-            }else if(binding.addcartnumber.text.length>16||binding.addcartnumber.text.length<16){
+            }else if(binding.addcartnumber.text.length>19||binding.addcartnumber.text.length<19){
                 val customToast = CustomToast(requireContext())
                 customToast.showToast("Kart məlumatlarını düzgün daxil edin")
             } else {
