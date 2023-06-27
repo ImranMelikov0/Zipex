@@ -1,5 +1,10 @@
 package com.imranmelikov.zipex.mvvm
 
+import android.app.Application
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +22,6 @@ import javax.inject.Inject
 class NotificationViewModel @Inject constructor(
     private val zipexRepo: ZipexRepo
 ):ViewModel() {
-
     private val notificationsMessage=MutableLiveData<Resource<List<Notification>>>()
     val notificationMsg:LiveData<Resource<List<Notification>>>
         get() = notificationsMessage

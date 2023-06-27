@@ -1,13 +1,19 @@
 package com.imranmelikov.zipex.adapter
 
 import android.app.AlertDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Build
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -63,6 +69,46 @@ class NotificationAdapter @Inject constructor(
         }else{
 
         }
+//        val channelId = "my_channel_id"
+//        val channelName = "My Channel"
+//        val importance = NotificationManager.IMPORTANCE_DEFAULT
+//        val channel = NotificationChannel(channelId, channelName, importance)
+//
+//        val notificationId = notificationArrayList.uuid
+//        val contentTitle = notificationArrayList.title
+//        val contentText = notificationArrayList.post
+//        val notificationIcon = R.drawable.vipwx
+//
+//        val notificationBuilder = NotificationCompat.Builder(holder.itemView.context, channelId)
+//            .setSmallIcon(notificationIcon)
+//            .setContentTitle(contentTitle)
+//            .setContentText(contentText)
+//            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//
+//        try {
+//            val notificationManager = holder.itemView.context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//
+//            // İzinleri kontrol et
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                val permission = NotificationManagerCompat.IMPORTANCE_DEFAULT
+//                val granted = notificationManager.areNotificationsEnabled() && notificationManager.getImportance() >= permission
+//                if (granted) {
+//                    // İzinler sağlandı, bildirimi gönder
+//                    notificationManager.createNotificationChannel(channel)
+//                    notificationManager.notify(notificationId!!, notificationBuilder.build())
+//                } else {
+//                    // İzinler reddedildi, kullanıcıyı uyarmak için gerekli işlemleri yap
+//                }
+//            } else {
+//                // Eski Android sürümlerinde izin kontrolü yapma
+//                notificationManager.notify(notificationId!!, notificationBuilder.build())
+//            }
+//        } catch (e: SecurityException) {
+//            // Güvenlik istisnası durumunda hata ele alınır
+//            e.printStackTrace()
+//            // Hata durumunu kullanıcıya bildirmek için gerekli işlemleri yap
+//        }
+
         holder.itemView.setOnClickListener {
             onItemUpdate?.let {
                 it(notificationArrayList)
