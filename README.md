@@ -1,4 +1,4 @@
-<img width="332" alt="Zipex11" src="https://github.com/ImranMelikov0/Zipex/assets/127643762/7de38baa-a1e9-49ec-93d5-8a2b49f04ad6"># Zipex
+# Zipex
 This project was created with Kotlin.In this project, DI, Room, MVVM, RecyclerView, and other components have been used. The project consists of several pages, such as home, order, link, cart, balance, and more. You can place an order, make a payment in the balance section, and track the status of your order.
 
 # ProjectView
