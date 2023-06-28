@@ -114,11 +114,11 @@ class HomeFragment @Inject constructor(
         observeBalanceTotalUsd()
 
         binding.whatsapp.setOnClickListener {
-            val phoneNumber = "+9940557562345"
+            val phoneNumber = "+9940507562345"
 
-            val uri = Uri.parse("smsto:$phoneNumber")
-            val intent = Intent(Intent.ACTION_SENDTO, uri)
-            intent.setPackage("com.whatsapp")
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://api.whatsapp.com/send?phone=$phoneNumber")
+            }
             startActivity(intent)
         }
 
